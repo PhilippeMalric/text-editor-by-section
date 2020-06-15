@@ -1,0 +1,84 @@
+<!--
+  <mat-chip-list>
+  <mat-chip [color]="p.color" selected  *ngFor="let p of players">{{p.name}}</mat-chip>
+</mat-chip-list>
+-->
+<div class="center bordered">
+<svg #svg [attr.width]="_options.width" [attr.height]="_options.height" arrowDef>
+    <g [zoomableOf]="svg">
+      <g [linkVisual2]="link" *ngFor="let link of d3Service?.sg?.links"></g>
+      <g [nodeVisual2]="node" *ngFor="let node of d3Service?.sg?.nodes;let i = index" (click)="save(i)"
+          [draggableNode]="node" [draggableInGraph]="d3Service?.sg">
+      </g>
+    </g>
+  </svg>
+</div>
+
+
+
+<div class="container">
+  <mat-grid-list cols="2" rowHeight="100px" >
+    <mat-grid-tile
+        colspan="1"
+        rowspan="1">
+        <div class="center">
+          <button style="font-size: 24px;" type="button" mat-fab color="accent" (click)="wasteTurn()"> {{im_left$|async}}</button>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile
+    colspan="1"
+    rowspan="1">
+      <div class="center">
+        <button  type="button" mat-raised-button color="accent"
+        [ngClass]="routeAnimationsElements" [disabled]="!game_started" (click)="reset()">
+          Reset
+        </button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+<!--
+   <mat-grid-tile
+        colspan="1"
+        rowspan="1">
+        <div class="center">
+          <button class="center" type="button" mat-raised-button color="accent"
+          [ngClass]="routeAnimationsElements" (click)="next_turn()">
+            Prochain tour
+          </button>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile
+    colspan="1"
+    rowspan="1">
+      <div class="center">
+        <button  type="button" mat-raised-button color="accent"
+        [ngClass]="routeAnimationsElements" (click)="test()">
+          Test
+        </button>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan="1"
+    rowspan="1">
+      <div class="center">
+        <button  type="button" mat-raised-button color="accent"
+        [ngClass]="routeAnimationsElements" (click)="gen_graph()">
+          Création du jeu
+        </button>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile
+    colspan="1"
+    rowspan="1">
+      <div class="center">
+        <button  type="button" mat-raised-button color="accent"
+        [ngClass]="routeAnimationsElements" (click)="my_click()">
+          click
+        </button>
+      </div>
+    </mat-grid-tile>
+-->

@@ -1,0 +1,12 @@
+<svg:line
+class="link"
+[attr.x1]="link.source.x"
+[attr.y1]="link.source.y"
+[attr.x2]="link.target.x"
+[attr.y2]="link.target.y"
+[style.stroke]="'black'"
+[style.stroke-width]='"6px"'
+[attr.marker-end]="(link.arrow == 1 || link.arrow == 3)?'url(#arrowhead)':''"
+[attr.marker-start]="(link.arrow == 2 || link.arrow == 3)?'url(#arrowhead-reverse)':''"
+
+></svg:line>

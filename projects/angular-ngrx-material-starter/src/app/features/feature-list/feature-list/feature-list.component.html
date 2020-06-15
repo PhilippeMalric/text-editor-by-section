@@ -1,0 +1,62 @@
+<div>
+
+  <div>
+    <mat-drawer-container  autosize>
+      <mat-drawer #drawer class="sidenav" mode="side" position="end">
+        <!--<button mat-raised-button (click)="changeGame()" color="primary" click>Change game</button>-->
+        <div  style="margin:auto;margin-top:10px;margin-bottom:10px;max-width:150px;text-align:center;" >
+          <button  style="margin-rigth:10px" mat-fab  color="warn">!!</button>
+        </div>
+        <div  style="margin:auto;margin-left:10px;margin-top:10px;margin-bottom:10px;max-width:180px;text-align:center;" >
+          <mat-form-field appearance="fill" floatLabel="true">
+              <input
+              matInput
+              type="text"
+              placeholder="Game_Code"
+              [(ngModel)]="the_doc"
+              />
+          </mat-form-field>
+        </div>
+        <div  style="margin:auto;margin-top:10px;margin-bottom:10px;max-width:150px;text-align:center;" ><h3>Entrez un code et cliquez sur le bouton</h3></div>
+        <div  style="margin:auto;margin-top:10px;margin-bottom:10px;max-width:150px;text-align:center;" ><h4>Un nouveau «graph» sera généré automatiquement.</h4></div>
+
+        <mat-grid-list cols="1" rowHeight="50px" >
+          <mat-grid-tile
+              colspan="1"
+              rowspan="1">
+              <div class="center">
+                <button mat-stroked-button >Level 1</button>
+              </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile
+          colspan="1"
+          rowspan="1">
+            <div class="center">
+              <button mat-stroked-button >Level 2</button>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile
+          colspan="1"
+          rowspan="1">
+            <div class="center">
+              <button mat-stroked-button >Level 3</button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-drawer>
+      <mat-drawer-content >
+        <div class="fixed">
+          <button mat-fab color="warn" (click)="drawer.toggle()" aria-label="Open right panel">
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+        <div class="sidenav-content">
+          <app-game></app-game>
+      </div>
+
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </div>
+
+</div>
