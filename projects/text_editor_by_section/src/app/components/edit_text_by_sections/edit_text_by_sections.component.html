@@ -1,0 +1,17 @@
+
+<div style="margin-left: 50px;">
+    
+    <div *ngIf="displayName!=''" style="margin-bottom: 20px;"> 
+        <button mat-raised-input *ngIf="!started" (click)="start()">Commencer</button>
+        <button mat-raised-input *ngIf="started" (click)="update()">Update!</button>
+    </div>
+    <div *ngIf="started" style="border-style:solid;border-radius: 5px;"
+    cdkDropList
+    [cdkDropListData]="items"
+    class="list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="box" *ngFor="let item of items" cdkDrag >
+        <anms-expression [item]="item"></anms-expression>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,116 @@
+@import 'styles-variables';
+
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+@import 'styles-reset';
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import './themes/default-theme';
+@import './themes/light-theme';
+@import './themes/black-theme';
+@import './themes/nature-theme';
+
+@import 'styles-reset.scss-theme';
+@import './app/app/app.component.scss-theme';
+@import './app/shared/big-input/big-input/big-input.component.scss-theme';
+
+@mixin anms-about-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  anms-about {
+    .background {
+      color: mat-color($foreground, text);
+      background-color: mat-color($background, background);
+
+      .gradient {
+        &::before {
+          background: linear-gradient(
+            to bottom,
+            mat-color($background, background, 0) 0%,
+            mat-color($background, background, 1) 100%
+          );
+        }
+      }
+    }
+
+    .follow-releases,
+    .contributors {
+      p {
+        background-color: mat-color($background, background);
+
+        a {
+          color: mat-color($accent);
+
+          &:hover {
+            color: mat-color($accent, darker);
+          }
+        }
+      }
+    }
+
+    .contributors {
+      img {
+        border-color: mat-color($background, background) !important;
+      }
+    }
+  }
+}
+
+@mixin custom-components-theme($theme) {
+  @include anms-styles-reset-theme($theme);
+  @include anms-app-component-theme($theme);
+  @include anms-about-component-theme($theme);
+  @include anms-big-input-component-theme($theme);
+}
+
+.default-theme {
+  @include angular-material-theme($anms-theme);
+  @include custom-components-theme($anms-theme);
+}
+
+.light-theme {
+  @include angular-material-theme($anms-light-theme);
+  @include custom-components-theme($anms-light-theme);
+}
+
+.black-theme {
+  @include angular-material-theme($anms-black-theme);
+  @include custom-components-theme($anms-black-theme);
+}
+
+.nature-theme {
+  @include angular-material-theme($anms-nature-theme);
+  @include custom-components-theme($anms-nature-theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+#my_input {
+  color: rgb(43, 250, 112) !important;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 84px;
+}
+.mat-simple-snackbar {
+  font-size: 40px;
+  width: fit-content;
+}
+
+.red {
+  color: red;
+}

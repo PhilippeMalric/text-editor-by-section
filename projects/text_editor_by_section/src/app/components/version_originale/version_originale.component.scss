@@ -1,0 +1,55 @@
+.box {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  max-width: 600px;
+  text-align: justify;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: large;
+}
+
+.spaceTop {
+  margin-top: 10px;
+}
+
+.big_font {
+  font-size: 36px;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.margin10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.icon-display {
+  transform: scale(2);
+}
+
+.p {
+  font-family: cursive;
+  margin-left: 22px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.header {
+  font-size: xx-large;
+  font-family: fantasy;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  line-height: normal;
+}
+
+.l {
+  margin-left: 50px;
+  list-style-type: circle;
+  display: list-item;
+}

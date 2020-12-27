@@ -1,0 +1,41 @@
+<div class="center" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
+    <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
+    <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
+</div>
+<div class="center">
+    <button mat-raised-button *ngFor="let s of sections;let i = index" 
+    [ngStyle]="{'margin-left':'5px','margin-rigth':'5px'}"
+    [color]="s.color"
+    (click)="clickNav(i)"
+    >{{s?.titre}}</button>
+</div>
+
+<div class="box spaceTop" >  
+        <mat-card >
+            <mat-card-title class="header" >{{section?.titre}}</mat-card-title>
+            
+            <mat-card-actions>
+                <div class="center"> 
+                    <button mat-raised-button color="warn"  class="commentaire"   (click)="openDialog()" >Commentaire sur la section</button>
+                </div>
+            </mat-card-actions>
+            <mat-card-content>
+                <mat-card  *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px'}">
+                    <mat-card-content class="sousSection">
+                        <div class="p">
+                            {{sousSection.txt}}
+                        </div>
+                        <div class="rigth">
+                            <upvote-button [itemId]='sousSection?.nom' [userId]='displayName'></upvote-button>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card-content>
+            
+        </mat-card>
+    
+</div>
+<div class="center" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
+    <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
+    <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
+</div>

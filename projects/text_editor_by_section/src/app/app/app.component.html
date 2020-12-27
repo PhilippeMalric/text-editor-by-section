@@ -1,0 +1,151 @@
+<div [class]="'theme-wrapper ' + (theme$ | async)">
+
+  <mat-sidenav-container>
+
+    <mat-sidenav #sidenav mode="push">
+      <!--<div class="branding"><img [src]="logo" />
+        <span>{{ 'anms.title.short' | translate}}</span></div>
+      -->
+      <mat-nav-list>
+        <a mat-list-item *ngFor="let item of navigationSideMenu" (click)="sidenav.close()" [routerLink]="[item.link]"
+        [ngStyle]="{'pointer-events':item.enabled ?'auto':'none','color': item.enabled ?'black':'lightgray'}"
+          routerLinkActive="active">
+          {{item.label | translate}}
+        </a>
+        <!--<a mat-list-item  (click)="sidenav.close()" [routerLink]="'add_to_db'"
+        routerLinkActive="active">
+        Upload
+      </a> -->
+        <!--<a mat-list-item href="https://github.com/tomastrajan/angular-ngrx-material-starter" target="_blank">
+          Github
+        </a>
+        
+        <a mat-list-item *ngIf="(isAuthenticated$ | async)"  (click)="sidenav.close()" [routerLink]="'edit_text_by_section'"
+        routerLinkActive="active">
+        {{'anms.menu.personal_choice' | translate}}
+              </a>-->
+        <div style="margin-left:20px">
+
+          <mat-form-field  >
+            <input
+            id="name"
+            matInput
+            type="text"
+            [(ngModel)]="displayName"
+            />
+            <mat-placeholder  >Votre Nom</mat-placeholder>
+          </mat-form-field>
+          <button  id="b_name" mat-raised-button  color="primary" (click)="sidenav.close();validez()">Validez!</button>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div [ngClass]="{wrapper:true,myturn:myturn$|async}">
+
+      <div class="toolbar" >
+        <mat-toolbar style="height: 84px" color="primary">
+          <button mat-icon-button class="d-lg-none" (click)="sidenav.open()">
+            <fa-icon icon="bars"></fa-icon>
+          </button>
+
+          <span routerLink="" class="branding spacer center d-inline d-sm-none">
+            <img [src]="logo" /></span>
+
+          <span routerLink="" class="branding spacer center d-none d-sm-inline d-md-none"><!--<img [src]="logo" />-->
+            {{ 'anms.title.short' | translate }}</span>
+            
+          <span routerLink="" class="branding spacer d-none d-md-inline"><img [src]="logo" /> {{ 'anms.title.long' | translate}}</span>
+
+          <span class="branding spacer d-none d-lg-inline">
+            <div  style="margin-right: 10px;"  >
+              
+              <mat-form-field id="my_input" style="padding-top: 20px;">
+                <input
+                autocomplete="off"
+                id="my_input"
+                matInput
+                type="text"
+                [(ngModel)]="displayName"
+                />
+                <mat-placeholder id="my_input" >Votre Nom</mat-placeholder>
+              </mat-form-field>
+              <button style="margin-right: 10px;" id="my_input" mat-raised-button  color="primary" (click)="validez()">Validez!</button>
+            </div>
+            
+          </span>
+          <span class="d-none d-md-inline">
+            <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]" [disabled]="!item.enabled"
+              routerLinkActive="active">
+              {{item.label | translate}}
+            </button>
+            
+            
+          </span>
+
+          <button mat-button mat-stroked-button color="accent" *ngIf="!(isAuthenticated$ | async)" (click)="onLoginClick()">
+            Admin
+          </button>
+
+          
+
+          <button *ngIf="(isAuthenticated$ | async)"
+                  mat-icon-button
+                  [matMenuTriggerFor]="toolbarUserMenu">
+            <fa-icon icon="user-circle"></fa-icon>
+          </button>
+
+          <mat-menu #toolbarUserMenu="matMenu">
+            <button mat-menu-item (click)="onLogoutClick()">
+              <mat-icon><fa-icon icon="power-off"></fa-icon></mat-icon>
+              <span>{{ 'anms.menu.logout' | translate }}</span>
+            </button>
+          </mat-menu>
+
+          <button mat-icon-button routerLink="settings" class="d-none d-sm-inline">
+            <fa-icon icon="cog"></fa-icon>
+          </button>
+
+
+          <span *ngIf="language$ | async as language">
+            <mat-select [ngModel]="language" (selectionChange)="onLanguageSelect($event)">
+              <mat-option *ngFor="let l of languages" [value]="l">
+                {{ l.toUpperCase() }}
+              </mat-option>
+            </mat-select>
+          </span>
+        </mat-toolbar>
+      </div>
+
+      <div  style="margin-bottom:200px ;margin-top: 94px;" class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
+
+        <router-outlet #o="outlet"></router-outlet>
+
+
+        
+      </div>
+      <div style="border-style: groove;margin:5px;">
+        
+        <div *ngIf="!(is_bottom_sheet_opened|async)" style="margin:auto;margin-top:5px;margin-bottom:5px;width: fit-content;">
+          <button  mat-raised-button color="primary" (click)="openBottomSheet()">Information</button>
+        </div>
+        <div *ngIf="is_bottom_sheet_opened|async" style="margin:auto;width: fit-content;">
+          <button  mat-raised-button color="primary" (click)="closeBottomSheet()">Fermer</button>
+        </div>
+      </div>
+
+
+      <div class="footer">
+
+        <div class="row">
+          <div class="col-12 signature">
+            &#169; <span class="year" data-testid="footer-year">{{year}}</span> - Philippe Malric
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </mat-sidenav-container>
+
+</div>

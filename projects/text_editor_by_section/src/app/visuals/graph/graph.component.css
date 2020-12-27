@@ -1,0 +1,8 @@
+.center {
+  margin: auto;
+  width: fit-content;
+}
+
+.bordered {
+  border-style: solid;
+}

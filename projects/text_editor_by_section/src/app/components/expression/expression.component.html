@@ -1,0 +1,30 @@
+<div   [ngSwitch]="item.type">
+    <div *ngSwitchCase="'header'">
+        <div class="header">
+            <mat-form-field class="example-form-field" style="display: block">
+                <input matInput type="text" [(ngModel)]="item.txt" style="width: 100%;" >
+                
+              </mat-form-field>
+        </div>
+    </div>
+    <div *ngSwitchCase="'p'">
+        <div class="p">
+            <mat-form-field class="example-form-field" style="display: block">
+                <textarea matInput type="text" [(ngModel)]="item.txt" style="width: 100%;" ></textarea>
+                
+              </mat-form-field>
+        </div>
+    </div>
+    <div *ngSwitchCase="'l'">
+        <div class="l">
+            <mat-form-field class="midle" style="display: block">
+                <textarea matInput type="text" [(ngModel)]="item.txt" style="width: 100%;" ></textarea>
+
+                
+              </mat-form-field>
+        </div>
+    </div>
+    <div *ngSwitchDefault>{{item.txt}}</div>
+ </div>
+
+

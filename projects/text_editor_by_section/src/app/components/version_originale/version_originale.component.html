@@ -1,0 +1,30 @@
+
+<mat-card class="center">
+    <mat-card-content>
+        <h1 >
+            Texte a regarder et approuver
+        </h1>
+    </mat-card-content>
+</mat-card>
+
+<div class="box" >  
+    <mat-card class="center spaceTop" *ngFor="let section of sections" >
+        <mat-card-content>
+
+            <div class="header" [innerHtml]="section.titre">
+            
+            </div>
+            <div  *ngFor="let sousSection of section.sousSections" >
+    
+                <div class="p">
+                    {{sousSection.txt}}
+                </div>
+                
+            </div>
+
+        </mat-card-content>
+       
+          
+    </mat-card>
+    
+</div>

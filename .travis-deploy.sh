@@ -13,7 +13,7 @@ else
 
   # go to the directory which contains build artifacts and create a *new* Git repo
   # directory may be different based on your particular build process
-  cd dist/angular-ngrx-material-starter
+  cd dist/text_editor_by_section
   git init
 
   # inside this git repo we'll pretend to be a new user

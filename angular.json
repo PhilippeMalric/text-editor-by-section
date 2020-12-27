@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-ngrx-material-starter": {
+    "text_editor_by_section": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -11,8 +11,8 @@
           "style": "scss"
         }
       },
-      "root": "projects/angular-ngrx-material-starter",
-      "sourceRoot": "projects/angular-ngrx-material-starter/src",
+      "root": "projects/text_editor_by_section",
+      "sourceRoot": "projects/text_editor_by_section/src",
       "prefix": "anms",
       "architect": {
         "build": {
@@ -20,19 +20,19 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "public",
-            "index": "projects/angular-ngrx-material-starter/src/index.html",
-            "main": "projects/angular-ngrx-material-starter/src/main.ts",
-            "polyfills": "projects/angular-ngrx-material-starter/src/polyfills.ts",
-            "tsConfig": "projects/angular-ngrx-material-starter/tsconfig.app.json",
+            "index": "projects/text_editor_by_section/src/index.html",
+            "main": "projects/text_editor_by_section/src/main.ts",
+            "polyfills": "projects/text_editor_by_section/src/polyfills.ts",
+            "tsConfig": "projects/text_editor_by_section/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/angular-ngrx-material-starter/src/mini.ico",
-              "projects/angular-ngrx-material-starter/src/assets"
+              "projects/text_editor_by_section/src/mini.ico",
+              "projects/text_editor_by_section/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "projects/angular-ngrx-material-starter/src/styles-app-loading.scss",
-              "projects/angular-ngrx-material-starter/src/styles.scss"
+              "projects/text_editor_by_section/src/styles-app-loading.scss",
+              "projects/text_editor_by_section/src/styles.scss"
             ],
             "scripts": []
           },
@@ -40,8 +40,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/angular-ngrx-material-starter/src/environments/environment.ts",
-                  "with": "projects/angular-ngrx-material-starter/src/environments/environment.prod.ts"
+                  "replace": "projects/text_editor_by_section/src/environments/environment.ts",
+                  "with": "projects/text_editor_by_section/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -85,35 +85,35 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-ngrx-material-starter:build"
+            "browserTarget": "text_editor_by_section:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-ngrx-material-starter:build:production"
+              "browserTarget": "text_editor_by_section:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-ngrx-material-starter:build"
+            "browserTarget": "text_editor_by_section:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-ngrx-material-starter/src/test.ts",
-            "polyfills": "projects/angular-ngrx-material-starter/src/polyfills.ts",
-            "tsConfig": "projects/angular-ngrx-material-starter/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-ngrx-material-starter/karma.conf.js",
+            "main": "projects/text_editor_by_section/src/test.ts",
+            "polyfills": "projects/text_editor_by_section/src/polyfills.ts",
+            "tsConfig": "projects/text_editor_by_section/tsconfig.spec.json",
+            "karmaConfig": "projects/text_editor_by_section/karma.conf.js",
             "assets": [
-              "projects/angular-ngrx-material-starter/src/mini.ico",
-              "projects/angular-ngrx-material-starter/src/assets"
+              "projects/text_editor_by_section/src/mini.ico",
+              "projects/text_editor_by_section/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "projects/angular-ngrx-material-starter/src/styles-app-loading.scss",
-              "projects/angular-ngrx-material-starter/src/styles.scss"
+              "projects/text_editor_by_section/src/styles-app-loading.scss",
+              "projects/text_editor_by_section/src/styles.scss"
             ],
             "scripts": []
           },
@@ -121,8 +121,8 @@
             "test": {
               "fileReplacements": [
                 {
-                  "replace": "projects/angular-ngrx-material-starter/src/environments/environment.ts",
-                  "with": "projects/angular-ngrx-material-starter/src/environments/environment.test.ts"
+                  "replace": "projects/text_editor_by_section/src/environments/environment.ts",
+                  "with": "projects/text_editor_by_section/src/environments/environment.test.ts"
                 }
               ]
             }
@@ -132,31 +132,29 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/angular-ngrx-material-starter/tsconfig.app.json",
-              "projects/angular-ngrx-material-starter/tsconfig.spec.json",
-              "projects/angular-ngrx-material-starter/e2e/tsconfig.json"
+              "projects/text_editor_by_section/tsconfig.app.json",
+              "projects/text_editor_by_section/tsconfig.spec.json",
+              "projects/text_editor_by_section/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/angular-ngrx-material-starter/e2e/protractor.conf.js",
-            "devServerTarget": "angular-ngrx-material-starter:serve"
+            "protractorConfig": "projects/text_editor_by_section/e2e/protractor.conf.js",
+            "devServerTarget": "text_editor_by_section:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular-ngrx-material-starter:serve:production"
+              "devServerTarget": "text_editor_by_section:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "angular-ngrx-material-starter",
+  "defaultProject": "text_editor_by_section",
   "cli": {
     "analytics": "93ac510e-3635-4a75-be97-f0e9265cba0e"
   }

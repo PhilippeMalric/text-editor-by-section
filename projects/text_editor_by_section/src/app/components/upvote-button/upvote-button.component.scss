@@ -1,0 +1,47 @@
+.firstRow {
+  display: contents;
+}
+
+.secondRow {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.votebox {
+  height: 120px;
+  width: 120px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  font-size: 2em;
+
+  .vote {
+    cursor: pointer;
+    &:hover {
+      color: orange;
+    }
+  }
+
+  .active.up {
+    color: green;
+  }
+
+  .active.down {
+    color: red;
+  }
+}
+.together {
+  display: flex;
+}
+
+.big_font {
+  font-size: 36px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+:host {
+  margin: auto;
+}
