@@ -24,7 +24,7 @@
         routerLinkActive="active">
         {{'anms.menu.personal_choice' | translate}}
               </a>-->
-        <div style="margin-left:20px">
+        <div style="margin-left:20px" *ngIf="!isAuthenticated2"  >
 
           <mat-form-field  >
             <input
@@ -36,6 +36,10 @@
             <mat-placeholder  >Votre Nom</mat-placeholder>
           </mat-form-field>
           <button  id="b_name" mat-raised-button  color="primary" (click)="sidenav.close();validez()">Validez!</button>
+        </div>
+        <div style="margin-left:20px" *ngIf="isAuthenticated2"  >
+            Bienvenue {{(gameService.user|async)}}
+            <button mat-button (click)="logOut2()">Logout</button>
         </div>
       </mat-nav-list>
     </mat-sidenav>
@@ -57,7 +61,7 @@
           <span routerLink="" class="branding spacer d-none d-md-inline"><img [src]="logo" /> {{ 'anms.title.long' | translate}}</span>
 
           <span class="branding spacer d-none d-lg-inline">
-            <div  style="margin-right: 10px;"  >
+            <div  style="margin-right: 10px;"  *ngIf="!isAuthenticated2">
               
               <mat-form-field id="my_input" style="padding-top: 20px;">
                 <input
@@ -71,11 +75,18 @@
               </mat-form-field>
               <button style="margin-right: 10px;" id="my_input" mat-raised-button  color="primary" (click)="validez()">Validez!</button>
             </div>
+            <div style="margin-left:20px" *ngIf="isAuthenticated2"  >
+              Bienvenue {{(gameService.user|async)}}
+              <button mat-button (click)="logOut2()">Logout</button>
+            </div>
             
           </span>
           <span class="d-none d-md-inline">
-            <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]" [disabled]="!item.enabled"
-              routerLinkActive="active">
+            <button mat-button class="nav-button" 
+                    *ngFor="let item of navigation" 
+                    [routerLink]="[item.link]" 
+                    [disabled]="!item.enabled"
+                    routerLinkActive="active">
               {{item.label | translate}}
             </button>
             
@@ -117,6 +128,9 @@
       </div>
 
       <div  style="margin-bottom:200px ;margin-top: 94px;" class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.data && o.activatedRoute.routeConfig.data.title">
+        <button mat-fab class="top-right" (click)="openDialog()">
+          <mat-icon>info</mat-icon>
+        </button>
 
         <router-outlet #o="outlet"></router-outlet>
 
