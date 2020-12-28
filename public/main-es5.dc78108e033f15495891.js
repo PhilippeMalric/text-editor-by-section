@@ -60334,8 +60334,7 @@ function _createClass(t, e, n) {
             !(function(t) {
               return 'ebkit' == t.substring(1, 6);
             })(t) &&
-            !(e = t in Le.style) &&
-            je &&
+            !(e = t in Le.style) && je &&
             (e =
               'Webkit' + t.charAt(0).toUpperCase() + t.substr(1) in Le.style),
           e
@@ -84890,10 +84889,12 @@ function _createClass(t, e, n) {
                   this._checkAllValuesPresent(t),
                     t.forEach(function(t, i) {
                       e._throwIfControlMissing(i),
-                        e.at(i).setValue(t, {
-                          onlySelf: !0,
-                          emitEvent: n.emitEvent
-                        });
+                        e
+                          .at(i)
+                          .setValue(t, {
+                            onlySelf: !0,
+                            emitEvent: n.emitEvent
+                          });
                     }),
                     this.updateValueAndValidity(n);
                 }
@@ -84908,10 +84909,12 @@ function _createClass(t, e, n) {
                         : {};
                   t.forEach(function(t, i) {
                     e.at(i) &&
-                      e.at(i).patchValue(t, {
-                        onlySelf: !0,
-                        emitEvent: n.emitEvent
-                      });
+                      e
+                        .at(i)
+                        .patchValue(t, {
+                          onlySelf: !0,
+                          emitEvent: n.emitEvent
+                        });
                   }),
                     this.updateValueAndValidity(n);
                 }
