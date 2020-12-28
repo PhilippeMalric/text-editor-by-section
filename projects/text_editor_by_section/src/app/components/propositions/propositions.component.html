@@ -11,18 +11,20 @@
 </div>
 
 
+<div class="center navButton2" >
+    <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
+        <mat-grid-tile *ngFor="let s of sections;let i = index" >
+            <div class="center">
+                <button mat-raised-button 
+                [ngStyle]="{'margin-left':'5px','margin-rigth':'5px','max-width':'150px'}"
+                [color]="s.color"
+                (click)="clickNav(i)"
+                >{{s?.titre}}</button>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
 
-<mat-grid-list cols="2" rowHeight="50px">
-    <mat-grid-tile *ngFor="let s of sections;let i = index" >
-        <div class="center">
-            <button mat-raised-button 
-            [ngStyle]="{'margin-left':'5px','margin-rigth':'5px'}"
-            [color]="s.color"
-            (click)="clickNav(i)"
-            >{{s?.titre}}</button>
-        </div>
-    </mat-grid-tile>
-</mat-grid-list>
 
 
 <div class="box spaceTop" >  
