@@ -109,12 +109,6 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sections = [];
 
-    this.gameService.get_projet_de_loi().subscribe((sections: any) => {
-      console.log('sections...');
-      console.log(sections);
-      this.sections = sections;
-      this.section = this.sections[this.section_int];
-    });
     this.userSubscription = this.gameService.user.subscribe((user: string) => {
       console.log('user***');
       console.log(user);
@@ -140,10 +134,20 @@ export class PropositionsComponent implements OnInit, OnDestroy {
 
     this.section_int = 0;
     this.gameService.get_projet_de_loi().subscribe((sections: any) => {
+      console.log('sections...');
+      console.log(sections);
+      this.sections = sections;
+      this.section = this.sections[this.section_int];
       this.original = sections;
 
       Object.keys(sections).map(key => {
         sections[key].color = 'accent';
+
+        this.gameService.voir_props(sections[key].id,this.displayName).subscribe((data:any)=>{
+          if(data){sections[key].commentaire = data.prop}
+        })
+        
+
       });
       this.sections = sections;
 
@@ -170,9 +174,10 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   };
 
   openDialog(): void {
+    
     const dialogRef = this.dialog.open(DialogCommentaireSection, {
       width: '400px',
-      data: { nouveau_text: '', text: '' }
+      data: { nouveau_text: this.section.commentaire, text: '' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -180,7 +185,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
       this.nouveau_text = result;
       console.log('result');
       console.log(result);
-      console.log(this.section.titre);
+      console.log(this.section.id);
       if (result && result != '') {
         let data = {};
         data[this.displayName] = { approuve: false, prop: result };

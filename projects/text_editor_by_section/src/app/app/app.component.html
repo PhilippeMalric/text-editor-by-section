@@ -35,7 +35,7 @@
             />
             <mat-placeholder  >Votre Nom</mat-placeholder>
           </mat-form-field>
-          <button  id="b_name" mat-raised-button  color="primary" (click)="sidenav.close();validez()">Validez!</button>
+          <button  id="b_name" mat-raised-button  color="primary" (click)="validez()">Validez!</button>
         </div>
         <div style="margin-left:20px" *ngIf="isAuthenticated2"  >
             Bienvenue {{(gameService.user|async)}}

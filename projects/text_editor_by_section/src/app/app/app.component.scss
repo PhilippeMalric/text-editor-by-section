@@ -5,9 +5,9 @@ ul {
 }
 
 .top-right {
-  margin-top: 5px;
-  margin-right: 5px;
-  float: right;
+  position: fixed;
+  right: 10px;
+  z-index: 999;
 }
 
 .myturn {

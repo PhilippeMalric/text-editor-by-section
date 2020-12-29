@@ -14,6 +14,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
+import { GameService } from '../../services/game.service';
 
 @Component({
   selector: 'upvote-button',
@@ -32,14 +33,37 @@ export class UpvoteButtonComponent implements OnInit, OnDestroy {
   color_e: string;
   color_moins: string;
   nouveau_text: any;
+  sub2: any;
+  propsText: unknown;
+  sub3: any;
+  propCount: number;
 
   constructor(
     public dialog: MatDialog,
     private upvoteService: UpvoteService,
+    private gameService: GameService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
+
+    this.sub3 = this.gameService.get_props(this.itemId).subscribe((data:any)=>{
+
+      if(data){
+
+        this.propCount = Object.keys(data).length
+      }else{
+        this.propCount = 0
+      }
+
+      
+    })
+
+    this.sub2 = this.gameService.voir_props(this.itemId,this.userId).subscribe((data:any)=>{
+
+      if(data){this.propsText = data.prop}
+    })
+
     this.subscription = this.upvoteService
       .getItemVotes(this.itemId)
       .subscribe(upvotes => {
@@ -65,10 +89,20 @@ export class UpvoteButtonComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.sub2.unsubscribe();
+    this.sub3.unsubscribe();
+  }
+
+
   openDialog(): void {
+
+    console.log("this.propsText")
+    console.log(this.propsText)
     const dialogRef = this.dialog.open(DialogPropositionVote, {
       width: '400px',
-      data: { nouveau_text: '', text: '' }
+      data: { nouveau_text: this.propsText, text: "" }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -101,9 +135,7 @@ export class UpvoteButtonComponent implements OnInit, OnDestroy {
     this.upvoteService.updateUserVote(this.itemId, this.userId, vote);
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+
 }
 
 export interface DialogData {
