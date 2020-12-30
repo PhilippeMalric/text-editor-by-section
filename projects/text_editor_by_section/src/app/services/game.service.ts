@@ -82,6 +82,28 @@ export class GameService {
     this.db.object('textCourant').set(text);
   };
 
+  approuve(item,name:string,text){
+    let data = {prop:text,approuve:true}
+    console.log("chemin")
+    console.log("propositions/"+item+"/"+name);
+    
+    this.db.object("propositions/"+item+"/"+name).update(data)
+  }
+
+  get_props2 = ()=>{
+
+    return this.db.object(`propositions/`).valueChanges()
+  
+  }
+  voir_props2 = (item)=>{
+
+    return this.db.object(`propositions/${item.nom}`).valueChanges()
+  
+  }
+  get_upvote = ()=>{
+    return this.db.object(`upvotes/`).valueChanges()
+   }
+
   get_projet_de_loi = () => {
     return this.http.get('assets/projet_de_loi.json').pipe(
       map((item: any[]) => {

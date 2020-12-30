@@ -25,9 +25,10 @@ const routes: Routes = [
     component: SettingsContainerComponent
   },
   {
-    path: 'a',
+    //canActivate: [AuthGuardService],
+    path: 'admin',
     component: AdminComponent,
-    canActivate: [AuthGuardService]
+    
   },
   {
     path: 'propositions',

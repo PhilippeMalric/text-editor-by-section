@@ -131,7 +131,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MyTable } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent, DialogPropositionAdmin, DialogVotersAdmin } from './components/admin/admin.component';
 import {
   DialogCommentaireSection,
   PropositionsComponent
@@ -233,9 +233,13 @@ export class MyHammerConfig extends HammerGestureConfig {}
     UpvoteButtonComponent,
     DialogPropositionVote,
     DialogCommentaireSection,
-    DialogInfo
+    DialogInfo,
+    DialogVotersAdmin,
+    DialogPropositionAdmin
   ],
   entryComponents: [
+    DialogPropositionAdmin,
+    DialogVotersAdmin,
     DialogCommentaireSection,
     DialogPropositionVote,
     DialogInfo
