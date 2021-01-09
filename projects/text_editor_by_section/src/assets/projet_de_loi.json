@@ -32,7 +32,7 @@
   {
     "nom": "p2_2",
     "type": "p",
-    "txt": "La mise en place de cette Assemblée vise d’abord et avant tout à doter l’État québécois de sa première constitution démocratique afin de rassembler l’ensemble de la population autour d’un nouveau contrat social auquel elle accepte de se lier."
+    "txt": "La mise en place de cette Assemblée constituante citoyenne vise d’abord et avant tout à doter l’État québécois de sa première constitution démocratique afin de rassembler l’ensemble de la population autour d’un nouveau contrat social auquel elle accepte de se lier."
   },
   {
     "nom": "p2_3",
@@ -42,7 +42,7 @@
 
   { "nom": "h3", "type": "header", "txt": "1- COMPOSITION" },
 
-  { "nom": "p3_1", "type": "p", "txt": "a. ADMISSIBILITÉ DES MEMBRES " },
+  { "nom": "s3_1", "type": "s", "txt": "A. ADMISSIBILITÉ DES MEMBRES " },
   {
     "nom": "p3_2",
     "type": "p",
@@ -53,19 +53,19 @@
     "type": "p",
     "txt": "Seraient non admissibles les personnes non pardonnées possédant un casier judiciaire actif. Les personnes constituantes devraient prêter serment au peuple souverain du Québec."
   },
-  { "nom": "p3_4", "type": "p", "txt": "b.  SERMENT " },
+  { "nom": "s3_4", "type": "s", "txt": "B.  SERMENT " },
   {
     "nom": "p3_5",
     "type": "p",
     "txt": "« Je (nom et prénom) jure que je serai loyal(e) envers le peuple du Québec et que j’exercerai mes fonctions de membre de l’Assemblée constituante citoyenne avec honnêteté et justice dans le respect du peuple du Québec. »"
   },
-  { "nom": "p3_6", "type": "p", "txt": "c.  PARITÉ HOMME-FEMME" },
+  { "nom": "s3_6", "type": "s", "txt": "C.  PARITÉ HOMME-FEMME" },
   {
     "nom": "p3_7",
     "type": "p",
     "txt": "Les mécanismes prévus par le texte de loi devraient garantir la parité homme-femme."
   },
-  { "nom": "p3_8", "type": "p", "txt": "d. SÉLECTION PAR TIRAGE AU SORT" },
+  { "nom": "s3_8", "type": "s", "txt": "D. SÉLECTION PAR TIRAGE AU SORT" },
   {
     "nom": "p3_9",
     "type": "p",
@@ -77,9 +77,9 @@
     "txt": "Toute personne candidate à la Constituante devrait être citoyenne canadienne, résider au Québec (critère actuel : 183 jours minimum par année), avoir 18 ans ou plus et être inscrite sur la liste électorale."
   },
   {
-    "nom": "p3_11",
-    "type": "p",
-    "txt": "e. REPRÉSENTATION RÉGIONALE ET NATIONALE"
+    "nom": "s3_11",
+    "type": "s",
+    "txt": "E. REPRÉSENTATION RÉGIONALE ET NATIONALE"
   },
   {
     "nom": "p3_12",
@@ -88,15 +88,15 @@
   },
   {
     "nom": "p3_13",
-    "type": "p",
-    "txt": "f. MANDATAIRE DU DOUBLE TIRAGE AU SORT"
+    "type": "s",
+    "txt": "F. MANDATAIRE DU DOUBLE TIRAGE AU SORT"
   },
   {
     "nom": "p3_14",
     "type": "p",
     "txt": "Nous proposons que l’Assemblée nationale confie le mandat de la sélection des personnes constituantes au Directeur général des élections du Québec (DGEQ) avec un budget adéquat."
   },
-  { "nom": "p3_15", "type": "p", "txt": "g. PROCESSUS DU TIRAGE AU SORT" },
+  { "nom": "s3_15", "type": "s", "txt": "G. PROCESSUS DU TIRAGE AU SORT" },
   {
     "nom": "p3_16",
     "type": "p",
@@ -118,7 +118,7 @@
   {
     "nom": "p4_3",
     "type": "p",
-    "txt": "b.  de définir les caractéristiques de l’État et de la citoyenneté québécoise ainsi que ses relations avec les Premières Nations et la minorité historique;"
+    "txt": ".  de définir les caractéristiques de l’État et de la citoyenneté québécoise ainsi que ses relations avec les Premières Nations et la minorité historique;"
   },
   {
     "nom": "p4_4",

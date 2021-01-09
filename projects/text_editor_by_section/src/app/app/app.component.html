@@ -32,10 +32,11 @@
             matInput
             type="text"
             [(ngModel)]="displayName"
+            (keyup.enter)="validez()"
             />
             <mat-placeholder  >Votre Nom</mat-placeholder>
           </mat-form-field>
-          <button  id="b_name" mat-raised-button  color="primary" (click)="validez()">Validez!</button>
+          <button  id="b_name" mat-raised-button  color="primary" (click)="validez()" >Validez!</button>
         </div>
         <div style="margin-left:20px" *ngIf="isAuthenticated2"  >
             Bienvenue {{(gameService.user|async)}}
@@ -69,11 +70,12 @@
                 id="my_input"
                 matInput
                 type="text"
+                (keyup.enter)="validez()"
                 [(ngModel)]="displayName"
                 />
                 <mat-placeholder id="my_input" >Votre Nom</mat-placeholder>
               </mat-form-field>
-              <button style="margin-right: 10px;" id="my_input" mat-raised-button  color="primary" (click)="validez()">Validez!</button>
+              <button style="margin-right: 10px;" id="my_input" mat-raised-button  color="primary" (click)="validez()" >Validez!</button>
             </div>
             <div style="margin-left:20px" *ngIf="isAuthenticated2"  >
               Bienvenue {{(gameService.user|async)}}
