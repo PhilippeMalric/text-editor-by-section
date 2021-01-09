@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { auth } from 'firebase/app';
 import 'firebase/auth';
 import {
   AngularFirestoreDocument,
@@ -16,14 +15,17 @@ import { ActionAuthLogin } from './auth.actions';
 import { LocalStorageService } from '../core.module';
 import { AUTH_KEY } from './auth.effects';
 import { take } from 'rxjs/operators';
+import * as firebase from 'firebase';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class GoogleAuthService {
   public authState: any;
-  public user$: Observable<firebase.User>;
   logedIn: boolean;
+  user$: any;
 
   constructor(
     private storageService: LocalStorageService,
@@ -61,7 +63,7 @@ export class GoogleAuthService {
     this.db.object(path).update(data);
   }
   googleSignIn() {
-    const provider = new auth.GoogleAuthProvider().addScope('email');
+    const provider = new firebase.default.auth.GoogleAuthProvider().addScope('email');
     this.oAuthLogin(provider);
   }
 
