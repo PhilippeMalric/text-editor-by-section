@@ -10,8 +10,8 @@
 /node_modules
 yarn.lock
 
-/projects/text_editor_by_section/src/environments/*
-/environments/*
+/projects/text_editor_by_section/src/environments
+/environments
 
 
 /public/*
