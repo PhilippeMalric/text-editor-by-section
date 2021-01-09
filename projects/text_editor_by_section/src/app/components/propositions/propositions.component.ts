@@ -40,7 +40,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropositionsComponent implements OnInit, OnDestroy {
-  //@ViewChild('grid') grid: MatGridList;
+  @ViewChild('grid') grid: MatGridList;
   sections: Section[];
   section: Section;
   users: any;
@@ -54,10 +54,10 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   data: unknown;
   userId: string;
   gridByBreakpoint = {
-    xl: 10,
-    lg: 8,
-    md: 4,
-    sm: 3,
+    xl: 3,
+    lg: 3,
+    md: 2,
+    sm: 2,
     xs: 2
   };
 
@@ -155,6 +155,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
 
       console.log('original');
       console.log(this.original);
+      this.changeDetectorRef.markForCheck()
     });
     this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
   }
@@ -213,7 +214,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
     this.observableMedia.asObservable().subscribe((change: MediaChange[]) => {
       console.log('change');
       console.log(change);
-      //this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
+      this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
       console.log('cols');
       //console.log(this.grid.cols)
       //this.grid.rowHeight = this.gridByBreakpointH[change[0].mqAlias];

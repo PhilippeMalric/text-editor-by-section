@@ -2,17 +2,16 @@
 <div class="center navButton" >
     <mat-grid-list cols="2" rowHeight="50px" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
         <mat-grid-tile>
-            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
+            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == 0" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
         </mat-grid-tile>
         <mat-grid-tile>
-            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
+            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == sections.length-1" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
         </mat-grid-tile>
     </mat-grid-list> 
 </div>
 
-
 <div class="center navButton2" >
-    <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
+    <mat-grid-list #grid cols="3" rowHeight="100px" gutterSize="10px">
         <mat-grid-tile *ngFor="let s of sections;let i = index" >
             <div class="center">
                 <button mat-raised-button 
@@ -46,7 +45,10 @@
             </mat-card-content>
             <mat-card-actions>
                 <div class="center"> 
-                    <button mat-raised-button color="warn"  class="commentaire"   (click)="openDialog()" >Commentaire sur la section</button>
+                    <button [ngStyle]="{'margin-top':'10px','margin-bottom':'20px'}" 
+                        mat-raised-button color="warn"  class="commentaire"   (click)="openDialog()" >
+                        Commentaire sur la section
+                    </button>
                 </div>
             </mat-card-actions>
         </mat-card>
@@ -56,10 +58,10 @@
 <div class="center navButton" >
     <mat-grid-list cols="2" rowHeight="50px" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
         <mat-grid-tile>
-            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
+            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == 0" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
         </mat-grid-tile>
         <mat-grid-tile>
-            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
+            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == sections.length-1" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
         </mat-grid-tile>
     </mat-grid-list> 
 </div>

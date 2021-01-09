@@ -13,11 +13,11 @@ import { NameGuardService } from './core/auth/auth-guard.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'texte',
     pathMatch: 'full'
   },
   {
-    path: 'home',
+    path: 'texte',
     component: VersionOriginaleComponent
   },
   {
@@ -43,7 +43,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'texte'
   }
 ];
 
