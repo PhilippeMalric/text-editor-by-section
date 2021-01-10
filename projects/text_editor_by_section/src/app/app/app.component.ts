@@ -23,7 +23,8 @@ import {
   selectSettingsStickyHeader,
   selectSettingsLanguage,
   selectEffectiveTheme,
-  selectRouterState
+  selectRouterState,
+  NotificationService
 } from '../core/core.module';
 import {
   actionSettingsChangeAnimationsPageDisabled,
@@ -40,7 +41,7 @@ import {
 import { Router, NavigationEnd } from '@angular/router';
 import { Link, Node, D3Service } from '../d3';
 
-import { take, tap } from 'rxjs/operators';
+import { take, tap, timeout } from 'rxjs/operators';
 
 import { ActionBottom_sheetUpsert } from '../bottom_sheet_state/bottom_sheet_state.actions';
 import { selectIsBS_opened } from '../bottom_sheet_state/bottom_sheet_state.selectors';
@@ -100,6 +101,7 @@ export class AppComponent implements OnInit {
     public _bottomSheet: MatBottomSheet,
     private d3service: D3Service,
     public gameService: GameService,
+    private notificationService: NotificationService,
     private dataService: DataService
   ) {
     console.log('App constructor!!');
@@ -128,6 +130,27 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    setTimeout(()=>{
+      if(this.displayName == ""){
+        this.notificationService.success("Veuillez vous inscrire pour commencer.")
+      }
+     
+    },40000)
+
+    setTimeout(()=>{
+      if(this.displayName == ""){
+        this.notificationService.warn("Écrivez votre nom en haut, puis cliquez sur validez! (en haut à gauche pour les téléphones et tablettes)")
+      }
+     
+    },60000)
+
+    setTimeout(()=>{
+      if(this.displayName == ""){
+        this.notificationService.default("Écrivez à malric.philippe@gmail.com pour toutes questions!")
+      }
+     
+    },10000)
+
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {
       this.navigation = this.navigation.map(nav => {

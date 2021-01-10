@@ -12,36 +12,36 @@ export class NotificationService {
 
   default(message: string) {
     this.show(message, {
-      duration: 2000,
-      panelClass: ['default-notification-overlay', 'big-text']
+      duration: 10000,
+      panelClass: ['default-notification-overlay']
     });
   }
 
   info(message: string) {
     this.show(message, {
-      duration: 2000,
-      panelClass: ['info-notification-overlay', 'big-text']
+      duration: 5000,
+      panelClass: ['info-notification-overlay']
     });
   }
 
   success(message: string) {
     this.show(message, {
-      duration: 50000,
-      panelClass: ['success-notification-overlay', 'big-text']
+      duration: 5000,
+      panelClass: ['success-notification-overlay']
     });
   }
 
   warn(message: string) {
     this.show(message, {
-      duration: 2500,
-      panelClass: ['warning-notification-overlay', 'big-text']
+      duration: 250000,
+      panelClass: ['warning-notification-overlay']
     });
   }
 
   error(message: string) {
     this.show(message, {
-      duration: 100000,
-      panelClass: ['error-notification-overlay', 'big-text']
+      duration: 100,
+      panelClass: ['error-notification-overlay']
     });
   }
 
