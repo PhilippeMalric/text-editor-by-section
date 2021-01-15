@@ -17,7 +17,7 @@
                      placeholder="example@gmail.com">
               <mat-hint>Pas besoin de valider deux fois.</mat-hint>
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Veuillez entrez un courriel valide.
+                Veuillez entrer un courriel valide.
               </mat-error>
             </mat-form-field>
             <button [disabled]="emailFormControl.errors" class="validate" color="accent" mat-raised-button (click)="valider()">Valider</button>
