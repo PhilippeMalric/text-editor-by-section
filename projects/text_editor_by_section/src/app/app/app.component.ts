@@ -146,10 +146,10 @@ export class AppComponent implements OnInit {
 
     setTimeout(()=>{
       if(this.displayName == ""){
-        this.notificationService.default("Écrivez à malric.philippe@gmail.com pour toutes questions!")
+        this.notificationService.default("Écrivez à generale.accq@gmail.com pour toutes questions!")
       }
      
-    },10000)
+    },3000)
 
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {

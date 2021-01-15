@@ -43,6 +43,7 @@ export class GameService {
   my_cat = '';
   items: BehaviorSubject<Item[]>;
   user: BehaviorSubject<string>;
+  userEmail: BehaviorSubject<string>;
   started: BehaviorSubject<boolean>;
   textName: BehaviorSubject<string>;
 
@@ -71,6 +72,7 @@ export class GameService {
 
     this.items = new BehaviorSubject<Item[]>([]);
     this.user = new BehaviorSubject<string>('Mon_nom');
+    this.userEmail = new BehaviorSubject<string>('');
     this.started = new BehaviorSubject<boolean>(null);
   }
 

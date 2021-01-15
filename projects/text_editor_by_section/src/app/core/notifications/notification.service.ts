@@ -12,7 +12,7 @@ export class NotificationService {
 
   default(message: string) {
     this.show(message, {
-      duration: 10000,
+      duration: 3000,
       panelClass: ['default-notification-overlay']
     });
   }
@@ -33,7 +33,7 @@ export class NotificationService {
 
   warn(message: string) {
     this.show(message, {
-      duration: 250000,
+      duration: 4500,
       panelClass: ['warning-notification-overlay']
     });
   }

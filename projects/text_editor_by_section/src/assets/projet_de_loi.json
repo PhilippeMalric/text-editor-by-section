@@ -118,7 +118,7 @@
   {
     "nom": "p4_3",
     "type": "p",
-    "txt": ".  de définir les caractéristiques de l’État et de la citoyenneté québécoise ainsi que ses relations avec les Premières Nations et la minorité historique;"
+    "txt": "b.  de définir les caractéristiques de l’État et de la citoyenneté québécoise ainsi que ses relations avec les Premières Nations et la minorité historique;"
   },
   {
     "nom": "p4_4",
@@ -152,19 +152,19 @@
   },
 
   { "nom": "h5", "type": "header", "txt": "3 : FONCTIONNEMENT" },
-  { "nom": "p5_1", "type": "p", "txt": "a. Procédures" },
+  { "nom": "p5_1", "type": "s", "txt": "A. Procédures" },
   {
     "nom": "p5_2",
     "type": "p",
     "txt": "Il nous semble essentiel que l’Assemblée constituante reste maîtresse de ses propres procédures et de sa structure de travail, et ce, afin d’assurer son indépendance. Aussi, le rôle de l’Assemblée nationale devrait se limiter à la date de convocation de cette assemblée et à la nomination d’une présidence provisoire pour les premières séances. L’Assemblée constituante citoyenne devrait par la suite se choisir une présidence et préciser ses procédures."
   },
-  { "nom": "p5_3", "type": "p", "txt": "b.    ABSENCES ET VACANCES" },
+  { "nom": "p5_3", "type": "s", "txt": "B.    ABSENCES ET VACANCES" },
   {
     "nom": "p5_4",
     "type": "p",
     "txt": "Être membre de l’Assemblée constituante citoyenne est une activité à plein temps. La loi doit donc prévoir des procédures contre les personnes qui abuseraient du système. Nous suggérons qu’un comité des présences soit institué et que, sous réserve de ratification de ses décisions par l’Assemblée constituante, ce comité ait le pouvoir de suspendre certains paiements et, dans les cas les plus graves, d’ordonner l’expulsion définitive de la personne. Un mécanisme devrait également être prévu pour le cas de sièges devenus vacants (expulsion, démission, décès, incapacité permanente) pour que le DGEQ puisse rapidement nommer une personne remplaçante du même sexe et, le cas échéant, de la même région."
   },
-  { "nom": "p5_5", "type": "p", "txt": "c. FINANCEMENT" },
+  { "nom": "p5_5", "type": "s", "txt": "C. FINANCEMENT" },
   {
     "nom": "p5_6",
     "type": "p",
@@ -175,7 +175,7 @@
     "type": "p",
     "txt": "Niveau de compensation suffisamment élevé pour permettre à des citoyens à revenu modeste de devenir constituants tout en continuant à pouvoir faire face à leurs responsabilités financières."
   },
-  { "nom": "p5_8", "type": "p", "txt": "d. PRISE DE DÉCISIONS" },
+  { "nom": "p5_8", "type": "s", "txt": "D. PRISE DE DÉCISIONS" },
   {
     "nom": "p5_9",
     "type": "p",
@@ -188,8 +188,8 @@
   },
   {
     "nom": "p5_11",
-    "type": "p",
-    "txt": "e. DROITS ET ALLOCATIONS DES PERSONNES CONSTITUANTES"
+    "type": "s",
+    "txt": "E. DROITS ET ALLOCATIONS DES PERSONNES CONSTITUANTES"
   },
   {
     "nom": "p5_12",
@@ -213,8 +213,8 @@
   },
   {
     "nom": "p5_16",
-    "type": "p",
-    "txt": "f. LANGUE DE TRAVAIL DE L'ASSEMBLÉE CONSTITUANTE"
+    "type": "s",
+    "txt": "F. LANGUE DE TRAVAIL DE L'ASSEMBLÉE CONSTITUANTE"
   },
   {
     "nom": "p5_17",
@@ -236,13 +236,13 @@
     "type": "p",
     "txt": "En outre, l’Assemblée constituante citoyenne devrait fournir un service d’interprétation à ses membres souffrant d’un handicap de communication reconnu."
   },
-  { "nom": "p5_22", "type": "p", "txt": "g. ACCESSIBILITÉ À L’INFORMATION" },
+  { "nom": "p5_22", "type": "s", "txt": "G. ACCESSIBILITÉ À L’INFORMATION" },
   {
     "nom": "p5_23",
     "type": "p",
     "txt": "Tous les documents validés relatifs aux travaux de la Constituante devraient être disponibles en tout temps."
   },
-  { "nom": "p5_24", "type": "p", "txt": "h. PARTICIPATION CITOYENNE" },
+  { "nom": "p5_24", "type": "s", "txt": "H. PARTICIPATION CITOYENNE" },
   {
     "nom": "p5_25",
     "type": "p",

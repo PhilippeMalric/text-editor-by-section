@@ -21,7 +21,7 @@ import { FEATURE_NAME, reducers } from './gameMeta.state';
 import { HttpClient } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -153,11 +153,13 @@ import {
 } from './components/upvote-button/upvote-button.component';
 import { UpvoteService } from './services/upvote.service';
 import { MatBadgeModule } from '@angular/material/badge';
+import { EmailComponent } from './components/email/email.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     MatDialogModule,
     MatBadgeModule,
     DragDropModule,
@@ -235,9 +237,11 @@ export class MyHammerConfig extends HammerGestureConfig {}
     DialogCommentaireSection,
     DialogInfo,
     DialogVotersAdmin,
-    DialogPropositionAdmin
+    DialogPropositionAdmin,
+    EmailComponent
   ],
   entryComponents: [
+    EmailComponent,
     DialogPropositionAdmin,
     DialogVotersAdmin,
     DialogCommentaireSection,

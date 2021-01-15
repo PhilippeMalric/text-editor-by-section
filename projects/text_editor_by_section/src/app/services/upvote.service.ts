@@ -26,10 +26,14 @@ export class UpvoteService {
   }
 
   updateUserProp = (itemId, userId, prop) => {
-    console.log('UpdateProp');
-    let data = {};
-    data[userId] = { approuve: false, prop: prop };
-    this.db.object(`propositions/${itemId}/`).update(data);
+    this.gameService.userEmail.pipe(take(1)).subscribe((userEmail)=>{
+      console.log('UpdateProp');
+      let data = {};
+      data[userId] = { approuve: false, prop: prop, email:userEmail };
+      this.db.object(`propositions/${itemId}/`).update(data);
+
+    })
+    
   };
 
   updateUserVote(itemId, userId, vote): void {
