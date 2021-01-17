@@ -43,6 +43,7 @@ export class GameService {
   my_cat = '';
   items: BehaviorSubject<Item[]>;
   user: BehaviorSubject<string>;
+  userEmail: BehaviorSubject<string>;
   started: BehaviorSubject<boolean>;
   textName: BehaviorSubject<string>;
 
@@ -71,6 +72,7 @@ export class GameService {
 
     this.items = new BehaviorSubject<Item[]>([]);
     this.user = new BehaviorSubject<string>('Mon_nom');
+    this.userEmail = new BehaviorSubject<string>('');
     this.started = new BehaviorSubject<boolean>(null);
   }
 
@@ -81,6 +83,28 @@ export class GameService {
   set_text_courant = (text: any) => {
     this.db.object('textCourant').set(text);
   };
+
+  approuve(item,name:string,text){
+    let data = {prop:text,approuve:true}
+    console.log("chemin")
+    console.log("propositions/"+item+"/"+name);
+    
+    this.db.object("propositions/"+item+"/"+name).update(data)
+  }
+
+  get_props2 = ()=>{
+
+    return this.db.object(`propositions/`).valueChanges()
+  
+  }
+  voir_props2 = (item)=>{
+
+    return this.db.object(`propositions/${item.nom}`).valueChanges()
+  
+  }
+  get_upvote = ()=>{
+    return this.db.object(`upvotes/`).valueChanges()
+   }
 
   get_projet_de_loi = () => {
     return this.http.get('assets/projet_de_loi.json').pipe(

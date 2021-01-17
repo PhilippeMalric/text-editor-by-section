@@ -21,7 +21,7 @@ import { FEATURE_NAME, reducers } from './gameMeta.state';
 import { HttpClient } from '@angular/common/http';
 
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -131,7 +131,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MyTable } from './components/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AdminComponent } from './components/admin/admin.component';
+import { AdminComponent, DialogPropositionAdmin, DialogVotersAdmin } from './components/admin/admin.component';
 import {
   DialogCommentaireSection,
   PropositionsComponent
@@ -153,11 +153,15 @@ import {
 } from './components/upvote-button/upvote-button.component';
 import { UpvoteService } from './services/upvote.service';
 import { MatBadgeModule } from '@angular/material/badge';
+import { EmailComponent } from './components/email/email.component';
+import { ExplicationsComponent } from './components/explications/explications.component';
+import { RemerciementComponent } from './components/remerciement/remerciement.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
 @NgModule({
   imports: [
+    ReactiveFormsModule,
     MatDialogModule,
     MatBadgeModule,
     DragDropModule,
@@ -233,9 +237,17 @@ export class MyHammerConfig extends HammerGestureConfig {}
     UpvoteButtonComponent,
     DialogPropositionVote,
     DialogCommentaireSection,
-    DialogInfo
+    DialogInfo,
+    DialogVotersAdmin,
+    DialogPropositionAdmin,
+    EmailComponent,
+    ExplicationsComponent,
+    RemerciementComponent
   ],
   entryComponents: [
+    EmailComponent,
+    DialogPropositionAdmin,
+    DialogVotersAdmin,
     DialogCommentaireSection,
     DialogPropositionVote,
     DialogInfo

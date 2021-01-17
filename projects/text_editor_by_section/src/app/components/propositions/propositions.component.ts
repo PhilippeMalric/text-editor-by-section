@@ -5,7 +5,8 @@ import {
   ChangeDetectorRef,
   ViewChild,
   OnDestroy,
-  Inject
+  Inject,
+  ElementRef
 } from '@angular/core';
 import { Item } from '../table/table.component';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
@@ -32,6 +33,8 @@ import {
   DialogData,
   DialogPropositionVote
 } from '../upvote-button/upvote-button.component';
+import { isPlatformBrowser, ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'anms-propositions',
@@ -40,7 +43,17 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropositionsComponent implements OnInit, OnDestroy {
-  //@ViewChild('grid') grid: MatGridList;
+  scrollToTop() {
+    let top = document.getElementById("top")
+      if (top !== null) {
+        
+        top.scrollIntoView(true);
+        
+        top = null;
+      }
+  }
+  scrollContainer: any;
+  @ViewChild('grid') grid: MatGridList;
   sections: Section[];
   section: Section;
   users: any;
@@ -54,11 +67,11 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   data: unknown;
   userId: string;
   gridByBreakpoint = {
-    xl: 10,
-    lg: 8,
-    md: 4,
-    sm: 3,
-    xs: 2
+    xl: 3,
+    lg: 3,
+    md: 2,
+    sm: 1,
+    xs: 1
   };
 
   gridByBreakpointH = {
@@ -75,6 +88,8 @@ export class PropositionsComponent implements OnInit, OnDestroy {
 
   constructor(
     public dialog: MatDialog,
+    private router: Router,
+    private viewportScroller: ViewportScroller,
     private db: AngularFireDatabase,
     private http: HttpClient,
     private changeDetectorRef: ChangeDetectorRef,
@@ -155,9 +170,13 @@ export class PropositionsComponent implements OnInit, OnDestroy {
 
       console.log('original');
       console.log(this.original);
+      this.changeDetectorRef.markForCheck()
     });
     this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
   }
+
+
+
 
   updateColor = () => {
     Object.keys(this.sections).map(key => {
@@ -168,6 +187,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   };
 
   clickNav = i => {
+    
     this.section_int = i;
     this.section = this.sections[this.section_int];
     this.updateColor();
@@ -194,15 +214,20 @@ export class PropositionsComponent implements OnInit, OnDestroy {
     });
   }
 
-  upvote = () => {
+  forward = () => {
     if (this.section_int != this.sections.length - 1) {
+      console.log("foward")
+      this.scrollToTop()
+      
       this.section_int = this.section_int + 1;
       this.section = this.sections[this.section_int];
       this.updateColor();
     }
   };
-  downvote = () => {
+  back = () => {
     if (this.section_int != 0) {
+      console.log("back")
+      this.scrollToTop()
       this.section_int = this.section_int - 1;
       this.section = this.sections[this.section_int];
       this.updateColor();
@@ -213,12 +238,18 @@ export class PropositionsComponent implements OnInit, OnDestroy {
     this.observableMedia.asObservable().subscribe((change: MediaChange[]) => {
       console.log('change');
       console.log(change);
-      //this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
+      this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
+      
       console.log('cols');
       //console.log(this.grid.cols)
       //this.grid.rowHeight = this.gridByBreakpointH[change[0].mqAlias];
       this.ref.markForCheck();
     });
+  }
+  remerciement = ()=>{
+
+    this.router.navigate(['remerciement']);
+
   }
 
   is_dirty = (users: any) => {

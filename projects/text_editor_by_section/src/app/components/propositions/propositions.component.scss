@@ -28,10 +28,12 @@
 }
 
 .navButton {
-  width: 200px;
+  width: 150px;
 }
 .navButton2 {
-  width: 600px;
+  width: max-content;
+  min-width: 200px;
+  max-width: 600px;
 }
 button {
   line-height: initial !important;
