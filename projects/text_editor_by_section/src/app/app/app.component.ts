@@ -69,8 +69,8 @@ export class AppComponent implements OnInit {
   logo = require('../../assets/mini.png');
   languages = ['en', 'fr'];
   navigation = [
-    { link: 'texte', label: 'anms.menu.about' },
-    { link: 'propositions', label: 'anms.menu.game' }
+    { link: 'explication', label: 'anms.menu.about' },
+    { link: 'Projet_de_loi', label: 'anms.menu.game' }
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -154,7 +154,7 @@ export class AppComponent implements OnInit {
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {
       this.navigation = this.navigation.map(nav => {
-        return { ...nav, enabled: nav.link == 'texte' || user != '' };
+        return { ...nav, enabled: nav.link == 'explication' || user != '' };
       });
       this.navigationSideMenu = [
         ...this.navigation,
@@ -188,11 +188,12 @@ export class AppComponent implements OnInit {
 
   logOut2 = () => {
     this.gameService.user.next('');
-    this.router.navigate(['texte']);
+    this.router.navigate(['explication']);
   };
 
   validez = () => {
     this.gameService.user.next(this.displayName);
+    this.router.navigate(['projet_de_loi']);
   };
 
   ngAfterViewInit(): void {

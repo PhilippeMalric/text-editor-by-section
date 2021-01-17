@@ -51,9 +51,15 @@
   {
     "nom": "p3_3",
     "type": "p",
-    "txt": "Seraient non admissibles les personnes non pardonnées possédant un casier judiciaire actif. Les personnes constituantes devraient prêter serment au peuple souverain du Québec."
+    "txt": "Seraient non admissibles les personnes non pardonnées possédant un casier judiciaire actif. "
   },
   { "nom": "s3_4", "type": "s", "txt": "B.  SERMENT " },
+  
+  {
+    "nom": "p3_52",
+    "type": "p",
+    "txt": "Les personnes constituantes devraient prêter serment au peuple souverain du Québec."
+  },
   {
     "nom": "p3_5",
     "type": "p",
@@ -69,13 +75,9 @@
   {
     "nom": "p3_9",
     "type": "p",
-    "txt": "Élection ou tirage au sort des personnes constituantes ? Nous pensons qu’un processus ressemblant à une élection générale nuirait à la recherche de consensus citoyens; les personnes élues auraient trop tendance à prendre position en fonction des lignes de parti. De plus, un processus partisan élimine dans les faits les personnes issues des métiers les plus fréquents. C’est-à-dire, pour les hommes : camionneurs, employés du commerce de détail, gérants de magasin, menuisiers-charpentiers, cuisiniers. Et pour les femmes : secrétaires, vendeuses, caissières, éducatrices, infirmières. Enfin, pour éviter que la Constituante ne représente avant tout que les classes supérieures de la société, l’ACCQ préconise la nomination des personnes constituantes par tirage au sort, comme cela s’est fait pour un des meilleurs exemples internationaux, la rédaction de la constitution de l’Islande en 2011."
+    "txt": "Nous pensons qu’un processus ressemblant à une élection générale nuirait à la recherche de consensus citoyens; les personnes élues auraient trop tendance à prendre position en fonction des lignes de parti. De plus, un processus partisan élimine dans les faits les personnes issues des métiers les plus fréquents. C’est-à-dire, pour les hommes : camionneurs, employés du commerce de détail, gérants de magasin, menuisiers-charpentiers, cuisiniers. Et pour les femmes : secrétaires, vendeuses, caissières, éducatrices, infirmières. Enfin, pour éviter que la Constituante ne représente avant tout que les classes supérieures de la société, l’ACCQ préconise la nomination des personnes constituantes par tirage au sort, comme cela s’est fait pour un des meilleurs exemples internationaux, la rédaction de la constitution de l’Islande en 2011."
   },
-  {
-    "nom": "p3_10",
-    "type": "p",
-    "txt": "Toute personne candidate à la Constituante devrait être citoyenne canadienne, résider au Québec (critère actuel : 183 jours minimum par année), avoir 18 ans ou plus et être inscrite sur la liste électorale."
-  },
+ 
   {
     "nom": "s3_11",
     "type": "s",
@@ -84,7 +86,7 @@
   {
     "nom": "p3_12",
     "type": "p",
-    "txt": "Un tirage au sort universel sans critère régional conduirait à un déséquilibre majeur du fait de la répartition géographique de la population québécoise. En effet, à elles seules, les régions administratives de Montréal, de Laval et de la Montérégie représentent 47,8 % de la population totale. Avec 0,5 % de la population dans le cas du Nord-du-Québec ou 1,1 % chacune dans le cas de la Gaspésie-Iles-de-la-Madeleine et de la Côte-Nord, les régions éloignées n’auraient pratiquement aucune chance d’accéder à la Constituante."
+    "txt": "Un tirage au sort universel sans critère régional conduirait à un déséquilibre majeur du fait de la répartition géographique de la population québécoise. En effet, à elles seules, les régions administratives de Montréal, de Laval et de la Montérégie représentent 47,8 % de la population totale. Avec 0,5 % de la population dans le cas du Nord-du-Québec ou 1,1 % chacune dans le cas de la Gaspésie-Iles-de-la-Madeleine et de la Côte-Nord, les régions éloignées n’auraient pratiquement aucune chance d’accéder à la Constituante. Nous proposons donc un double tirage au sort qui assurera une représentation à la fois régionale et nationale."
   },
   {
     "nom": "p3_13",
@@ -108,7 +110,7 @@
   {
     "nom": "s4_1",
     "type": "s",
-    "txt": "1-TRAVAIL DE L’ASSEMBLÉE CONSTITUANTE"
+    "txt": "A-TRAVAIL DE L’ASSEMBLÉE CONSTITUANTE"
   },
   {
     "nom": "p4_2",
@@ -150,9 +152,20 @@
     "type": "p",
     "txt": "h. de définir une procédure citoyenne d’amendement de la constitution pour les générations futures."
   },
+  {
+    "nom": "s4_10",
+    "type": "s",
+    "txt": "B- CALENDRIER "
+  },
+  {
+    "nom": "p4_11",
+    "type": "p",
+    "txt": "Nous suggérons un mandat de deux (2) ans pour rédiger le projet de constitution, suivi d’une période ne dépassant pas six (6) mois pour tenir un référendum exécutoire pour ratification."
+  },
+  
 
   { "nom": "h5", "type": "header", "txt": "3 : FONCTIONNEMENT" },
-  { "nom": "p5_1", "type": "s", "txt": "A. Procédures" },
+  { "nom": "p5_1", "type": "s", "txt": "A- PROCÉDURE" },
   {
     "nom": "p5_2",
     "type": "p",
@@ -169,11 +182,6 @@
     "nom": "p5_6",
     "type": "p",
     "txt": "La démocratie a un prix. Le projet de loi devrait donc prévoir un budget adéquat pour le fonctionnement de la Constituante. L’Assemblée constituante citoyenne serait responsable de l’utilisation des fonds devant l’Assemblée nationale et ses dépenses devraient être contrôlées périodiquement par le Vérificateur général du Québec."
-  },
-  {
-    "nom": "p5_7",
-    "type": "p",
-    "txt": "Niveau de compensation suffisamment élevé pour permettre à des citoyens à revenu modeste de devenir constituants tout en continuant à pouvoir faire face à leurs responsabilités financières."
   },
   { "nom": "p5_8", "type": "s", "txt": "D. PRISE DE DÉCISIONS" },
   {
@@ -217,9 +225,14 @@
     "txt": "F. LANGUE DE TRAVAIL DE L'ASSEMBLÉE CONSTITUANTE"
   },
   {
+    "nom": "p5_172",
+    "type": "p",
+    "txt": "La langue de travail de l’Assemblée constituante citoyenne doit être la langue officielle du Québec. Les délibérations se déroulent dans cette langue et tous les documents soumis à son attention doivent être rédigés en français."
+  },
+  {
     "nom": "p5_17",
     "type": "p",
-    "txt": "Nous suggérons toutefois que les procédures de la constituante respectent les droits des minorités tel que définit par les lois et la jurisprudence. Cela veut dire que tout membre de l’Assemblée constituante dont le père ou la mère serait citoyen canadien et aurait reçu un enseignement primaire en anglais au Canada pourrait s’exprimer en langue anglaise et aurait droit, après préavis de sa part, à un service d’interprétation simultanée et de traduction des documents dans cette langue."
+    "txt": "Nous suggérons toutefois que les procédures de la constituante respectent les droits des minorités tel que définies par les lois et la jurisprudence. Cela veut dire que tout membre de l’Assemblée constituante dont le père ou la mère serait citoyen canadien et aurait reçu un enseignement primaire en anglais au Canada pourrait s’exprimer en langue anglaise et aurait droit, après préavis de sa part, à un service d’interprétation simultanée et de traduction des documents dans cette langue."
   },
   {
     "nom": "p5_19",
@@ -269,11 +282,6 @@
     "nom": "p6_3",
     "type": "p",
     "txt": "Ces droits impliquent qu’une fois la Constitution du Québec ratifiée par voie de référendum, le gouvernement du Québec devra engager de bonne foi des négociations de nation à nations avec les peuples autochtones afin de préciser leur place dans l’ordre constitutionnel québécois."
-  },
-  {
-    "nom": "p6_4",
-    "type": "p",
-    "txt": "Élection ou tirage au sort des personnes constituantes ? Nous pensons qu’un processus ressemblant à une élection générale nuirait à la recherche de consensus citoyens; les personnes élues auraient trop tendance à prendre position en fonction des lignes de parti. De plus, un processus partisan élimine dans les faits les personnes issues des métiers les plus fréquents. C’est-à-dire, pour les hommes : camionneurs, employés du commerce de détail, gérants de magasin, menuisiers-charpentiers, cuisiniers. Et pour les femmes : secrétaires, vendeuses, caissières, éducatrices, infirmières."
   },
   {
     "nom": "p6_5",

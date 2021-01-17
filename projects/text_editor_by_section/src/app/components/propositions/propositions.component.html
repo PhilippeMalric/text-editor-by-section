@@ -1,16 +1,17 @@
 
-<div class="center navButton" >
+
+<div  class="center navButton" >
     <mat-grid-list cols="2" rowHeight="50px" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
         <mat-grid-tile>
-            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == 0" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
+            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == 0" (click)="back()" ><mat-icon>arrow_back</mat-icon></button>
         </mat-grid-tile>
         <mat-grid-tile>
-            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == sections.length-1" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
+            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == sections.length-1" (click)="forward()"><mat-icon>arrow_forward</mat-icon></button>
         </mat-grid-tile>
     </mat-grid-list> 
 </div>
 
-<div class="center navButton2" >
+<div class="center" style="width: 70%;">
     <mat-grid-list #grid cols="3" rowHeight="100px" gutterSize="10px">
         <mat-grid-tile *ngFor="let s of sections;let i = index" >
             <div class="center">
@@ -58,10 +59,16 @@
 <div class="center navButton" >
     <mat-grid-list cols="2" rowHeight="50px" [ngStyle]="{'margin-top':'10px','margin-bottom':'10px'}">
         <mat-grid-tile>
-            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == 0" (click)="downvote()" ><mat-icon>arrow_back</mat-icon></button>
+            <button mat-raised-button color="primary"  [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == 0" (click)="back()" ><mat-icon>arrow_back</mat-icon></button>
         </mat-grid-tile>
         <mat-grid-tile>
-            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == sections.length-1" (click)="upvote()"><mat-icon>arrow_forward</mat-icon></button>
+            <button mat-raised-button color="primary" [ngStyle]="{'font-size': 'large'}" [disabled]="section_int == sections.length-1" (click)="forward()"><mat-icon>arrow_forward</mat-icon></button>
         </mat-grid-tile>
     </mat-grid-list> 
+</div>
+
+<div class="center">
+    <button *ngIf="section_int == sections.length-1" mat-raised-button color="accent" (click)="remerciement()" class="d-none d-sm-inline">
+        <mat-icon>check</mat-icon><span>Clickez ici pour mettre fin au questionnaire</span>
+    </button>
 </div>

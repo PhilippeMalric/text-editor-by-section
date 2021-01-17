@@ -154,6 +154,8 @@ import {
 import { UpvoteService } from './services/upvote.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { EmailComponent } from './components/email/email.component';
+import { ExplicationsComponent } from './components/explications/explications.component';
+import { RemerciementComponent } from './components/remerciement/remerciement.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -238,7 +240,9 @@ export class MyHammerConfig extends HammerGestureConfig {}
     DialogInfo,
     DialogVotersAdmin,
     DialogPropositionAdmin,
-    EmailComponent
+    EmailComponent,
+    ExplicationsComponent,
+    RemerciementComponent
   ],
   entryComponents: [
     EmailComponent,

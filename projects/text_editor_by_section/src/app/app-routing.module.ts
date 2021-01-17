@@ -9,16 +9,22 @@ import { PropositionsComponent } from './components/propositions/propositions.co
 import { Edit_text_by_sectionsComponent } from './components/edit_text_by_sections/edit_text_by_sections.component';
 import { AuthGuardService } from './core/core.module';
 import { NameGuardService } from './core/auth/auth-guard.service';
+import { ExplicationsComponent } from './components/explications/explications.component';
+import { RemerciementComponent } from './components/remerciement/remerciement.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'texte',
+    redirectTo: 'explication',
     pathMatch: 'full'
   },
   {
-    path: 'texte',
-    component: VersionOriginaleComponent
+    path: 'remerciement',
+    component: RemerciementComponent
+  },
+  {
+    path: 'explication',
+    component: ExplicationsComponent
   },
   {
     path: 'settings',
@@ -31,7 +37,7 @@ const routes: Routes = [
     
   },
   {
-    path: 'propositions',
+    path: 'Projet_de_loi',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
   },
@@ -43,7 +49,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'texte'
+    redirectTo: 'explication'
   }
 ];
 
@@ -53,6 +59,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       useHash: true,
       scrollPositionRestoration: 'enabled',
+      enableTracing: true,
       preloadingStrategy: PreloadAllModules
     })
   ],

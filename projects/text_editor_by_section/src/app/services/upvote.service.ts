@@ -13,14 +13,14 @@ export class UpvoteService {
 
   getItemVotes(itemId): any {
     // Gets total votes
-    console.log(itemId);
+    //console.log(itemId);
     return this.db
       .object(`upvotes/${itemId}`)
       .valueChanges()
       .pipe(
         tap(item => {
-          console.log('vote');
-          console.log(item);
+          //console.log('vote');
+          //console.log(item);
         })
       );
   }
@@ -48,8 +48,8 @@ export class UpvoteService {
       .pipe(take(1))
       .subscribe((item: any) => {
         console.log('-----------Add item  -----------');
-        console.log(item);
-        console.log(itemId in item);
+        //console.log(item);
+        //console.log(itemId in item);
         if (itemId in item) {
           this.db.object(`upvotes/${itemId}/`).update(data);
         } else {
