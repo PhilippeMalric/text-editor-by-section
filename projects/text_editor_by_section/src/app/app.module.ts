@@ -5,7 +5,11 @@ import { NgModule } from '@angular/core';
 import { CoreModule, HttpLoaderFactory } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent, BottomSheetComponent } from './app/app.component';
+import {
+  AppComponent,
+  BottomSheetComponent,
+  DialogInfo
+} from './app/app.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DataService } from './services/data.service';
@@ -228,9 +232,14 @@ export class MyHammerConfig extends HammerGestureConfig {}
 
     UpvoteButtonComponent,
     DialogPropositionVote,
-    DialogCommentaireSection
+    DialogCommentaireSection,
+    DialogInfo
   ],
-  entryComponents: [DialogCommentaireSection, DialogPropositionVote],
+  entryComponents: [
+    DialogCommentaireSection,
+    DialogPropositionVote,
+    DialogInfo
+  ],
   providers: [
     UpvoteService,
     GameService,

@@ -1,5 +1,15 @@
 @import '../../styles-variables';
 
+ul {
+  list-style: none;
+}
+
+.top-right {
+  position: fixed;
+  right: 10px;
+  z-index: 999;
+}
+
 .myturn {
   background-color: rgb(255, 153, 127);
 }

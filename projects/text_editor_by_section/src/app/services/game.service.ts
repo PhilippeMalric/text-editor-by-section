@@ -14,6 +14,7 @@ export class Section {
   titre: String;
   sousSections: String[];
   color: String;
+  commentaire: String;
 
   constructor(id: String, titre: String, sousSections: String[]) {
     this.id = id;
@@ -117,12 +118,12 @@ export class GameService {
     );
   };
 
-  voir_props = item => {
-    return this.db.object(`propositions/${item.nom}`).valueChanges();
+  voir_props = (itemId,userId) => {
+    return this.db.object(`propositions/${itemId}/${userId}`).valueChanges();
   };
 
-  get_props = () => {
-    return this.db.object(`propositions/`).valueChanges();
+  get_props = (itemId) => {
+    return this.db.object(`propositions/${itemId}`).valueChanges();
   };
 
   get_items_user_create_if_not = (user: string) => {

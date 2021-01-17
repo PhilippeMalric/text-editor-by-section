@@ -50,6 +50,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { MatGridList } from '@angular/material/grid-list';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { start } from 'repl';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 // declare google analytics
 declare const ga: any;
 
@@ -87,8 +88,10 @@ export class AppComponent implements OnInit {
   myturn$: Observable<Boolean>;
   displayName: string = '';
   subscription1: Subscription;
+  isAuthenticated2: any;
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
+    public dialog: MatDialog,
     private router: Router,
     private changeDetectorRef: ChangeDetectorRef,
     private store: Store,
@@ -96,7 +99,7 @@ export class AppComponent implements OnInit {
     private dataS: DataService,
     public _bottomSheet: MatBottomSheet,
     private d3service: D3Service,
-    private gameService: GameService,
+    public gameService: GameService,
     private dataService: DataService
   ) {
     console.log('App constructor!!');
@@ -134,6 +137,11 @@ export class AppComponent implements OnInit {
         ...this.navigation,
         { link: 'settings', label: 'anms.menu.settings', enabled: true }
       ];
+
+      this.isAuthenticated2 = user != '';
+      console.log(this.isAuthenticated2);
+      console.log('------------------------------------------------------');
+      this.changeDetectorRef.markForCheck();
     });
 
     this.storageService.testLocalStorage();
@@ -153,6 +161,11 @@ export class AppComponent implements OnInit {
 
   ngOnDestroy = () => {
     this.subscription1.unsubscribe();
+  };
+
+  logOut2 = () => {
+    this.gameService.user.next('');
+    this.router.navigate(['home']);
   };
 
   validez = () => {
@@ -184,6 +197,16 @@ export class AppComponent implements OnInit {
   closeBottomSheet(): void {
     this.store.dispatch(new ActionBottom_sheetUpsert({ value: false }));
     this._bottomSheet.dismiss();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogInfo, {
+      width: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog info was closed');
+    });
   }
 }
 
@@ -219,4 +242,17 @@ export class BottomSheetComponent {
     this.changeDetectorRef.markForCheck()
   }
   */
+}
+
+@Component({
+  selector: 'dialog_commentaire',
+  templateUrl: './dialog.html',
+  styleUrls: ['./app.component.scss']
+})
+export class DialogInfo {
+  constructor(public dialogRef: MatDialogRef<DialogInfo>) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

@@ -27,6 +27,19 @@
   width: fit-content;
 }
 
+.navButton {
+  width: 200px;
+}
+.navButton2 {
+  width: 600px;
+}
+button {
+  line-height: initial !important;
+  white-space: pre-wrap !important;
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+
 .margin10 {
   margin-left: 10px;
   margin-right: 10px;
@@ -37,7 +50,7 @@
 }
 
 .p {
-  font-family: cursive;
+  font-family: 'Times New Roman', Times, serif;
   margin-left: 22px;
   margin-top: 10px;
   margin-bottom: 5px;
