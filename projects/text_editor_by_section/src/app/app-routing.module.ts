@@ -15,7 +15,7 @@ import { RemerciementComponent } from './components/remerciement/remerciement.co
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'explication',
+    redirectTo: 'mode_d_emploi',
     pathMatch: 'full'
   },
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
     component: RemerciementComponent
   },
   {
-    path: 'explication',
+    path: 'mode_d_emploi',
     component: ExplicationsComponent
   },
   {
@@ -49,7 +49,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'explication'
+    redirectTo: 'mode_d_emploi'
   }
 ];
 

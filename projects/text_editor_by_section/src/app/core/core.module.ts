@@ -135,7 +135,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-          name: 'Angular NgRx Material Starter'
+          name: 'Projet de loi ACCQ'
         }),
 
     // 3rd party
