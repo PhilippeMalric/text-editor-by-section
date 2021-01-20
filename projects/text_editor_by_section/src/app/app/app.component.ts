@@ -67,9 +67,9 @@ export class AppComponent implements OnInit {
   version = env.versions.app;
   year = new Date().getFullYear();
   logo = require('../../assets/mini.png');
-  languages = ['en', 'fr'];
+  languages = ['fr'];
   navigation = [
-    { link: 'explication', label: 'anms.menu.about' },
+    { link: 'mode_d_emploi', label: 'anms.menu.about' },
     { link: 'Projet_de_loi', label: 'anms.menu.game' }
   ];
   navigationSideMenu = [
@@ -146,7 +146,7 @@ export class AppComponent implements OnInit {
 
     setTimeout(()=>{
       if(this.displayName == ""){
-        this.notificationService.default("Écrivez à generale.accq@gmail.com pour toutes questions!")
+        this.notificationService.default("Écrivez à : projet.de.loi.accq@gmail.com pour toutes questions!")
       }
      
     },3000)
@@ -154,7 +154,7 @@ export class AppComponent implements OnInit {
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {
       this.navigation = this.navigation.map(nav => {
-        return { ...nav, enabled: nav.link == 'explication' || user != '' };
+        return { ...nav, enabled: nav.link == 'mode_d_emploi' || user != '' };
       });
       this.navigationSideMenu = [
         ...this.navigation,
