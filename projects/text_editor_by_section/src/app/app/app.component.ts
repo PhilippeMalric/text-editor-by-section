@@ -188,7 +188,7 @@ export class AppComponent implements OnInit {
 
   logOut2 = () => {
     this.gameService.user.next('');
-    this.router.navigate(['explication']);
+    this.router.navigate(['mode_d_emploi']);
   };
 
   validez = () => {
