@@ -157,6 +157,7 @@ import { EmailComponent } from './components/email/email.component';
 import { ExplicationsComponent } from './components/explications/explications.component';
 import { RemerciementComponent } from './components/remerciement/remerciement.component';
 import { PropositionNavComponent } from './components/proposition-nav/proposition-nav.component';
+import { GestionDonneesComponent } from './components/gestion-donnees/gestion-donnees.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -244,7 +245,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     EmailComponent,
     ExplicationsComponent,
     RemerciementComponent,
-    PropositionNavComponent
+    PropositionNavComponent,
+    GestionDonneesComponent
   ],
   entryComponents: [
     EmailComponent,
