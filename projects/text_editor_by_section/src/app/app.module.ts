@@ -158,6 +158,7 @@ import { ExplicationsComponent } from './components/explications/explications.co
 import { RemerciementComponent } from './components/remerciement/remerciement.component';
 import { PropositionNavComponent } from './components/proposition-nav/proposition-nav.component';
 import { GestionDonneesComponent } from './components/gestion-donnees/gestion-donnees.component';
+import { GraphVoteComponent } from './components/graph-vote/graph-vote.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -246,7 +247,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     ExplicationsComponent,
     RemerciementComponent,
     PropositionNavComponent,
-    GestionDonneesComponent
+    GestionDonneesComponent,
+    GraphVoteComponent
   ],
   entryComponents: [
     EmailComponent,
