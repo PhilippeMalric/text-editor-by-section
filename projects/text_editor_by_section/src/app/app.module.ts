@@ -156,6 +156,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { EmailComponent } from './components/email/email.component';
 import { ExplicationsComponent } from './components/explications/explications.component';
 import { RemerciementComponent } from './components/remerciement/remerciement.component';
+import { PropositionNavComponent } from './components/proposition-nav/proposition-nav.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -242,7 +243,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     DialogPropositionAdmin,
     EmailComponent,
     ExplicationsComponent,
-    RemerciementComponent
+    RemerciementComponent,
+    PropositionNavComponent
   ],
   entryComponents: [
     EmailComponent,

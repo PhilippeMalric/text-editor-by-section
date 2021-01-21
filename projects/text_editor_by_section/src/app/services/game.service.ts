@@ -335,6 +335,10 @@ export class GameService {
     return this.db.object(this.path).valueChanges();
   };
 
+  getObservable2 = (path) => {
+    return this.db.object(path).valueChanges();
+  };
+
   startGame = () => {
     console.log(this.path);
     return this.http.get<any[]>('http://localhost:4000/api');
@@ -350,4 +354,18 @@ export class GameService {
   };
 
   // new Game(GameEasyComponent),
+
+
+  getProposition = () => {
+    return this.getObservable2("/propositions")
+  };
+
+
+
+
+
+
+
+
+
 }

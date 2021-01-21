@@ -31,19 +31,20 @@ export class AdminComponent implements OnInit {
   dataSource_commentaires: MatTableDataSource<any>;
   subpropo: any;
   sub5: Subscription;
+  dataP: any;
   constructor(private gameService:GameService,public dialog: MatDialog) {}
 
   
   ngOnDestroy(): void {
     this.sub1.unsubscribe()
     this.sub0.unsubscribe()
-    this.sub5.unsubscribe()
-    this.subpropo.unsubscribe()
 
     this.subAllPrps.unsubscribe()
   }
 
   ngOnInit(): void {
+
+    this.dataP = this.gameService.getProposition()
 
     this.subAllPrps = this.gameService.get_props2().pipe(
       withLatestFrom(this.gameService.get_upvote())).subscribe(([props,votes])=>{
@@ -90,15 +91,22 @@ export class AdminComponent implements OnInit {
       this.sub1 = this.gameService.get_projet_de_loi().subscribe((items:any[])=>{
         console.log("items44")
         console.log(items)
-        for(let e of items[0].sousSections){
+        let array_all = []
+        for (let o of items){
+          array_all = array_all.concat(o.sousSections)
+        }
+        for(let e of array_all){
           e.props_non_acc = this.mapNom_to_non_accepted_prop[e.nom]
           e.props_acc = 0
           e.moins = this.minus[e.nom]
           e.egale = this.egale[e.nom]
           e.plus = this.plus[e.nom]
         }
+        
+        
+        
 
-        this.dataSource = new MatTableDataSource<String>(items[0].sousSections);
+        this.dataSource = new MatTableDataSource<String>(array_all);
       })
   
     })
@@ -273,5 +281,9 @@ export class DialogVotersAdmin {
     this.dialogRef.close();
   }
   
+
+
+
+
 
 }
