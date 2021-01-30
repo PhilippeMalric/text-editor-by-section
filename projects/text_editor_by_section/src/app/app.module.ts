@@ -159,6 +159,7 @@ import { RemerciementComponent } from './components/remerciement/remerciement.co
 import { PropositionNavComponent } from './components/proposition-nav/proposition-nav.component';
 import { GestionDonneesComponent } from './components/gestion-donnees/gestion-donnees.component';
 import { GraphVoteComponent } from './components/graph-vote/graph-vote.component';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -208,6 +209,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
 
     // app
     AppRoutingModule,
+    NgxGoogleAnalyticsModule.forRoot('G-SY19YN9985'),
     EffectsModule.forFeature([]),
     StoreModule.forFeature(FEATURE_NAME, reducers),
     TranslateModule.forChild({
