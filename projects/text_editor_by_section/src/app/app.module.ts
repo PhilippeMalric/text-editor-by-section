@@ -209,7 +209,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
 
     // app
     AppRoutingModule,
-    NgxGoogleAnalyticsModule.forRoot(''),
+    NgxGoogleAnalyticsModule.forRoot('UA-148112928-2'),
     EffectsModule.forFeature([]),
     StoreModule.forFeature(FEATURE_NAME, reducers),
     TranslateModule.forChild({
