@@ -63,7 +63,7 @@ export class GoogleAuthService {
     this.db.object(path).update(data);
   }
   googleSignIn() {
-    const provider = new firebase.default.auth.GoogleAuthProvider().addScope('email');
+    const provider = new firebase.auth.GoogleAuthProvider().addScope('email');
     this.oAuthLogin(provider);
   }
 
