@@ -34,11 +34,11 @@
           
             <mat-card-content>
                 <mat-card  *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px'}">
-                    <mat-card-content class="sousSection">
+                    <mat-card-content [ngClass]="{'sousSection':!small}">
                         <div [class]="sousSection?.type">
                             {{sousSection.txt}}
                         </div>
-                        <div class="rigth" *ngIf="sousSection?.type != 's'">
+                        <div [ngClass]="{'rigth':!small,center:small}" *ngIf="sousSection?.type != 's'">
                             <upvote-button [itemId]='sousSection?.nom' [userId]='displayName'></upvote-button>
                         </div>
                     </mat-card-content>

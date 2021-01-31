@@ -6,7 +6,8 @@ import {
   ViewChild,
   OnDestroy,
   Inject,
-  ElementRef
+  ElementRef,
+  ViewContainerRef
 } from '@angular/core';
 import { Item } from '../table/table.component';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
@@ -43,6 +44,9 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropositionsComponent implements OnInit, OnDestroy {
+  
+
+  small: boolean;
   scrollToTop() {
     let top = document.getElementById("top")
       if (top !== null) {
@@ -54,6 +58,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   }
   scrollContainer: any;
   @ViewChild('grid') grid: MatGridList;
+  @ViewChild('container') container : ElementRef;
   sections: Section[];
   section: Section;
   users: any;
@@ -87,6 +92,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   nouveau_text: any;
 
   constructor(
+    private _view: ElementRef,
     public dialog: MatDialog,
     private router: Router,
     private viewportScroller: ViewportScroller,
@@ -122,6 +128,8 @@ export class PropositionsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    
+    
     this.sections = [];
 
     this.userSubscription = this.gameService.user.subscribe((user: string) => {
@@ -234,12 +242,26 @@ export class PropositionsComponent implements OnInit, OnDestroy {
     }
   };
 
+  ngAfterViewInit(){
+    console.log("_view.element")
+    console.log(this._view.nativeElement.offsetWidth)
+
+  }
+
   ngAfterContentInit() {
+
+    
     this.observableMedia.asObservable().subscribe((change: MediaChange[]) => {
       console.log('change');
       console.log(change);
-      this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
       
+      this.grid.cols = this.gridByBreakpoint[change[0].mqAlias]
+      console.log(change[0].mqAlias)
+      if(change[0].mqAlias == "sm" || change[0].mqAlias == "xs"){
+         this.small = true
+      }else{
+        this.small = false
+      }
       console.log('cols');
       //console.log(this.grid.cols)
       //this.grid.rowHeight = this.gridByBreakpointH[change[0].mqAlias];
