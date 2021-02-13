@@ -130,6 +130,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    /*
     setTimeout(()=>{
       if(this.displayName == ""){
         this.notificationService.success("Veuillez vous inscrire pour commencer.")
@@ -144,6 +145,7 @@ export class AppComponent implements OnInit {
      
     },60000)
 
+    */
     setTimeout(()=>{
       if(this.displayName == ""){
         this.notificationService.default("Écrivez à : projet.de.loi.accq@gmail.com pour toutes questions!")
