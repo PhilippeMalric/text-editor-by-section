@@ -160,6 +160,7 @@ import { PropositionNavComponent } from './components/proposition-nav/propositio
 import { GestionDonneesComponent } from './components/gestion-donnees/gestion-donnees.component';
 import { GraphVoteComponent } from './components/graph-vote/graph-vote.component';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
+import { MessageInterPhaseComponent } from './components/message-inter-phase/message-inter-phase.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -250,7 +251,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     RemerciementComponent,
     PropositionNavComponent,
     GestionDonneesComponent,
-    GraphVoteComponent
+    GraphVoteComponent,
+    MessageInterPhaseComponent
   ],
   entryComponents: [
     EmailComponent,

@@ -11,12 +11,17 @@ import { AuthGuardService } from './core/core.module';
 import { NameGuardService } from './core/auth/auth-guard.service';
 import { ExplicationsComponent } from './components/explications/explications.component';
 import { RemerciementComponent } from './components/remerciement/remerciement.component';
+import { MessageInterPhaseComponent } from './components/message-inter-phase/message-inter-phase.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'mode_d_emploi',
+    redirectTo: 'message',
     pathMatch: 'full'
+  },
+  {
+    path: 'message',
+    component: MessageInterPhaseComponent
   },
   {
     path: 'remerciement',
@@ -36,12 +41,13 @@ const routes: Routes = [
     component: AdminComponent,
     
   },
+  /*
   {
     path: 'Projet_de_loi',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
   },
-
+  */
   {
     path: 'edit_text_by_section',
     component: Edit_text_by_sectionsComponent
@@ -49,7 +55,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'mode_d_emploi'
+    redirectTo: 'message'
   }
 ];
 
