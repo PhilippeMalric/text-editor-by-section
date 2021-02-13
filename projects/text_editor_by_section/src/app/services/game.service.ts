@@ -106,6 +106,10 @@ export class GameService {
     return this.db.object(`upvotes/`).valueChanges()
    }
 
+   get_projet_de_loi2 = () => {
+    return this.http.get('assets/projet_de_loi.json')
+   }
+   
   get_projet_de_loi = () => {
     return this.http.get('assets/projet_de_loi.json').pipe(
       map((item: any[]) => {

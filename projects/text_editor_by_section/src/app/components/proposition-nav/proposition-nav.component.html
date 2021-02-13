@@ -1,4 +1,10 @@
 <div class="container">
+
+    <div class="center2" >
+        <button mat-raised-button color="warn" (click)="downloadFile()">Télécharger Propositions</button>
+        <button mat-raised-button color="warn" (click)="downloadPDL()">Télécharger projet de loi</button>
+    </div>
+
     <div class="center" >
 
         <mat-card *ngFor="let e of data2|async" [ngClass]="{'margin-top-bottom':true,'approuve':e.approuve}">

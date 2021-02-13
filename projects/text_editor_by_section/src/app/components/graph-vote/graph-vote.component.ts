@@ -24,9 +24,9 @@ export class GraphVoteComponent implements OnInit {
     this.yellowH = isNaN(this.yellowH.valueOf())?0:this.yellowH
     this.redH = isNaN(this.redH.valueOf())?0:this.redH
 
-    console.log(this.greenH)
-    console.log(this.yellowH)
-    console.log(this.redH)
+    //console.log(this.greenH)
+    //console.log(this.yellowH)
+    //console.log(this.redH)
  
   }
 

@@ -1,6 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, Input } from '@angular/core';
-import { map, withLatestFrom } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take, withLatestFrom } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
+import * as saveAs from 'file-saver';
+
+//declare var saveAs:any;
 
 @Component({
   selector: 'anms-proposition-nav',
@@ -11,7 +15,9 @@ import { GameService } from '../../services/game.service';
 export class PropositionNavComponent implements OnInit {
 
   @Input('data') data: any;
-  data2: any;
+  data2: Observable<any>;
+  myItem: any[];
+  
 
   constructor(private gameService:GameService) {
 
@@ -66,8 +72,50 @@ export class PropositionNavComponent implements OnInit {
     for(let k of Object.keys(object1)){
       newArray.push(object1[k])
     }
+
+    this.myItem = newArray
+
     return newArray
   }
+
+  downloadFile() {
+    let data = this.myItem
+      console.log(data)
+      const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+      const header = Object.keys(data[13]);
+      let csv = data.map(row => {return header.map(fieldName => {
+
+        let text = JSON.stringify(row[fieldName], replacer)
+        //console.log(text)
+        text = (text)?text:"-"
+          return text.toString().replace('"',"'")
+      }).join(';')}) ;
+
+      csv.unshift(header.join(';'));
+      let csvArray = csv.join('\r\n');
+  
+      var blob = new Blob([csvArray], {type: 'text/csv' })
+      saveAs.saveAs(blob, "myFile.csv");
+   
+  }
+
+  downloadPDL() {
+    this.gameService.get_projet_de_loi2().pipe(take(1)).subscribe(((data:any)=>{
+      console.log(data)
+      const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
+      const header = Object.keys(data[0]);
+      let csv = data.map(row => header.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(';'));
+      csv.unshift(header.join(';'));
+      let csvArray = csv.join('\r\n');
+  
+      var blob = new Blob([csvArray], {type: 'text/csv' })
+      saveAs.saveAs(blob, "myFile.csv");
+    }))
+    
+      
+   
+  }
+
 
 
   flattenObject = function(ob) {
