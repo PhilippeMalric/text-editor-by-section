@@ -16,7 +16,7 @@ import { MessageInterPhaseComponent } from './components/message-inter-phase/mes
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'message',
+    redirectTo: 'mode_d_emploi',
     pathMatch: 'full'
   },
   {
@@ -41,13 +41,13 @@ const routes: Routes = [
     component: AdminComponent,
     
   },
-  /*
+  
   {
     path: 'Projet_de_loi',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
   },
-  */
+  
   {
     path: 'edit_text_by_section',
     component: Edit_text_by_sectionsComponent
@@ -55,7 +55,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: 'message'
+    redirectTo: 'mode_d_emploi'
   }
 ];
 
