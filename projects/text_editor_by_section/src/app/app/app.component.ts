@@ -52,6 +52,7 @@ import { MatGridList } from '@angular/material/grid-list';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { start } from 'repl';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { GoogleAuthService } from '../core/auth/google-auth.service';
 // declare google analytics
 declare const ga: any;
 
@@ -102,6 +103,7 @@ export class AppComponent implements OnInit {
     private d3service: D3Service,
     public gameService: GameService,
     private notificationService: NotificationService,
+    private googleAuthService:GoogleAuthService,
     private dataService: DataService
   ) {
     console.log('App constructor!!');
@@ -194,9 +196,16 @@ export class AppComponent implements OnInit {
   };
 
   validez = () => {
-    this.gameService.user.next(this.displayName);
-    this.router.navigate(['projet_de_loi']);
+
+    this.googleAuthService.signInLink(this.displayName)
+
+    
+    //this.router.navigate(['projet_de_loi']);
   };
+
+  checkAuth(){
+    this.googleAuthService.checkAuth(this.displayName)
+  }
 
   ngAfterViewInit(): void {
     this.router.events.subscribe(event => {
@@ -208,6 +217,8 @@ export class AppComponent implements OnInit {
   }
 
   onLogoutClick() {
+    this.gameService.user.next('');
+    this.gameService.userEmail.next('');
     this.store.dispatch(new ActionAuthLogout());
   }
 

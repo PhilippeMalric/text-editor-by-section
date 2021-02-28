@@ -161,6 +161,10 @@ import { GestionDonneesComponent } from './components/gestion-donnees/gestion-do
 import { GraphVoteComponent } from './components/graph-vote/graph-vote.component';
 import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 import { MessageInterPhaseComponent } from './components/message-inter-phase/message-inter-phase.component';
+import { FromLinkComponent } from './components/from-link/from-link.component';
+import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
+import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -252,7 +256,11 @@ export class MyHammerConfig extends HammerGestureConfig {}
     PropositionNavComponent,
     GestionDonneesComponent,
     GraphVoteComponent,
-    MessageInterPhaseComponent
+    MessageInterPhaseComponent,
+    FromLinkComponent,
+    EnregistrementComponent,
+    AuthentificationComponent,
+    ResetMotDePasseComponent
   ],
   entryComponents: [
     EmailComponent,

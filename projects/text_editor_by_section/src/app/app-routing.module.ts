@@ -12,6 +12,10 @@ import { NameGuardService } from './core/auth/auth-guard.service';
 import { ExplicationsComponent } from './components/explications/explications.component';
 import { RemerciementComponent } from './components/remerciement/remerciement.component';
 import { MessageInterPhaseComponent } from './components/message-inter-phase/message-inter-phase.component';
+import { FromLinkComponent } from './components/from-link/from-link.component';
+import { AuthentificationComponent } from './components/authentification/authentification.component';
+import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
+import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 
 const routes: Routes = [
   {
@@ -37,7 +41,7 @@ const routes: Routes = [
   },
   {
     //canActivate: [AuthGuardService],
-    path: 'admin',
+    path: 'admin_',
     component: AdminComponent,
     
   },
@@ -52,7 +56,24 @@ const routes: Routes = [
     path: 'edit_text_by_section',
     component: Edit_text_by_sectionsComponent
   },
-
+  {
+    path: 'authentification',
+    component: AuthentificationComponent
+  },
+  {
+    path: 'enregistrement',
+    component: EnregistrementComponent
+  },
+  {
+    path: 'oublie_mot_de_passe',
+    component: ResetMotDePasseComponent
+  },
+  
+  {
+    path: '__',
+    component: FromLinkComponent
+  },
+  
   {
     path: '**',
     redirectTo: 'mode_d_emploi'

@@ -25,8 +25,26 @@
         routerLinkActive="active">
         {{'anms.menu.personal_choice' | translate}}
               </a>-->
-        <div style="margin-left:20px" *ngIf="!isAuthenticated2"  >
-
+        <hr>
+        <a mat-list-item  (click)="sidenav.close()" [routerLink]="'authentification'"
+        routerLinkActive="active">
+        Authentification
+              </a>
+        <a mat-list-item  (click)="sidenav.close()" [routerLink]="'enregistrement'"
+        routerLinkActive="active">
+        Enregistrement
+              </a>
+        <a mat-list-item  (click)="sidenav.close()" [routerLink]="'oublie_mot_de_passe'"
+        routerLinkActive="active">
+        Oublie de mot de passe
+              </a>
+        <hr>
+        <div style="margin-left:20px" *ngIf="(isAuthenticated$ | async)"  >
+          Bienvenue {{(gameService.user|async)}}
+          
+        </div>
+        <!--<div style="margin-left:20px" *ngIf="!isAuthenticated2"  >
+          
           <mat-form-field  >
             <input
             id="name"
@@ -38,11 +56,14 @@
             <mat-placeholder  >Votre Nom</mat-placeholder>
           </mat-form-field>
           <button  id="b_name" mat-raised-button  color="primary" (click)="validez()" >Validez!</button>
+          <button  id="b_name" mat-raised-button  color="primary" (click)="checkAuth()" >Check!</button>
+          
         </div>
         <div style="margin-left:20px" *ngIf="isAuthenticated2"  >
             Bienvenue {{(gameService.user|async)}}
             <button mat-button (click)="logOut2()">Déconnexion</button>
         </div>
+      -->
       </mat-nav-list>
     </mat-sidenav>
 
@@ -61,9 +82,13 @@
             {{ 'anms.title.short' | translate }}</span>
             
           <span routerLink="" class="branding spacer d-none d-md-inline"><img [src]="logo" /> {{ 'anms.title.long' | translate}}</span>
+          
+          <div style="margin-right: 10px;margin-left:20px" *ngIf="(isAuthenticated$ | async)" class="d-none d-lg-inline" >
+            Bienvenue {{(gameService.user|async)}}
+          </div>
 
-          <span class="branding spacer d-none d-lg-inline">
-            <div  style="margin-right: 10px;"  *ngIf="!isAuthenticated2">
+            <!--
+              <div  style="margin-right: 10px;"  *ngIf="!isAuthenticated2">
               
               <mat-form-field id="my_input" style="padding-top: 20px;">
                 <input
@@ -84,6 +109,25 @@
             </div>
             
           </span>
+
+            -->
+            <span class="d-none d-lg-inline" *ngIf="!(isAuthenticated$ | async)">
+              <button mat-button class="nav-button" 
+              routerLink="authentification" 
+              routerLinkActive="active">
+                Authentification
+              </button>
+              <button mat-button class="nav-button" 
+              routerLink="enregistrement" 
+              routerLinkActive="active">
+                Enregistrement
+              </button>
+              <button mat-button class="nav-button" 
+              [routerLink]="['oublie_mot_de_passe']"
+              routerLinkActive="active">
+                Oublie de mot de passe
+              </button>
+            </span>
           <span class="d-none d-md-inline">
             <button mat-button class="nav-button" 
                     *ngFor="let item of navigation" 
