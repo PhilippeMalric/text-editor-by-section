@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { User } from './user.model';
 import { Store } from '@ngrx/store';
 import { ActionAuthLogin } from './auth.actions';
-import { LocalStorageService } from '../core.module';
+import { LocalStorageService, NotificationService } from '../core.module';
 import { AUTH_KEY } from './auth.effects';
 import { take } from 'rxjs/operators';
 import * as firebase from 'firebase';
@@ -29,7 +29,7 @@ export class GoogleAuthService {
   user$: any;
 
   constructor(
-    
+    private notificationService:NotificationService,
     private gameService: GameService,
     private storageService: LocalStorageService,
     private store: Store,
@@ -83,9 +83,16 @@ loginEmain = (email,password)=>{
     var user = userCredential.user;
     console.log("user")
     console.log(user)
-    this.setNameAndPw(user)
-    this.store.dispatch(new ActionAuthLogin())
-    this.router.navigate(["mode_d_emploi"])
+    if(user.emailVerified){
+      this.setNameAndPw(user)
+      this.store.dispatch(new ActionAuthLogin())
+      this.router.navigate(["mode_d_emploi"])
+    }
+    else{
+      this.notificationService.error("Vérifiez votre adresse courriel.")
+    }
+
+    
   })
   .catch((error) => {
     var errorCode = error.code;
@@ -100,10 +107,22 @@ enregistrement = (email,password)=>{
   firebase.auth().createUserWithEmailAndPassword(email,password).then((userCredential) => {
     // Signed in 
     var user = userCredential.user;
+    var actionCodeSettings = {
+      // URL you want to redirect back to. The domain (www.example.com) for this
+      // URL must be in the authorized domains list in the Firebase Console.
+      url:"https://text-editor-by-section.web.app/",
+      //url: 'http://localhost:4200',
+      // This must be true.
+      handleCodeInApp: true
+    };
+    user.sendEmailVerification(actionCodeSettings)
+    /*
     this.store.dispatch(new ActionAuthLogin())
     console.log("user")
     console.log(user)
     this.setNameAndPw(user)
+    */
+    this.notificationService.info("Vérifiez votre adresse courriel.")
     this.router.navigate(["mode_d_emploi"])
     //".", "#", "$", "[", or "]"
 

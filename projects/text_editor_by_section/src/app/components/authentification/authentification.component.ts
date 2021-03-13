@@ -17,7 +17,7 @@ export class AuthentificationComponent implements OnInit {
   ]);
   passwordFormControl = new FormControl('', [
     Validators.required,
-    Validators.min(8)
+    Validators.minLength(8)
   ]);
   matcher = new MyErrorStateMatcher();
   matcher2 = new MyErrorStateMatcher();
