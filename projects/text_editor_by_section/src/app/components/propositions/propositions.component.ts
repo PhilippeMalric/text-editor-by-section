@@ -156,7 +156,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
     });
 
     this.section_int = 0;
-    this.gameService.get_projet_de_loi().subscribe((sections: any) => {
+    this.gameService.get_projet_de_loi3().subscribe((sections: any) => {
       console.log('sections...');
       console.log(sections);
       this.sections = sections;

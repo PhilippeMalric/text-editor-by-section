@@ -16,6 +16,7 @@ import { FromLinkComponent } from './components/from-link/from-link.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
+import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,12 @@ const routes: Routes = [
     //canActivate: [AuthGuardService],
     path: 'admin_',
     component: AdminComponent,
+    
+  },
+  {
+    //canActivate: [AuthGuardService],
+    path: 'csv',
+    component: GoogleSheetComponent,
     
   },
   

@@ -33,13 +33,13 @@
             
           
             <mat-card-content>
-                <mat-card  *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px'}">
-                    <mat-card-content [ngClass]="{'sousSection':!small}">
+                <mat-card  *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px','background-color':sousSection?.color}">
+                    <mat-card-content [ngClass]="{'sousSection':!small,amendement:sousSection?.premier}">
                         <div [class]="sousSection?.type">
-                            {{sousSection.txt}}
+                            {{sousSection.texte}}
                         </div>
-                        <div [ngClass]="{'rigth':!small,center:small}" *ngIf="sousSection?.type != 's'">
-                            <upvote-button [itemId]='sousSection?.nom' [userId]='displayName'></upvote-button>
+                        <div [ngClass]="{'rigth':!small,center:small}" *ngIf="sousSection?.vote  == 'oui'">
+                            <upvote-button [itemId]='sousSection?.id' [userId]='displayName'></upvote-button>
                         </div>
                     </mat-card-content>
                 </mat-card>

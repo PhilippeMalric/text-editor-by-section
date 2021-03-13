@@ -165,6 +165,7 @@ import { FromLinkComponent } from './components/from-link/from-link.component';
 import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
+import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -260,7 +261,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     FromLinkComponent,
     EnregistrementComponent,
     AuthentificationComponent,
-    ResetMotDePasseComponent
+    ResetMotDePasseComponent,
+    GoogleSheetComponent
   ],
   entryComponents: [
     EmailComponent,

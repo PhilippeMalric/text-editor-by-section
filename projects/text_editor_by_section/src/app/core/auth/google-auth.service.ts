@@ -86,7 +86,7 @@ loginEmain = (email,password)=>{
     if(user.emailVerified){
       this.setNameAndPw(user)
       this.store.dispatch(new ActionAuthLogin())
-      this.router.navigate(["mode_d_emploi"])
+      
     }
     else{
       this.notificationService.error("Vérifiez votre adresse courriel.")
@@ -123,7 +123,7 @@ enregistrement = (email,password)=>{
     this.setNameAndPw(user)
     */
     this.notificationService.info("Vérifiez votre adresse courriel.")
-    this.router.navigate(["mode_d_emploi"])
+    //this.router.navigate(["mode_d_emploi"])
     //".", "#", "$", "[", or "]"
 
   })
@@ -131,7 +131,7 @@ enregistrement = (email,password)=>{
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorMessage)
-    this.loginEmain(email,password)
+    //this.loginEmain(email,password)
   });
 }
 
@@ -236,7 +236,7 @@ checkAuth(email){
       this.gameService.userEmail.next(credential.additionalUserInfo.profile.email)
     
       this.store.dispatch(new ActionAuthLogin())
-      this.router.navigate(["mode_d_emploi"])
+      
 
     }
   };

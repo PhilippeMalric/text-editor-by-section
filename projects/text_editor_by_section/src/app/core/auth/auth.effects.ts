@@ -38,14 +38,30 @@ export class AuthEffects {
     { dispatch: false }
   );
 
-  login = createEffect(
+
+  loginTry = createEffect(
     () =>
       this.actions$.pipe(
         ofType<ActionAuthLogin>(AuthActionTypes.LOGIN_TRY),
         tap(() => {
           this.googleAuth.googleSignIn();
+          
         })
       ),
     { dispatch: false }
   );
+
+  login = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
+        tap(() => {
+          this.router.navigate(["Projet_de_loi"])
+          
+        })
+      ),
+    { dispatch: false }
+  );
+
 }
+//

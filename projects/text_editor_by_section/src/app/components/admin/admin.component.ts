@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Item } from '../table/table.component';
 import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { GoogleSheetService } from '../../services/google-sheet.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class AdminComponent implements OnInit {
   subpropo: any;
   sub5: Subscription;
   dataP: any;
-  constructor(private gameService:GameService,public dialog: MatDialog) {}
+  constructor( private googleSheetService : GoogleSheetService,private gameService:GameService,public dialog: MatDialog) {}
 
   
   ngOnDestroy(): void {
@@ -89,25 +90,22 @@ export class AdminComponent implements OnInit {
         })
       }
 
-      this.sub1 = this.gameService.get_projet_de_loi().subscribe((items:any[])=>{
+      this.sub1 = this.googleSheetService.getCooker().subscribe((items:any[])=>{
         console.log("items44")
         console.log(items)
-        let array_all = []
-        for (let o of items){
-          array_all = array_all.concat(o.sousSections)
-        }
-        for(let e of array_all){
-          e.props_non_acc = this.mapNom_to_non_accepted_prop[e.nom]
+        
+        for(let e of items){
+          e.props_non_acc = this.mapNom_to_non_accepted_prop[e.nomunique]
           e.props_acc = 0
-          e.moins = this.minus[e.nom]
-          e.egale = this.egale[e.nom]
-          e.plus = this.plus[e.nom]
+          e.moins = this.minus[e.nomunique]
+          e.egale = this.egale[e.nomunique]
+          e.plus = this.plus[e.nomunique]
         }
         
         
         
 
-        this.dataSource = new MatTableDataSource<String>(array_all);
+        this.dataSource = new MatTableDataSource<String>(items);
       })
   
     })
