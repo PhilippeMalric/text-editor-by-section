@@ -115,14 +115,10 @@ body {
 .red {
   color: red;
 }
-.mat-button.mat-primary:disabled {
-  color: rgb(77, 77, 69) !important;
-}
-
-.mat-button[disabled][disabled] {
-  color: rgb(77, 77, 69);
-}
 
 .center-text {
   text-align: center !important;
+}
+.mat-button[disabled][disabled]{
+  color:rgb(70, 88, 60)!important;
 }

@@ -17,6 +17,7 @@ import { AuthentificationComponent } from './components/authentification/authent
 import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 const routes: Routes = [
   {
@@ -55,7 +56,7 @@ const routes: Routes = [
   
   {
     path: 'Quiz',
-    component: PropositionsComponent,
+    component: QuizComponent,
     canActivate: [NameGuardService]
   },
   

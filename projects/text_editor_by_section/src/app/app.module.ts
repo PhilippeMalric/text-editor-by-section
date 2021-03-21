@@ -166,6 +166,7 @@ import { EnregistrementComponent } from './components/enregistrement/enregistrem
 import { AuthentificationComponent } from './components/authentification/authentification.component';
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -262,7 +263,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     EnregistrementComponent,
     AuthentificationComponent,
     ResetMotDePasseComponent,
-    GoogleSheetComponent
+    GoogleSheetComponent,
+    QuizComponent
   ],
   entryComponents: [
     EmailComponent,

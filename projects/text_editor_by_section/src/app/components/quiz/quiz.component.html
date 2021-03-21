@@ -1,0 +1,38 @@
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+          Quiz
+        </ng-template>
+        
+        <div class="container">
+            <mat-card class="vertical-center">
+                <mat-card-title class="header" >
+                   
+                   Question!
+            
+                </mat-card-title>
+
+                <mat-card-subtitle>
+                    Sous-question
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <p>Ceci est une question test.</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary">Oui</button>
+                    <button mat-raised-button color="primary">Non</button>
+                    <button mat-raised-button color="primary">Je ne sais pas</button>
+                    <button mat-raised-button color="primary">J'aime mieux ne pas le dire</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+
+
+      </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        Récapitulatif
+      </ng-template>
+      <anms-propositions></anms-propositions>
+    </mat-tab>
+</mat-tab-group>
