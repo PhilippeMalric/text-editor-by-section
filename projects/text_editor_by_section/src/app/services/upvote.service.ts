@@ -29,7 +29,7 @@ export class UpvoteService {
     this.gameService.userEmail.pipe(take(1)).subscribe((userEmail)=>{
       console.log('UpdateProp');
       let data = {};
-      data[userId] = { approuve: false, prop: prop, email:userEmail };
+      data[userId] = {delete: false, approuve: false, prop: prop, email:userEmail };
       this.db.object(`propositions/${itemId}/`).update(data);
 
     })

@@ -216,7 +216,7 @@ export class PropositionsComponent implements OnInit, OnDestroy {
       console.log(this.section.id);
       if (result && result != '') {
         let data = {};
-        data[this.displayName] = { approuve: false, prop: result };
+        data[this.displayName] = { delete: false,approuve: false, prop: result };
         this.db.object(`propositions/${this.section.id}/`).update(data);
       }
     });

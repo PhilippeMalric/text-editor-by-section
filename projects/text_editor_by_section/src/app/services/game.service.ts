@@ -113,6 +113,14 @@ export class GameService {
     
     this.db.object("propositions/"+item+"/"+name).update(data)
   }
+  delete_prop(item,name:string,text){
+    let data = {prop:text,delete:true}
+    console.log("chemin")
+    console.log("propositions/"+item+"/"+name);
+    
+    this.db.object("propositions/"+item+"/"+name).update(data)
+  }
+
 
   get_props2 = ()=>{
 
@@ -121,7 +129,7 @@ export class GameService {
   }
   voir_props2 = (item)=>{
 
-    return this.db.object(`propositions/${item.nom}`).valueChanges()
+    return this.db.object(`propositions/${item.nomunique}`).valueChanges()
   
   }
   get_upvote = ()=>{

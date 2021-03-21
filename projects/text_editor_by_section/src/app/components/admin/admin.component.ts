@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
   sub0: Subscription;
   subAllPrps: Subscription;
   props: unknown;
-  mapNom_to_non_accepted_prop: any;
+  mapNom_to_non_delete_prop: any;
   votes: any;
   minus: {};
   egale: {};
@@ -55,12 +55,12 @@ export class AdminComponent implements OnInit {
       console.log(props)
       this.props = props
 
-      this.mapNom_to_non_accepted_prop = {}
+      this.mapNom_to_non_delete_prop = {}
 
       for(let e of Object.keys(props)){
-        this.mapNom_to_non_accepted_prop[e] = Object.keys(props[e]).filter((key)=>{
+        this.mapNom_to_non_delete_prop[e] = Object.keys(props[e]).filter((key)=>{
 
-          return ! props[e][key].approuve
+          return ! props[e][key].delete
 
         }).length
 
@@ -95,7 +95,7 @@ export class AdminComponent implements OnInit {
         console.log(items)
         
         for(let e of items){
-          e.props_non_acc = this.mapNom_to_non_accepted_prop[e.nomunique]
+          e.props_non_delete = this.mapNom_to_non_delete_prop[e.nomunique]
           e.props_acc = 0
           e.moins = this.minus[e.nomunique]
           e.egale = this.egale[e.nomunique]
@@ -157,14 +157,14 @@ export class AdminComponent implements OnInit {
       console.log("props")
       console.log(props)
 
-        let txt_props = Object.keys(props).map((x)=>{return {name:x,txt:props[x].prop,approuve:props[x].approuve}}).filter((x)=>{return ! x.approuve})
+        let txt_props = Object.keys(props).map((x)=>{return {name:x,txt:props[x].prop,approuve:props[x].approuve,delete:props[x].delete}}).filter((x)=>{return ! x.delete})
         
         console.log("txt_props")
         console.log(txt_props)
         
       const dialogRef = this.dialog.open(DialogPropositionAdmin, {
         width: '70%',
-        data: {props: txt_props,text:item.txt,nom:item.nom}
+        data: {props: txt_props,text:item.txt,nom:item.nomunique}
       });
     
       dialogRef.afterClosed().subscribe(result => {
@@ -230,7 +230,10 @@ export class DialogPropositionAdmin {
     this.gameService.approuve(nom,item.name,item.txt)
     this.dialogRef.close();
   }
-  
+  delete(nom,item){
+    this.gameService.delete_prop(nom,item.name,item.txt)
+    this.dialogRef.close();
+  }
 
 }
 

@@ -27,8 +27,9 @@ export class PropositionNavComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("test1678-----------------------------------------------")
-    this.data2 =  this.data.pipe(withLatestFrom(this.gameService.get_projet_de_loi()), map((item)=>{
-
+    this.data2 =  this.data.pipe(withLatestFrom(this.gameService.get_projet_de_loi3()), map((item)=>{
+      console.log("Allo-----------------------------------------------")
+      console.log(item)
       let proposition = item[0]
       let projet_de_loi = item[1]
 
@@ -40,10 +41,10 @@ export class PropositionNavComponent implements OnInit {
       let flatP = this.flattenObject(proposition)
       let flatPr = this.flattenObject(projet_de_loi)
       let propArray = this.createArrayPropositions(flatP)
-      console.log(propArray)
+     
 
-      console.log("Allo-----------------------------------------------")
-      console.log(item)
+      console.log("Allo2-----------------------------------------------")
+      console.log(propArray)
       return propArray
     }))
     
@@ -100,7 +101,7 @@ export class PropositionNavComponent implements OnInit {
   }
 
   downloadPDL() {
-    this.gameService.get_projet_de_loi2().pipe(take(1)).subscribe(((data:any)=>{
+    this.gameService.get_projet_de_loi3().pipe(take(1)).subscribe(((data:any)=>{
       console.log(data)
       const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
       const header = Object.keys(data[0]);
