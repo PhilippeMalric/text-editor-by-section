@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
   languages = ['fr'];
   navigation = [
     { link: 'mode_d_emploi', label: 'anms.menu.about' },
-    { link: 'Projet_de_loi', label: 'anms.menu.game' }
+    { link: 'Quiz', label: 'anms.menu.game' }
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -148,12 +148,7 @@ export class AppComponent implements OnInit {
     },60000)
 
     */
-    setTimeout(()=>{
-      if(this.displayName == ""){
-        this.notificationService.default("Écrivez à : projet.de.loi.accq@gmail.com pour toutes questions!")
-      }
-     
-    },3000)
+  
 
     this.gameService.user.next(this.displayName);
     this.subscription1 = this.gameService.user.subscribe(user => {

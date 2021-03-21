@@ -54,7 +54,7 @@ const routes: Routes = [
   },
   
   {
-    path: 'Projet_de_loi',
+    path: 'Quiz',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
   },

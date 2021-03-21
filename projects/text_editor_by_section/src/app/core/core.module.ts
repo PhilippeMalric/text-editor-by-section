@@ -135,7 +135,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-          name: 'Projet de loi ACCQ'
+          name: 'Quiz Famille Malric'
         }),
 
     // 3rd party
