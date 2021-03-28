@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'anms-graph-vote',
@@ -7,22 +7,18 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 })
 export class GraphVoteComponent implements OnInit {
 
-  @Input() greenH : Number
-  @Input() yellowH : Number
-  @Input() redH : Number
+  @Input() choixDeReponses : any
+  wi= 0
 
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
     
 
    }
 
   ngOnInit(): void {
 
-    this.greenH = isNaN(this.greenH.valueOf())?0:this.greenH
-
-    this.yellowH = isNaN(this.yellowH.valueOf())?0:this.yellowH
-    this.redH = isNaN(this.redH.valueOf())?0:this.redH
+    
 
     //console.log(this.greenH)
     //console.log(this.yellowH)
@@ -30,6 +26,34 @@ export class GraphVoteComponent implements OnInit {
  
   }
 
+  ngAfterViewInit(){
+  console.log("choixDeReponses inside stat")
+  
+  console.log(this.choixDeReponses)
+  let compte = this.choixDeReponses.map((item)=>{
+    let number_of_vote = 0
+    if("stat" in item){
+      number_of_vote = item["stat"].length
+    }
+    item["vote"] = number_of_vote
+    return number_of_vote
+  })
+  let somme = compte.reduce((a, b) => a + b, 0)
+
+  this.wi = (80*this.choixDeReponses.length)+10
+
+    this.choixDeReponses.map((item,i)=>{
+      item["x"] = 10 + i*70
+      item["x_label"] = 20 + i*70
+
+      item["y"] = isNaN(100-((item["vote"] / somme)*100))?0:100-((item["vote"] / somme)*100)
+      item["h"] = isNaN(((item["vote"] / somme)*100))?0:((item["vote"] / somme)*100)
+    })
+
+
+
+  this.changeDetectorRef.markForCheck();
+}
 
 
 /*

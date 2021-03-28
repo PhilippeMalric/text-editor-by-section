@@ -176,10 +176,10 @@
       </div>
       <div style="border-style: groove;margin:5px;">
         
-        <div *ngIf="!(is_bottom_sheet_opened|async)" style="margin:auto;margin-top:5px;margin-bottom:5px;width: fit-content;">
+        <div *ngIf="!(is_bottom_sheet_opened|async)" style="margin-right:auto;margin-left:auto;margin-top:5px;margin-bottom:5px;width: 30px">
           <button  mat-raised-button color="primary" (click)="openBottomSheet()">Information</button>
         </div>
-        <div *ngIf="is_bottom_sheet_opened|async" style="margin:auto;width: fit-content;">
+        <div *ngIf="is_bottom_sheet_opened|async" style="margin:auto;width: fit-content;width: 30px">
           <button  mat-raised-button color="primary" (click)="closeBottomSheet()">Fermer</button>
         </div>
       </div>

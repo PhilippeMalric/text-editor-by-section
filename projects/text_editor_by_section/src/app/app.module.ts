@@ -167,6 +167,9 @@ import { AuthentificationComponent } from './components/authentification/authent
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { DialogPropositionQuiz, QuizComponentTest } from './components/questionComponents/quiz/quiz.component';
+import { DialogPropositionQuizSC, SingleChoiceComponent } from './components/questionComponents/quiz-single-choice/quizSingleChoice.component';
+
 
 export class MyHammerConfig extends HammerGestureConfig {}
 
@@ -245,7 +248,7 @@ export class MyHammerConfig extends HammerGestureConfig {}
     Edit_text_by_sectionsComponent,
 
     ExpressionComponent,
-
+    SingleChoiceComponent,
     UpvoteButtonComponent,
     DialogPropositionVote,
     DialogCommentaireSection,
@@ -264,15 +267,23 @@ export class MyHammerConfig extends HammerGestureConfig {}
     AuthentificationComponent,
     ResetMotDePasseComponent,
     GoogleSheetComponent,
-    QuizComponent
+    QuizComponent,
+    QuizComponentTest,
+    DialogPropositionQuiz,
+    DialogPropositionQuizSC
   ],
   entryComponents: [
+    SingleChoiceComponent,
+    UpvoteButtonComponent,
     EmailComponent,
     DialogPropositionAdmin,
     DialogVotersAdmin,
     DialogCommentaireSection,
     DialogPropositionVote,
-    DialogInfo
+    DialogPropositionQuiz,
+    DialogInfo,
+    QuizComponentTest,
+    DialogPropositionQuizSC
   ],
   providers: [
     UpvoteService,

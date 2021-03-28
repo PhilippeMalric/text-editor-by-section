@@ -5,25 +5,25 @@
         </ng-template>
         
         <div class="container">
+            
             <mat-card class="vertical-center">
                 <mat-card-title class="header" >
                    
-                   Question!
+                   Quiz de la famille Malric!
             
                 </mat-card-title>
 
                 <mat-card-subtitle>
-                    Sous-question
+                    Testez vos connaissances générales
                 </mat-card-subtitle>
                 <mat-card-content>
-                    <p>Ceci est une question test.</p>
+                    <div [ngClass]="{'rigth':!small,center:small}" *ngIf="vote  == 'oui'">
+                        <template #questionContainer>
+                        </template>
+                        
+                    </div>
                 </mat-card-content>
-                <mat-card-actions>
-                    <button mat-raised-button color="primary">Oui</button>
-                    <button mat-raised-button color="primary">Non</button>
-                    <button mat-raised-button color="primary">Je ne sais pas</button>
-                    <button mat-raised-button color="primary">J'aime mieux ne pas le dire</button>
-                </mat-card-actions>
+            
             </mat-card>
         </div>
 

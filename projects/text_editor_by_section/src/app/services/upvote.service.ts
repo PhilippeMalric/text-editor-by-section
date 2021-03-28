@@ -11,6 +11,27 @@ export class UpvoteService {
     private db: AngularFireDatabase
   ) {}
 
+
+
+  getCurrentItem(){
+
+    return this.db
+      .object(`itemId/`)
+      .valueChanges()
+      .pipe(
+        tap(item => {
+          //console.log('vote');
+          //console.log(item);
+        })
+      );
+  }
+
+setCurrentItem(itemId){
+
+    return this.db
+      .object(`itemId/`).set(itemId)
+  }
+
   getItemVotes(itemId): any {
     // Gets total votes
     //console.log(itemId);

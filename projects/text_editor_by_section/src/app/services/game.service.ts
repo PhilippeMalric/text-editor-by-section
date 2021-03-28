@@ -124,6 +124,11 @@ export class GameService {
     return this.db.object(`propositions/${item.nom}`).valueChanges()
   
   }
+  voir_props3 = (item)=>{
+
+    return this.db.object(`propositions/${item}`).valueChanges()
+  
+  }
   get_upvote = ()=>{
     return this.db.object(`upvotes/`).valueChanges()
    }
@@ -132,6 +137,102 @@ export class GameService {
     return this.http.get('assets/projet_de_loi.json')
    }
    
+   get_projet_de_loi4 = () => {
+    return this.googleSheetService.getCooker().pipe(
+      map((item: any[]) => {
+        console.log(
+          '-------------------------------------------------projet_de_loi4!------------'
+        );
+        console.log(item);
+        let titres = item.filter(element => {
+          return element.nomunique.charAt(0) == 't';
+        });
+
+        let sections = titres.map((titre: any) => {
+          let index = titre.nomunique.split('_')[1];
+          let sousSections = item.filter(element => {
+            let h = element.nomunique.charAt(0) == 't';
+            let index_e = element.nomunique.split('_')[1].split('_')[0];
+            //console.log(element.nomunique.split('_')[1])
+            //console.log(index_e)
+            return index == index_e && !h;
+          });
+
+          let groupes = sousSections.map((data)=>{
+            return ""+data.groupe
+          })
+          let groupes_unique = this.uniqueArray2(groupes)
+
+          let dico_det_premier = {}
+          let item_by_groupe = groupes_unique.map((data,i)=>{
+
+            return sousSections.filter((item)=>{
+              return data == item.groupe
+            })
+
+          })
+
+          let first_item_of_groupe = item_by_groupe.map((items)=>{
+            return items[0].nomunique
+          })
+
+          console.log("first_item_of_groupe")
+
+          console.log(first_item_of_groupe)
+
+          let ss2 = sousSections.map((item,i)=>{
+
+            let premier = false
+            if(first_item_of_groupe.indexOf(item.nomunique) != -1){
+              premier = true
+            }
+
+            let result = new SousSection(item.nomunique,item.texte,item.vote,premier,item.nomunique.charAt(0),item.groupe)
+
+            return result
+
+          })
+
+
+          //color
+          
+
+
+          
+          let dico_groupes_unique = {}
+          groupes_unique.map((data,i)=>{
+
+            dico_groupes_unique[data] = i%2
+
+          })
+
+          ss2.map((data,i)=>{
+            let modulo2 = i%2
+            let colorA = ["White","lightgray"]
+            let color = colorA[dico_groupes_unique[""+data.groupe]]
+
+            ss2[i].color = color
+
+          })
+
+          console.log("ss2")
+          console.log(ss2)
+          let titre_desc = titre.texte;
+          let id = titre.nomunique;
+          let s = new Section(id, titre_desc, ss2);
+          return s;
+        });
+        /*
+      sections.map((section)=>{
+
+        section.printSection()
+
+      })
+      */
+        return sections;
+      }))
+    }
+
    get_projet_de_loi3 = () => {
     return this.googleSheetService.getCooker().pipe(
       map((item: any[]) => {

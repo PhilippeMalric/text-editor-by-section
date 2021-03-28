@@ -6,6 +6,7 @@ import { Item } from '../table/table.component';
 import { Subscription } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { GoogleSheetService } from '../../services/google-sheet.service';
+import { UpvoteService } from '../../services/upvote.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AdminComponent implements OnInit {
   dataSource:MatTableDataSource<String>;
   dataSource_propositions:MatTableDataSource<String>;
   users: String[];
-  displayedColumns: string[] = ['name1','txt1',"graph","plus1","egale1","moins1","button1"];
+  displayedColumns: string[] = ['choose','name1','txt1',"graph","plus1","egale1","moins1","button1"];
   displayedColumns2: string[] = ['name2','txt2','delete2'];
   displayedColumns3: string[] = ['name3',"plus3","egale3","moins3","delete3"];
   sub1: Subscription;
@@ -34,7 +35,10 @@ export class AdminComponent implements OnInit {
   subpropo: any;
   sub5: Subscription;
   dataP: any;
-  constructor( private googleSheetService : GoogleSheetService,private gameService:GameService,public dialog: MatDialog) {}
+  constructor(private upvoteService : UpvoteService,
+    private googleSheetService : GoogleSheetService,
+    private gameService:GameService,
+    public dialog: MatDialog) {}
 
   
   ngOnDestroy(): void {
@@ -123,7 +127,16 @@ export class AdminComponent implements OnInit {
     
   }
 
+  choose = (id)=>{
+    this.upvoteService.setCurrentItem(id)
+  }
 
+
+  setCurrentItem(){
+
+    this.upvoteService.setCurrentItem("")
+
+  }
 
   show_voters = (item,voters)=>{
 
