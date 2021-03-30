@@ -169,6 +169,7 @@ import { GoogleSheetComponent } from './components/google-sheet/google-sheet.com
 import { QuizComponent } from './components/quiz/quiz.component';
 import { DialogPropositionQuiz, QuizComponentTest } from './components/questionComponents/quiz/quiz.component';
 import { DialogPropositionQuizSC, SingleChoiceComponent } from './components/questionComponents/quiz-single-choice/quizSingleChoice.component';
+import { GraphVoteComponent2 } from './components/graph-vote2/graph-vote.component';
 
 
 export class MyHammerConfig extends HammerGestureConfig {}
@@ -270,9 +271,11 @@ export class MyHammerConfig extends HammerGestureConfig {}
     QuizComponent,
     QuizComponentTest,
     DialogPropositionQuiz,
-    DialogPropositionQuizSC
+    DialogPropositionQuizSC,
+    GraphVoteComponent2
   ],
   entryComponents: [
+    GraphVoteComponent2,
     SingleChoiceComponent,
     UpvoteButtonComponent,
     EmailComponent,
