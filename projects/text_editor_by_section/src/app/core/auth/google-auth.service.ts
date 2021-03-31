@@ -51,7 +51,7 @@ signInLink(email){
   var actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this
     // URL must be in the authorized domains list in the Firebase Console.
-    //url:"https://text-editor-by-section.web.app/",
+    //url:"https://projet-de-loi-accq.web.app/",
     url: 'http://localhost:4200',
     // This must be true.
     handleCodeInApp: true
@@ -110,7 +110,7 @@ enregistrement = (email,password)=>{
     var actionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // URL must be in the authorized domains list in the Firebase Console.
-      url:"https://text-editor-by-section.web.app/",
+      url:"https://projet-de-loi-accq.web.app/",
       //url: 'http://localhost:4200',
       // This must be true.
       handleCodeInApp: true
@@ -150,7 +150,7 @@ reset_password = (email)=>{
   var actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this
     // URL must be in the authorized domains list in the Firebase Console.
-    url:"https://text-editor-by-section.web.app/authentification",
+    url:"https://projet-de-loi-accq.web.app/authentification",
     //url: 'http://localhost:4200',
     // This must be true.
     handleCodeInApp: true
