@@ -19,7 +19,7 @@ export class NotificationService {
 
   info(message: string) {
     this.show(message, {
-      duration: 5000,
+      duration: 15000,
       panelClass: ['info-notification-overlay','center-text']
     });
   }

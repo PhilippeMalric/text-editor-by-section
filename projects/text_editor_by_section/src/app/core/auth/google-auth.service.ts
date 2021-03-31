@@ -122,7 +122,7 @@ enregistrement = (email,password)=>{
     console.log(user)
     this.setNameAndPw(user)
     */
-    this.notificationService.info("Vérifiez votre adresse courriel.")
+    this.notificationService.info("Vérifiez votre adresse courriel. N'oubliez pas de vérifier les pourriels ...")
     //this.router.navigate(["mode_d_emploi"])
     //".", "#", "$", "[", or "]"
 
@@ -147,12 +147,20 @@ setNameAndPw = (user)=>{
 }
 
 reset_password = (email)=>{
+  var actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be in the authorized domains list in the Firebase Console.
+    url:"https://text-editor-by-section.web.app/authentification",
+    //url: 'http://localhost:4200',
+    // This must be true.
+    handleCodeInApp: true
+  };
   firebase.auth().useDeviceLanguage()
-  firebase.auth().sendPasswordResetEmail(email).then((data) => {
-   
+  firebase.auth().sendPasswordResetEmail(email,actionCodeSettings).then((data) => {
+    this.notificationService.info("Vérifiez votre adresse courriel. N'oubliez pas de vérifier les pourriels ...")
     console.log(data)
     //this.gameService.user.next()
-
+    //this.router.navigate(['/authentification'])
   })
   .catch((error) => {
     var errorCode = error.code;

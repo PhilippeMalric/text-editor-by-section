@@ -60,7 +60,7 @@ export class GameService {
   mot: number;
   cats = ['ring'];
   cat = 'ring';
-  path = 'items/ring';
+  
   my_cat = '';
   items: BehaviorSubject<Item[]>;
   user: BehaviorSubject<string>;
@@ -82,15 +82,7 @@ export class GameService {
     this.nom_du_joueur$ = new BehaviorSubject<String>('');
 
     this.textName = new BehaviorSubject<string>('');
-    this.db
-      .object('/textName/')
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe((name: string) => {
-        console.log('DB');
-        console.log(name);
-        this.textName.next(name);
-      });
+    
 
     this.items = new BehaviorSubject<Item[]>([]);
     this.user = new BehaviorSubject<string>('Mon_nom');
@@ -323,9 +315,7 @@ export class GameService {
     return this.db.object('users').valueChanges();
   };
 
-  change_cat = path => {
-    this.path = path;
-  };
+
 
   probe_db = () => {
     this.db
@@ -336,82 +326,6 @@ export class GameService {
         console.log('fromdb : ', items);
         console.log(items.dict);
       });
-  };
-
-  add_items_user = (items: Item[], uid) => {
-    let path = 'users/' + uid;
-    this.add_items(items, path);
-  };
-
-  add_items = (items: Item[], path) => {
-    console.log(items);
-    this.db.object(path).set({ items: items });
-  };
-
-  add_one_item_gen = (item: Item) => {
-    this.add_one_item(item, 'items/' + this.cat);
-  };
-
-  add_one_item_user = (item: Item, uid) => {
-    let path = 'users/' + uid + '/data';
-    this.add_one_item(item, path);
-  };
-
-  add_one_item = (item: Item, path) => {
-    this.db
-      .object(path)
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe((items: any) => {
-        console.log('fromdb : ', items);
-        if (!items || items == '' || items == '0') {
-          item.id = uuid();
-          let my_items = {};
-          my_items['dict'] = {};
-          my_items['dict']['1'] = item;
-          this.db.object(path).set(my_items);
-        } else {
-          console.log(items);
-          let itemsD = items['dict'];
-          console.log(itemsD);
-          //let my_item = {cards:{}}
-          //my_item["cards"]["item1"] = item
-          //this.db.object("items").set(my_item)
-          item.id = uuid();
-          let my_items = {};
-          my_items['dict'] = itemsD;
-          my_items['dict']['' + item.id] = item;
-
-          this.db.object(path).set(my_items);
-        }
-      });
-  };
-
-  get_items = () => {
-    console.log('this.path');
-    console.log(this.path);
-    return this.db
-      .object(this.path)
-      .valueChanges()
-      .pipe(
-        map((itemsD: any) => {
-          console.log('DB');
-          console.log(itemsD);
-
-          if (itemsD && 'dict' in itemsD) {
-            let array = [];
-            if (itemsD != '') {
-              for (let i of Object.keys(itemsD.dict)) {
-                array.push(itemsD.dict[i]);
-              }
-            }
-            return array;
-          } else {
-            return [];
-          }
-        }),
-        tap(console.log)
-      );
   };
 
   get_items_user = uid => {
@@ -436,23 +350,6 @@ export class GameService {
       );
   };
 
-  removeALL = () => {
-    console.log('remove_all');
-    this.db.object(this.path).set('');
-  };
-
-  remove = (item: Item) => {
-    //console.log(this.cat)
-    this.db
-      .object(this.path)
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe((items: any) => {
-        items.dict['' + item.id] = null;
-        this.db.object(this.path).update(items);
-      });
-  };
-
   remove_by_user = (item: Item, uid) => {
     this.db
       .object('users/' + uid + '/data')
@@ -464,24 +361,12 @@ export class GameService {
       });
   };
 
-  init_db = () => {
-    let my_items = {};
-    my_items['dict'] = {};
-    this.db.object(this.path).set(my_items);
-  };
-
-  getObservable = () => {
-    return this.db.object(this.path).valueChanges();
-  };
 
   getObservable2 = (path) => {
     return this.db.object(path).valueChanges();
   };
 
-  startGame = () => {
-    console.log(this.path);
-    return this.http.get<any[]>('http://localhost:4000/api');
-  };
+
 
   getAddOneHour = () => {
     this.heureDispo = this.heureDispo + 1;

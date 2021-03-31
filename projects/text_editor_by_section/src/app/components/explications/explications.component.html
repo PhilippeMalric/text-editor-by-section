@@ -10,24 +10,39 @@
         <mat-card-content>
             
                 <h2>Authentification / Inscription</h2>
-                <h3>Ordinateur</h3>
-                <p>
-                    Pour vous inscrire, allez dans la barre en haut, vers la droite et cliquez sur : «Connexion».<br>
-                    Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé. (Création d'un compte)<br>
-                    Puis vous connecter.<br>
-                    Les fois suivantes, vous pourrez vous connecter avec votre mot de passe. (Authentification)<br> 
-                </p>
-                <h3>Téléphone ou une tablette</h3>
-                <p>
-                    Sur un téléphone ou une tablette, cliquez sur les 3 barres horizontales, en haut à gauche. <br> 
-                </p>
-                <h4>
-                    Oublie de votre mot de passe
-                </h4>
-                <p>
-                    Si vous oubliez votre mot de passe, vous devrez inscrire votre courriel et cliquez sur : «Réinitialiser le mot de passe» dans le bas de la page de connexion.<br>
-                    Ensuite, allez le réinitialiser à partir du lien envoyé à votre courriel.
-                </p>
+                <div *ngIf="large">
+                    
+                    <p>
+                        Pour vous inscrire, allez dans la barre en haut, vers la droite et cliquez sur : «Connexion».<br>
+                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
+                        (Il peut se retrouver dans les pourriels) 
+                        Le compte permet de diminuer les attaques de pirates.<br><br>
+
+                        Il faut ensuite se connecter (suivez le lien dans votre courriel).<br>
+                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement. (Authentification)<br> 
+                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.<br>
+                        Si vous oubliez votre mot de passe, entrez votre courriel dans le bas de la page : «Authentification»
+                    </p>
+
+                </div>
+                <div *ngIf="!large">
+                    
+                    <p>
+                        Cliquez sur les 3 barres horizontales, en haut à gauche. <br> 
+                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
+                        (Il peut se retrouver dans les pourriels) 
+                        Le compte permet de diminuer les attaques de pirates.<br><br>
+
+                        Il faut ensuite se connecter (suivez le lien dans votre courriel).<br>
+                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement. (Authentification)<br> 
+                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.<br>
+                        Si vous oubliez votre mot de passe, entrez votre courriel dans la page : Oublie de mot de passe
+                    </p>
+                    <h4>
+                        Oublie de votre mot de passe
+                    </h4>
+                </div>
+                
                 <h2>La page <i>Projet de loi</i></h2>
                 <p>
                     L'onglet : <i>Projet de loi</i> sera débaré lorsque vous serez authentifié.<br>
@@ -56,7 +71,7 @@
                 </p>
                 <p>
                     Vous pouvez revenir à tout moment pour changer vos réponses.
-                    Notez que cette phase de consultation se termine le <b> 27 mars 2021 à 23 h 00</b>  et que vous ne pourrez plus vous prononcer
+                    Notez que cette phase de consultation se termine le <b> 15 mai 2021 à 23 h 00</b>  et que vous ne pourrez plus vous prononcer
                     sur ce volet par la suite.
                 </p>
                 <p><strong>Écrivez à : projet.de.loi.accq@gmail.com pour toutes questions!</strong></p>

@@ -91,6 +91,8 @@ export class AppComponent implements OnInit {
   displayName: string = '';
   subscription1: Subscription;
   isAuthenticated2: any;
+  large = true;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     public dialog: MatDialog,
@@ -104,7 +106,8 @@ export class AppComponent implements OnInit {
     public gameService: GameService,
     private notificationService: NotificationService,
     private googleAuthService:GoogleAuthService,
-    private dataService: DataService
+    private dataService: DataService,
+    
   ) {
     console.log('App constructor!!');
 
@@ -121,10 +124,7 @@ export class AppComponent implements OnInit {
       })
     );
 
-    this.gameService.getObservable().subscribe(data => {
-      console.log('data');
-      console.log(data);
-    });
+ 
   }
 
   private static isIEorEdgeOrSafari() {
@@ -189,6 +189,12 @@ export class AppComponent implements OnInit {
   ngOnDestroy = () => {
     this.subscription1.unsubscribe();
   };
+
+
+ 
+
+
+
 
   logOut2 = () => {
     this.gameService.user.next('');
