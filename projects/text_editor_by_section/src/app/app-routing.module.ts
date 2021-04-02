@@ -21,7 +21,7 @@ import { GoogleSheetComponent } from './components/google-sheet/google-sheet.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'message',
+    redirectTo: 'mode_d_emploi',
     pathMatch: 'full'
   },
   {
@@ -83,7 +83,7 @@ const routes: Routes = [
   
   {
     path: '**',
-    redirectTo: 'message'
+    redirectTo: 'mode_d_emploi'
   }
 ];
 
