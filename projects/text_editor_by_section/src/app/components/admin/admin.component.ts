@@ -127,7 +127,7 @@ export class AdminComponent implements OnInit {
 
   show_voters = (item,voters)=>{
 
-    
+    /*
     const dialogRef = this.dialog.open(DialogVotersAdmin, {
       width: '70%',
       data: {item: item.txt,names: voters}
@@ -141,6 +141,7 @@ export class AdminComponent implements OnInit {
         //this.upvoteService.updateUserProp(this.itemId, this.userId, result)
       }
     })
+    */
   }
 
 
