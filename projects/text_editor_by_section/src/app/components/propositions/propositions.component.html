@@ -33,8 +33,8 @@
             
           
             <mat-card-content>
-                <mat-card  *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px','background-color':sousSection?.color}">
-                    <mat-card-content [ngClass]="{'sousSection':!small,amendement:sousSection?.premier}">
+                <mat-card   *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px','filter':sousSection?.color}">
+                    <mat-card-content class="box2" [ngClass]="{'sousSection':!small,amendement:sousSection?.premier}">
                         <div [class]="sousSection?.type">
                             {{sousSection.texte}}
                         </div>
@@ -69,6 +69,6 @@
 
 <div class="center">
     <button *ngIf="section_int == sections.length-1" mat-raised-button color="accent" (click)="remerciement()" class="d-none d-sm-inline">
-        <mat-icon>check</mat-icon><span>Clickez ici pour mettre fin au questionnaire</span>
+        <mat-icon>check</mat-icon><span>Cliquez ici pour mettre fin au questionnaire</span>
     </button>
 </div>

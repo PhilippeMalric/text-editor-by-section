@@ -8,6 +8,11 @@
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: large;
 }
+
+.box2:hover{
+  filter: drop-shadow(2px 4px 6px black);
+}
+
 .sousSection {
   display: flex;
   margin-top: 20px;

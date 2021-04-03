@@ -150,7 +150,7 @@ export class AppComponent implements OnInit {
     */
     setTimeout(()=>{
       if(this.displayName == ""){
-        this.notificationService.default("Écrivez à : projet.de.loi.accq@gmail.com pour toutes questions!")
+        this.notificationService.default("Pour nous rejoindre, écrivez à : rendez-vous2021@accq.quebec")
       }
      
     },3000)

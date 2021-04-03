@@ -13,24 +13,30 @@
                 <div *ngIf="large && !(isAuthenticated$ | async)">
                     
                     <p>
+                        Nous amorçons la Phase 3 de la rédaction collaborative du projet de loi de
+                        convocation initié par l’ACCQ.
+                    </p>
+
+                    <p>
+                        Toutes et tous êtes les bienvenus à cette étape qui ouvre la rédaction à la
+                        participation de l’ensemble de la population du Québec.
+                    </p>
+                    <p>
+                        Veuillez d’abord créer un compte et l’initialiser en cliquant sur le lien envoyé par
+                        courriel. (<a href="#/enregistrement">Création d'un compte</a>)
+                    </p>
+                    <p>
+                        Attention ! Le lien envoyé pourrait être dirigé vers votre boîte de courrier indésirable.
+                    </p>
+                    <p>
+                        Les fois suivantes, vous pourrez vous connecter directement avec votre mot de
+                        passe. (<a href="#/authentification">Authentification</a>)
+                    </p>
+                    <p>
                         Pour vous inscrire, allez dans la barre en haut, vers la droite et cliquez sur : «Connexion».
                     </p>
                     <p>
-                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
-                        (Il peut se retrouver dans les pourriels) .                        
-                    </p>
-                    <p>
-                        Le compte permet de diminuer les attaques de pirates informatiques.
-                    </p>
-                        
-                    <p>
-                        Il faut ensuite se connecter (suivez le lien dans votre courriel).
-                    </p>
-                    <p>
-                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement.
-                    </p>
-                    <p>
-                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.
+                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire cliquez sur : «Connexion».
                     </p>
                     <p>
                         Si vous <strong>oubliez votre mot de passe</strong> , entrez votre courriel dans le bas de la page : <a href="#/authentification">Authentification</a>
@@ -42,21 +48,31 @@
                 <div *ngIf="!large && !(isAuthenticated$ | async)">
                     
                     <p>
-                        Cliquez sur les 3 barres horizontales, en haut à gauche.
+                        Nous amorçons la Phase 3 de la rédaction collaborative du projet de loi de
+                        convocation initié par l’ACCQ.
+                    </p>
+
+                    <p>
+                        Toutes et tous êtes les bienvenus à cette étape qui ouvre la rédaction à la
+                        participation de l’ensemble de la population du Québec.
                     </p>
                     <p>
-                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
-                        (Il peut se retrouver dans les pourriels)
+                        Veuillez d’abord créer un compte et l’initialiser en cliquant sur le lien envoyé par
+                        courriel. (<a href="#/enregistrement">Création d'un compte</a>)
                     </p>
                     <p>
-                        Le compte permet de diminuer les attaques de pirates informatiques.
+                        Attention ! Le lien envoyé pourrait être dirigé vers votre boîte de courrier indésirable.
                     </p>
                     <p>
-                        Il faut ensuite se connecter (suivez le lien dans votre courriel).<br>
-                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement. (Authentification)
+                        Les fois suivantes, vous pourrez vous connecter directement avec votre mot de
+                        passe. (<a href="#/authentification">Authentification</a>)
+                    </p>
+
+                    <p>
+                        Pour vous inscrire, cliquez sur les 3 barres horizontales, en haut à gauche.
                     </p>
                     <p>
-                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.
+                        Il est possible aussi de se connecter via un compte <a (click)="authGoogle()">gmail (google)</a> .
                     </p>
                     <p>
                         Si vous oubliez votre mot de passe, entrez votre courriel dans la page : <a href="#/oublie_mot_de_passe">Oublie de mot de passe</a> 

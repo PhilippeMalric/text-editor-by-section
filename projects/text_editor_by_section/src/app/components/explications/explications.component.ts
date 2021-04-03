@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { select, Store } from '@ngrx/store';
+import { GoogleAuthService } from '../../core/auth/google-auth.service';
 import { selectIsAuthenticated } from '../../core/core.module';
 
 @Component({
@@ -15,7 +16,8 @@ export class ExplicationsComponent implements OnInit {
 
   constructor(private ref: ChangeDetectorRef,
     private observableMedia: MediaObserver,
-    private store: Store) { }
+    private store: Store,
+    private googleAuthService: GoogleAuthService) { }
 
   ngOnInit(): void {
     this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
@@ -36,4 +38,11 @@ export class ExplicationsComponent implements OnInit {
       this.ref.markForCheck();
       });
     }
+
+    authGoogle = ()=>{
+
+      this.googleAuthService.googleSignIn()
+
+    }
+
 }
