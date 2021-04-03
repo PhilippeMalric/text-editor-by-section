@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { select, Store } from '@ngrx/store';
+import { selectIsAuthenticated } from '../../core/core.module';
 
 @Component({
   selector: 'anms-explications',
@@ -9,11 +11,14 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 })
 export class ExplicationsComponent implements OnInit {
   large: boolean;
+  isAuthenticated$: any;
 
   constructor(private ref: ChangeDetectorRef,
-    private observableMedia: MediaObserver) { }
+    private observableMedia: MediaObserver,
+    private store: Store) { }
 
   ngOnInit(): void {
+    this.isAuthenticated$ = this.store.pipe(select(selectIsAuthenticated));
   }
   ngAfterContentInit() {
 

@@ -5,75 +5,138 @@
         </h1>
     <mat-card>
         <mat-card-title>
-            <h2>Bienvenue sur l'application web du rendez-vous 2021 de l'ACCQ</h2>
+            <h2>Bienvenue sur l'application de rédaction collaborative du Rendez-vous 2021 de l’ACCQ</h2>
         </mat-card-title>
         <mat-card-content>
             
-                <h2>Authentification / Inscription</h2>
-                <div *ngIf="large">
+                <h2 *ngIf="!(isAuthenticated$ | async)">Authentification / Inscription</h2>
+                <div *ngIf="large && !(isAuthenticated$ | async)">
                     
                     <p>
-                        Pour vous inscrire, allez dans la barre en haut, vers la droite et cliquez sur : «Connexion».<br>
-                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
-                        (Il peut se retrouver dans les pourriels) 
-                        Le compte permet de diminuer les attaques de pirates.<br><br>
-
-                        Il faut ensuite se connecter (suivez le lien dans votre courriel).<br>
-                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement. (Authentification)<br> 
-                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.<br>
-                        Si vous oubliez votre mot de passe, entrez votre courriel dans le bas de la page : «Authentification»
+                        Pour vous inscrire, allez dans la barre en haut, vers la droite et cliquez sur : «Connexion».
                     </p>
+                    <p>
+                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
+                        (Il peut se retrouver dans les pourriels) .                        
+                    </p>
+                    <p>
+                        Le compte permet de diminuer les attaques de pirates informatiques.
+                    </p>
+                        
+                    <p>
+                        Il faut ensuite se connecter (suivez le lien dans votre courriel).
+                    </p>
+                    <p>
+                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement.
+                    </p>
+                    <p>
+                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.
+                    </p>
+                    <p>
+                        Si vous <strong>oubliez votre mot de passe</strong> , entrez votre courriel dans le bas de la page : <a href="#/authentification">Authentification</a>
+                    </p>
+                        
+                    
 
                 </div>
-                <div *ngIf="!large">
+                <div *ngIf="!large && !(isAuthenticated$ | async)">
                     
                     <p>
-                        Cliquez sur les 3 barres horizontales, en haut à gauche. <br> 
-                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
-                        (Il peut se retrouver dans les pourriels) 
-                        Le compte permet de diminuer les attaques de pirates.<br><br>
-
-                        Il faut ensuite se connecter (suivez le lien dans votre courriel).<br>
-                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement. (Authentification)<br> 
-                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.<br>
-                        Si vous oubliez votre mot de passe, entrez votre courriel dans la page : Oublie de mot de passe
+                        Cliquez sur les 3 barres horizontales, en haut à gauche.
                     </p>
-                    
+                    <p>
+                        Si c'est la première fois, vous devrez créer un compte et le vérifier en cliquant sur le lien envoyé à votre courriel. 
+                        (Il peut se retrouver dans les pourriels)
+                    </p>
+                    <p>
+                        Le compte permet de diminuer les attaques de pirates informatiques.
+                    </p>
+                    <p>
+                        Il faut ensuite se connecter (suivez le lien dans votre courriel).<br>
+                        Les fois suivantes, vous pourrez vous connecter avec votre mot de passe directement. (Authentification)
+                    </p>
+                    <p>
+                        Il est possible aussi de se connecter via un compte gmail (google), pour ce faire aller dans connexion.
+                    </p>
+                    <p>
+                        Si vous oubliez votre mot de passe, entrez votre courriel dans la page : <a href="#/oublie_mot_de_passe">Oublie de mot de passe</a> 
+                    </p>
+                        
                 </div>
                 
                 <h2>La page <i>Projet de loi</i></h2>
                 <p>
                     L'onglet : <i>Projet de loi</i> sera débaré lorsque vous serez authentifié.<br>
-                    Les sections du document qui s'y trouve ont été 
-                    séparées afin de vous permettre de réagir au fur et à mesure de votre lecture. Vous pourrey aussi 
-                    proposer des modifications.
                 </p>
-               
+               <p>
+                Le projet de loi a été divisé en sections afin de vous permettre de réagir au fur et à
+                mesure de votre lecture. Vous pourrez aussi proposer des modifications si vous le
+                jugez à propos.
+               </p>
                 <p>
-                    Pour chacun des paragraphes, sélectionnez le bouton
-                    correspondant à votre opinion :
+                    Pour chacun des paragraphes, sélectionnez le bouton correspondant à votre opinion
                 </p>
-                <ul style="display:flex">
-                    <li style="margin-left: 5px;margin-right: 5px;" ><mat-icon>thumb_up</mat-icon> = En accord</li>
-                    <li style="margin-left: 5px;margin-right: 5px;"><mat-icon>thumbs_up_down</mat-icon> = Autre</li>
-                    <li style="margin-left: 5px;margin-right: 5px;"><mat-icon>thumb_down</mat-icon> = En désaccord</li>
+                <div>
+                    <ul style="display:flex;margin-left: auto;margin-right: auto;width: fit-content;">
+                        <li class="ml-4 mr-4" style="margin-left: 5px;margin-right: 5px;" ><mat-icon>thumb_up</mat-icon> = En accord</li>
+                        <li class="ml-4 mr-4" style="margin-left: 5px;margin-right: 5px;"><mat-icon>thumbs_up_down</mat-icon> = Autre/Indécis.e</li>
+                        <li class="ml-4 mr-4" style="margin-left: 5px;margin-right: 5px;"><mat-icon>thumb_down</mat-icon> = En désaccord</li>
+                    </ul>
+                </div>
+                
+                <p>
+                    Lorsqu'il y a des alternatives aux propositions (amendements), elles sont sous la
+                    proposition principale concernée.
+                </p>
+                <p>
+                    La proposition principale et ses amendements ont un arrière-plan de la même
+                    couleur.
+                </p>
+                <p>
+                    Lorsque vous cliquez sur le bouton « Nouvelle proposition », une fenêtre apparaît
+                    pour vous permettre d’inscrire une question, un commentaire, une suggestion ou
+                    une proposition.
+                </p>
+                <p>
+                    Vous pouvez revenir à tout moment pour compléter ou changer vos réponses. Notez
+                    que cette phase de consultation  <b> 15 mai 2021 à 23 h 00</b>.
+                </p>
+                <p>
+                    Toutes les propositions et leurs amendements, ainsi que toutes questions et
+                    commentaires reçus lors de cette 3 e  phase, seront traitées par l'équipe responsable
+                    de l’analyse et du suivi.  Cette équipe est également chargée de préparer un
+                    document de travail qui sera soumis aux participantes et participants de la <b>5e  Rencontre nationale de l’ACCQ</b> 
+                    qui se tiendra les <b>22 et 23 mai 2021 </b>. C’est lors de ce grand rassemblement 
+                    (en visioconférence) que sera adopté le texte officiel du <b>projet de loi de convocation l’assemblée constituante du Québec</b>.
+
+                </p>
+                <p>
+                    Toutes les propositions qui auront obtenu une adhésion de plus des 2/3 des
+                    participantes et participants ne seront pas en discussion lors de cette rencontre
+                    nationale.
+                </p>
+                <p>
+                    Consultez notre site internet pour tous les détails.  <a href="https://www.accq.quebec" target="_blank" >www.accq.quebec</a> 
+                </p>
+                <p>
+                    Vous pouvez également interagir sur nos pages Facebook en tout temps.
+                </p>
+                <ul class="lien">
+                    <li>
+                        <a href="https://www.facebook.com/groups/loideconvocation" target="_blank" >Groupe Facebook: Loi de convocation</a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/ConstituanteCitoyenne" target="_blank" >Page Facebook: Constituante Citoyenne</a>
+                    </li>
                 </ul>
+                
+                
+                <p><strong>Pour nous rejoindre, écrivez à : rendez-vous2021@accq.quebec </strong></p>
                 <p>
-                    Lorsqu'il y a des alternatives aux proppositions, elles sont sous la proposition pricipale et : ( amendement x) , apparrait au début.<br>
-                    La proposisition principale et ses amendements ont un arrière plan de la même couleur.
+                    Avant de commencer, nous vous invitons à lire notre manifeste. Cela ne vous pendra que
+                    cinq minutes. Et, si le contenu vous parle, rejoignez nos 4500 signataires ! 
+                    <a href="https://www.accq.quebec/signez-le-manifeste" target="_blank" >Manifeste</a>
                 </p>
-                <p>
-                    Lorsque vous cliquez sur le bouton « Nouvelle proposition », une fenêtre
-                    apparaît pour vous permettre d’inscrire une question, un
-                    commentaire, une suggestion ou une proposition à l'équipe en charge des consultations.
-                </p>
-                <p>
-                    Vous pouvez revenir à tout moment pour changer vos réponses.
-                    Notez que cette phase de consultation se termine le <b> 15 mai 2021 à 23 h 00</b>  et que vous ne pourrez plus vous prononcer
-                    sur ce volet par la suite.
-                </p>
-                <p><strong>Écrivez à : projet.de.loi.accq@gmail.com pour toutes questions!</strong></p>
-                    
         </mat-card-content>
     </mat-card>
 </div>

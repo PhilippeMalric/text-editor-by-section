@@ -204,7 +204,7 @@ export class GameService {
 
           ss2.map((data,i)=>{
             let modulo2 = i%2
-            let colorA = ["White","lightgray"]
+            let colorA = ["White","AliceBlue"]
             let color = colorA[dico_groupes_unique[""+data.groupe]]
 
             ss2[i].color = color
