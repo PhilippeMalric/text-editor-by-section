@@ -16,7 +16,7 @@ import { UpvoteButtonComponent } from '../upvote-button/upvote-button.component'
 })
 export class QuizComponent implements OnInit {
 
-  id="item_1_1"
+  id="item_1_2"
   displayName=""
   small: boolean;
   vote="oui"
@@ -125,7 +125,7 @@ export class QuizComponent implements OnInit {
           console.log(this.item)
           this.createComponent()
         }else{
-          this.item = undefined
+          this.item = "item_1_2"
         }
       }
      
@@ -145,27 +145,16 @@ export class QuizComponent implements OnInit {
   createComponent() {
     if(this.item){
       this.entry.clear();
+      
       if(this.item.type == "Question_opinion"){
         const factory = this.resolver.resolveComponentFactory(UpvoteButtonComponent);
         this.componentRef = this.entry.createComponent(factory);
-        this.componentRef.instance.userId = this.displayName;
-        this.componentRef.instance.itemId = this.item.nomunique;
+
       }else{
         const factory = this.resolver.resolveComponentFactory(SingleChoiceComponent);
         this.componentRef = this.entry.createComponent(factory);
-        this.componentRef.instance.userId = this.displayName;
-        this.componentRef.instance.itemId = this.item.nomunique;
+        
 
-        let c = true
-        let compteur = 1
-        let choixDeReponses = []
-        while(c){
-          let choix = this.item["x"+compteur]
-          choixDeReponses.push({code:compteur, texte:choix})
-          compteur++
-          c = (("x"+compteur) in this.item)?true:false;
-        }
-        this.componentRef.instance.choixDeReponses = choixDeReponses
       }
       this.changeDetectorRef.markForCheck();
     }

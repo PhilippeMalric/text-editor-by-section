@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, ChangeDetectorRef, Input, ViewContainerRef, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { withLatestFrom } from 'rxjs/operators';
+import { take, withLatestFrom } from 'rxjs/operators';
 import { GameService } from '../../../services/game.service';
 import { GoogleSheetService } from '../../../services/google-sheet.service';
 import { UpvoteService } from '../../../services/upvote.service';
@@ -15,9 +15,9 @@ import { GraphVoteComponent } from '../../graph-vote/graph-vote.component';
 export class SingleChoiceComponent implements OnInit {
   [x: string]: unknown;
 
-  @Input() userId;
-  @Input() itemId;
-  @Input() choixDeReponses;
+  userId = "";
+  itemId = "";
+  choixDeReponses;
   @ViewChild('graphVote', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   componentRef:any
@@ -55,7 +55,17 @@ export class SingleChoiceComponent implements OnInit {
 
   ngOnInit() {
 
+    this.gameService.user.subscribe((userId)=>{
 
+      this.userId = userId
+
+    })
+    this.upvoteService.getCurrentItem().subscribe((itemId:any)=>{
+
+      this.itemId = itemId
+
+    })
+  
 
     this.sub3 = this.gameService.get_props(this.itemId).subscribe((data:any)=>{
 
@@ -126,59 +136,80 @@ ngAfterViewInit(){
     console.log(vote)
 
     let vote2:any = vote
+    if(vote2){
 
-    if(this.userId in vote2){
-      let myVote = vote2[this.userId]
-      Object.keys(this.choixDeReponses).map((key)=>{
+      this.sub1 = this.googleSheetService.getCooker().pipe(take(1)).subscribe((items:any[])=>{
+        console.log("googleSheetService")
+        console.log(items)
+        console.log(this.itemId)
+        
+        this.item_from_sheet = items.filter((item)=>{
+  
+          return item.nomunique == this.itemId
+  
+        })[0]
+  
+        console.log("item_from_sheet")
+        console.log(this.item_from_sheet)
+        if(this.item_from_sheet){
+          let c = true
+          let compteur = 1
+          let choixDeReponses = []
+          while(c){
+            let choix = this.item_from_sheet["x"+compteur]
+            choixDeReponses.push({code:compteur, texte:choix})
+            compteur++
+            c = (("x"+compteur) in this.item_from_sheet)?true:false;
+          }
+          this.choixDeReponses = choixDeReponses
+          if(this.itemId in vote2 && this.userId in vote2[this.itemId]){
+            let myVote = vote2[this.itemId][this.userId]
+            console.log("myVote")
+            console.log(myVote)
+            Object.keys(this.choixDeReponses).map((key)=>{
+      
+              this.choixDeReponses[key]["color"] = (myVote == this.choixDeReponses[key]["code"])?"accent":"primary"
+          
+            })
+          }
 
-        this.choixDeReponses[key]["color"] = (myVote == this.choixDeReponses[key]["code"])?"accent":"primary"
-    
+          if(this.itemId in vote2){
+
+            this.vote = vote[this.itemId]
+      
+            if(this.vote && this.choixDeReponses){
+              this.choixDeReponses.map((item)=>{
+                let code = item["code"]
+                item["stat"] = Object.keys(this.vote).filter((key2)=>{
+                  return this.vote[key2] == code
+                })
+            
+              })
+
+              console.log("choixDeReponses")
+              console.log(this.choixDeReponses)
+
+              this.entry.clear();
+              const factory = this.resolver.resolveComponentFactory(GraphVoteComponent);
+              this.componentRef = this.entry.createComponent(factory);
+              this.componentRef.instance.choixDeReponses = this.choixDeReponses
+          }
+        
+            this.changeDetectorRef.markForCheck();
+          }
+        }
+      
       })
+
+      
     }
-    console.log("choixDeReponses")
-    console.log(this.choixDeReponses)
-    this.changeDetectorRef.markForCheck();
-
-    this.vote = vote
-
-    this.minus = []
-    this.egale = []
-    this.plus = []
-
-    if(vote){
-      this.choixDeReponses.map((item)=>{
-        let code = item["code"]
-        item["stat"] = Object.keys(vote).filter((key2)=>{
-          return vote[key2] == code
-        })
     
-      })
-    
-    }
     
   
 
-    this.sub1 = this.googleSheetService.getCooker().subscribe((items:any[])=>{
-      console.log("items44")
-      console.log(items)
-      
-      this.item_from_sheet = items.filter((item)=>{
+    
 
-        return item.nomunique == this.itemId
-
-      })[0]
-      console.log("item_from_sheet")
-      console.log(this.item_from_sheet)
-      
-
-    })
-
-    this.entry.clear();
-    const factory = this.resolver.resolveComponentFactory(GraphVoteComponent);
-    this.componentRef = this.entry.createComponent(factory);
-    this.componentRef.instance.choixDeReponses = this.choixDeReponses
-
-    this.changeDetectorRef.markForCheck();
+    
   })
 }
 
