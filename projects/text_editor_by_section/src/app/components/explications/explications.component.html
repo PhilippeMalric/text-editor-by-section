@@ -10,6 +10,10 @@
         <mat-card-content>
             
                 <h2 *ngIf="!(isAuthenticated$ | async)">Authentification / Inscription</h2>
+                <p *ngIf="!(isAuthenticated$ | async)"> 
+                    Cliquez <a href="https://youtu.be/BxsqbXgl5Hk" target="_blank" >ici</a> pour visionner notre tutoriel maison.
+                </p>
+
                 <div *ngIf="large && !(isAuthenticated$ | async)">
                     
                     <p>
