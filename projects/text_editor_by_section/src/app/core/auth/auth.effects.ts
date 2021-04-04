@@ -56,7 +56,7 @@ export class AuthEffects {
       this.actions$.pipe(
         ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
         tap(() => {
-          this.router.navigate(["Projet_de_loi"])
+          this.router.navigate(["mode_d_emploi"])
           
         })
       ),
