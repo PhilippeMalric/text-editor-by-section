@@ -67,6 +67,7 @@ export class GameService {
   userEmail: BehaviorSubject<string>;
   started: BehaviorSubject<boolean>;
   textName: BehaviorSubject<string>;
+  
 
   constructor(
     private googleSheetService : GoogleSheetService,
@@ -96,6 +97,7 @@ export class GameService {
     this.user = new BehaviorSubject<string>('Mon_nom');
     this.userEmail = new BehaviorSubject<string>('');
     this.started = new BehaviorSubject<boolean>(null);
+    
   }
 
   delete(name: string) {
@@ -105,6 +107,9 @@ export class GameService {
   set_text_courant = (text: any) => {
     this.db.object('textCourant').set(text);
   };
+
+
+  
 
   approuve(item,name:string,text){
     let data = {prop:text,approuve:true}

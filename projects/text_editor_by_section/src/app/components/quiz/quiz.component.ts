@@ -47,6 +47,7 @@ export class QuizComponent implements OnInit {
   itemId: unknown;
   item_from_sheet_list: any[];
   item_from_sheet_list_filtered: any[];
+  recap: any;
 
   
   constructor(
@@ -58,7 +59,7 @@ export class QuizComponent implements OnInit {
     private observableMedia: MediaObserver) { }
 
   ngOnInit(): void {
-    
+    this.recap = this.upvoteService.getRecap()
 
     this.userSubscription = this.gameService.user.subscribe((user: string) => {
       console.log('user***');

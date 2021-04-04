@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, ChangeDetectorRef, Input, ViewContainerRef, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BehaviorSubject } from 'rxjs';
 import { take, withLatestFrom } from 'rxjs/operators';
 import { GameService } from '../../../services/game.service';
 import { GoogleSheetService } from '../../../services/google-sheet.service';
@@ -14,7 +15,7 @@ import { GraphVoteComponent } from '../../graph-vote/graph-vote.component';
 })
 export class SingleChoiceComponent implements OnInit {
   [x: string]: unknown;
-
+  tabIndex = 0
   userId = "";
   itemId = "";
   choixDeReponses;
@@ -42,7 +43,7 @@ export class SingleChoiceComponent implements OnInit {
   egale =[];
   prop: any;
   item_from_sheet: any;
-  
+  sommaire = null
 
   constructor(
     public dialog: MatDialog,
@@ -51,9 +52,19 @@ export class SingleChoiceComponent implements OnInit {
     private googleSheetService : GoogleSheetService,
     private changeDetectorRef: ChangeDetectorRef,
     private resolver: ComponentFactoryResolver
-  ) {}
+  ) {
+
+    this.sommaire = new BehaviorSubject<string>("false")
+
+  }
 
   ngOnInit() {
+
+    this.upvoteService.getSommaire().subscribe((item)=>{
+      if(item == 'false'){
+        this.tabIndex = 0
+      }
+    })
 
     this.gameService.user.subscribe((userId)=>{
 
@@ -65,6 +76,14 @@ export class SingleChoiceComponent implements OnInit {
       this.itemId = itemId
 
     })
+
+    this.upvoteService.getCurrentItem().subscribe((itemId:any)=>{
+
+      this.itemId = itemId
+
+    })
+
+    this.sommaire = this.upvoteService.getSommaire()
   
 
     this.sub3 = this.gameService.get_props(this.itemId).subscribe((data:any)=>{
@@ -166,9 +185,24 @@ ngAfterViewInit(){
             let myVote = vote2[this.itemId][this.userId]
             console.log("myVote")
             console.log(myVote)
+            if(myVote){
+              Object.keys(this.choixDeReponses).map((key)=>{
+      
+                this.choixDeReponses[key]["color"] = (myVote == this.choixDeReponses[key]["code"])?"accent":"primary"
+            
+              })
+            }else{
+              Object.keys(this.choixDeReponses).map((key)=>{
+      
+                this.choixDeReponses[key]["color"] = "primary"
+            
+              })
+            }
+            
+          }else{
             Object.keys(this.choixDeReponses).map((key)=>{
       
-              this.choixDeReponses[key]["color"] = (myVote == this.choixDeReponses[key]["code"])?"accent":"primary"
+              this.choixDeReponses[key]["color"] = "primary"
           
             })
           }
@@ -192,7 +226,7 @@ ngAfterViewInit(){
               this.entry.clear();
               const factory = this.resolver.resolveComponentFactory(GraphVoteComponent);
               this.componentRef = this.entry.createComponent(factory);
-              this.componentRef.instance.choixDeReponses = this.choixDeReponses
+              this.upvoteService.choixDeReponses.next(this.choixDeReponses)
           }
         
             this.changeDetectorRef.markForCheck();

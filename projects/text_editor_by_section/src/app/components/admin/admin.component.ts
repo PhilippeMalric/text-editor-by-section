@@ -127,7 +127,23 @@ export class AdminComponent implements OnInit {
     
   }
 
+  setRecapTrue(){
+    this.upvoteService.setRecap("true")
+  }
+  setRecapFalse(){
+    this.upvoteService.setRecap("false")
+  }
+
+  setSommaireTrue(){
+    this.upvoteService.setSommaire("true")
+  }
+  setSommaireFalse(){
+    this.upvoteService.setSommaire("false")
+  }
+  setTrue
+
   choose = (id)=>{
+    
     this.upvoteService.setCurrentItem(id)
   }
 
