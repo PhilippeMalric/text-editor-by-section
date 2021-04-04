@@ -83,7 +83,8 @@ loginEmain = (email,password)=>{
     var user = userCredential.user;
     console.log("user")
     console.log(user)
-    if(user.emailVerified){
+    //if(user.emailVerified){
+      if(true){
       this.setNameAndPw(user)
       this.store.dispatch(new ActionAuthLogin())
       
@@ -115,14 +116,14 @@ enregistrement = (email,password)=>{
       // This must be true.
       handleCodeInApp: true
     };
-    user.sendEmailVerification(actionCodeSettings)
-    /*
+    //user.sendEmailVerification(actionCodeSettings)
+    
     this.store.dispatch(new ActionAuthLogin())
     console.log("user")
     console.log(user)
     this.setNameAndPw(user)
-    */
-    this.notificationService.info("Vérifiez votre adresse courriel.")
+    
+    //this.notificationService.info("Vérifiez votre adresse courriel.")
     //this.router.navigate(["mode_d_emploi"])
     //".", "#", "$", "[", or "]"
 
@@ -131,7 +132,7 @@ enregistrement = (email,password)=>{
     var errorCode = error.code;
     var errorMessage = error.message;
     console.log(errorMessage)
-    //this.loginEmain(email,password)
+    this.loginEmain(email,password)
   });
 }
 
