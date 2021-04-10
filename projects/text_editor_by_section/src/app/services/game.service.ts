@@ -110,7 +110,12 @@ export class GameService {
     this.db.object('textCourant').set(text);
   };
 
+  get_score = ()=>{
 
+    return this.db.object(`score/`).valueChanges()
+
+    
+  }
   
 
   approuve(item,name:string,text){

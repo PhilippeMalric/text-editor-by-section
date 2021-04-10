@@ -19,6 +19,8 @@ export class SingleChoiceComponent implements OnInit {
   userId = "";
   itemId = "";
   choixDeReponses;
+  choixDeReponses2:any
+
   @ViewChild('graphVote', { read: ViewContainerRef }) entry: ViewContainerRef;
 
   componentRef:any
@@ -35,6 +37,7 @@ export class SingleChoiceComponent implements OnInit {
   sub3: any;
   propCount: number;
   subAllPrps: any;
+  subAllPrps2: any;
   props: unknown;
   mapNom_to_non_accepted_prop: {};
   votes: unknown;
@@ -44,6 +47,7 @@ export class SingleChoiceComponent implements OnInit {
   prop: any;
   item_from_sheet: any;
   sommaire = null
+  data:any
 
   constructor(
     public dialog: MatDialog,
@@ -98,39 +102,13 @@ export class SingleChoiceComponent implements OnInit {
       
     })
 
-    this.sub2 = this.gameService.voir_props(this.itemId,this.userId).subscribe((data:any)=>{
-
-      if(data){this.propsText = data.prop}
-    })
-
-    this.subscription = this.upvoteService
-      .getItemVotes(this.itemId)
-      .subscribe(upvotes => {
-        //console.log("firebase")
-        if (upvotes) {
-          this.voteCount = Object.keys(upvotes).length;
-        } else {
-          this.voteCount = 0;
-        }
-        if (upvotes && this.userId && this.userId in upvotes) {
-          this.userVote = upvotes[this.userId];
-          //console.log(this.userVote)
-          this.color_plus = this.userVote == 1 ? 'primary' : 'accent';
-          this.color_e = this.userVote == 0 ? 'primary' : 'accent';
-          this.color_moins = this.userVote == -1 ? 'primary' : 'accent';
-          this.changeDetectorRef.markForCheck();
-        } else {
-          this.color_plus = 'accent';
-          this.color_e = 'accent';
-          this.color_moins = 'accent';
-          this.changeDetectorRef.markForCheck();
-        }
-      });
+   
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.sub2.unsubscribe();
+    this.subAllPrps.unsubscribe();
+    this.subAllPrps2.unsubscribe();
     this.sub3.unsubscribe();
   }
 
@@ -139,8 +117,8 @@ ngAfterViewInit(){
 
  
  
-  this.subAllPrps = this.upvoteService.getItemVotes(this.itemId).subscribe((vote)=>{
-      console.log("itemId")
+  this.subAllPrps2 = this.upvoteService.getItemVotes2(this.itemId).subscribe((vote)=>{
+      console.log("itemId2-----")
       console.log(this.itemId)
   
 
@@ -180,38 +158,47 @@ ngAfterViewInit(){
             compteur++
             c = (("x"+compteur) in this.item_from_sheet)?true:false;
           }
-          this.choixDeReponses = choixDeReponses
+          this.choixDeReponses2 = choixDeReponses
           if(this.itemId in vote2 && this.userId in vote2[this.itemId]){
             let myVote = vote2[this.itemId][this.userId]
             console.log("myVote")
             console.log(myVote)
+
+            if(this.data){
+              this.data.myVote = myVote
+
+              this.upvoteService.choixDeReponses.next(this.data)
+            }
+            
+
             if(myVote){
-              Object.keys(this.choixDeReponses).map((key)=>{
+              Object.keys(this.choixDeReponses2).map((key)=>{
       
-                this.choixDeReponses[key]["color"] = (myVote == this.choixDeReponses[key]["code"])?"accent":"primary"
+                this.choixDeReponses2[key]["color"] = (myVote == this.choixDeReponses2[key]["code"])?"accent":"primary"
             
               })
             }else{
-              Object.keys(this.choixDeReponses).map((key)=>{
+              Object.keys(this.choixDeReponses2).map((key)=>{
       
-                this.choixDeReponses[key]["color"] = "primary"
+                this.choixDeReponses2[key]["color"] = "primary"
             
               })
             }
             
           }else{
-            Object.keys(this.choixDeReponses).map((key)=>{
+            Object.keys(this.choixDeReponses2).map((key)=>{
       
-              this.choixDeReponses[key]["color"] = "primary"
+              this.choixDeReponses2[key]["color"] = "primary"
           
             })
           }
-
+          this.changeDetectorRef.markForCheck();
           if(this.itemId in vote2){
 
-            this.vote = vote[this.itemId]
+            //this.vote = vote[this.itemId]
       
             if(this.vote && this.choixDeReponses){
+              /*
               this.choixDeReponses.map((item)=>{
                 let code = item["code"]
                 item["stat"] = Object.keys(this.vote).filter((key2)=>{
@@ -219,14 +206,15 @@ ngAfterViewInit(){
                 })
             
               })
-
+              
               console.log("choixDeReponses")
               console.log(this.choixDeReponses)
 
               this.entry.clear();
               const factory = this.resolver.resolveComponentFactory(GraphVoteComponent);
               this.componentRef = this.entry.createComponent(factory);
-              this.upvoteService.choixDeReponses.next(this.choixDeReponses)
+              */
+
           }
         
             this.changeDetectorRef.markForCheck();
@@ -238,18 +226,103 @@ ngAfterViewInit(){
       
     }
     
-    
-  
-
-    
-
-    
   })
+
+  this.subAllPrps = this.upvoteService.getItemVotes(this.itemId).subscribe((vote)=>{
+    console.log("itemId2222-----")
+    console.log(this.itemId)
+
+
+  this.mapNom_to_non_accepted_prop = {}
+
+  console.log("itemId")
+  console.log(this.itemId)
+
+  this.mapNom_to_non_accepted_prop = 0
+ 
+  console.log("vote")
+  console.log(vote)
+
+  let vote2:any = vote
+  if(vote2){
+
+    this.googleSheetService.getCooker().pipe(take(1)).subscribe((items:any[])=>{
+      console.log("googleSheetService")
+      console.log(items)
+      console.log(this.itemId)
+      
+      this.item_from_sheet = items.filter((item)=>{
+
+        return item.nomunique == this.itemId
+
+      })[0]
+
+      console.log("item_from_sheet")
+      console.log(this.item_from_sheet)
+      if(this.item_from_sheet){
+        let c = true
+        let compteur = 1
+        let choixDeReponses = []
+        while(c){
+          let choix = this.item_from_sheet["x"+compteur]
+          choixDeReponses.push({code:compteur, texte:choix})
+          compteur++
+          c = (("x"+compteur) in this.item_from_sheet)?true:false;
+        }
+        this.choixDeReponses = choixDeReponses
+        if(this.itemId in vote2 && this.userId in vote2[this.itemId]){
+          let myVote = vote2[this.itemId][this.userId]
+          console.log("myVote")
+          console.log(myVote)
+          
+
+        if(this.itemId in vote2){
+
+          this.vote = vote[this.itemId]
+    
+          if(this.vote && this.choixDeReponses){
+            this.choixDeReponses.map((item)=>{
+              let code = item["code"]
+              item["stat"] = Object.keys(this.vote).filter((key2)=>{
+                return this.vote[key2] == code
+              })
+          
+            })
+
+            console.log("choixDeReponses")
+            console.log(this.choixDeReponses)
+
+            this.data = {
+              myVote:myVote,
+              choixDeReponses:this.choixDeReponses,
+              itemId : this.itemId,
+              userId : this.userId
+            
+            }
+
+            this.entry.clear();
+            const factory = this.resolver.resolveComponentFactory(GraphVoteComponent);
+            this.componentRef = this.entry.createComponent(factory);
+            this.upvoteService.choixDeReponses.next( this.data)
+        }
+      
+          this.changeDetectorRef.markForCheck();
+        }
+      }
+      }
+    })
+
+    
+  }
+  
+})
+
+
 }
 
 faireUnChoix = (code)=>{
 
-  this.upvoteService.updateUserVote(this.itemId, this.userId, code);
+  this.upvoteService.updateUserVote2(this.itemId, this.userId, code);
 
 }
 

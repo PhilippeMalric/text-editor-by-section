@@ -9,7 +9,7 @@ import { GameService } from './game.service';
 export class UpvoteService {
 
 
-  choixDeReponses: BehaviorSubject<[]>;
+  choixDeReponses: BehaviorSubject<any>;
 
   
   constructor(
@@ -91,6 +91,20 @@ setCurrentItem(itemId){
       );
   }
 
+  getItemVotes2(itemId): any {
+    // Gets total votes
+    //console.log(itemId);
+    return this.db
+      .object(`upvotes2/${itemId}`)
+      .valueChanges()
+      .pipe(
+        tap(item => {
+          //console.log('vote');
+          //console.log(item);
+        })
+      );
+  }
+
   updateUserProp = (itemId, userId, prop) => {
     this.gameService.userEmail.pipe(take(1)).subscribe((userEmail)=>{
       console.log('UpdateProp');
@@ -127,4 +141,57 @@ setCurrentItem(itemId){
         }
       });
   }
+
+  updateUserVote2(itemId, userId, vote): void {
+    // Creates or updates user's vote
+    console.log('update');
+    console.log(userId);
+    let data = {};
+    data[userId] = vote;
+
+    this.db
+      .object(`upvotes2/`)
+      .valueChanges()
+      .pipe(take(1))
+      .subscribe((item: any) => {
+        console.log('-----------Add item  -----------');
+        //console.log(item);
+        //console.log(itemId in item);
+        if (itemId in item) {
+          this.db.object(`upvotes2/${itemId}/`).update(data);
+        } else {
+          let data1 = {};
+          data1[itemId] = data;
+
+          this.db.object(`upvotes2/`).update(data1);
+        }
+      });
+  }
+
+  updateUserVote3(itemId, userId, vote): void {
+    // Creates or updates user's vote
+    console.log('update');
+    console.log(userId);
+    let data = {};
+    data[userId] = vote;
+
+    this.db
+      .object(`score/`)
+      .valueChanges()
+      .pipe(take(1))
+      .subscribe((item: any) => {
+        console.log('-----------Add item  -----------');
+        //console.log(item);
+        //console.log(itemId in item);
+        if (itemId in item) {
+          this.db.object(`score/${itemId}/`).update(data);
+        } else {
+          let data1 = {};
+          data1[itemId] = data;
+
+          this.db.object(`score/`).update(data1);
+        }
+      });
+  }
+
 }

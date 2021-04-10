@@ -171,6 +171,7 @@ import { DialogPropositionQuiz, QuizComponentTest } from './components/questionC
 import { DialogPropositionQuizSC, SingleChoiceComponent } from './components/questionComponents/quiz-single-choice/quizSingleChoice.component';
 import { GraphVoteComponent2 } from './components/graph-vote2/graph-vote.component';
 import { SingleChoiceButtonComponent } from './components/single-choice-button/single-choice-button.component';
+import { ScoreComponent } from './components/score/score.component';
 
 
 export class MyHammerConfig extends HammerGestureConfig {}
@@ -274,7 +275,8 @@ export class MyHammerConfig extends HammerGestureConfig {}
     DialogPropositionQuiz,
     DialogPropositionQuizSC,
     GraphVoteComponent2,
-    SingleChoiceButtonComponent
+    SingleChoiceButtonComponent,
+    ScoreComponent
   ],
   entryComponents: [
     GraphVoteComponent2,

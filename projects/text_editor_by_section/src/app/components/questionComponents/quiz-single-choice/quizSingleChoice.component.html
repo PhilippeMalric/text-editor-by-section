@@ -15,7 +15,7 @@
     
                     <div class="together" matTooltipPosition="above" matTooltip="Nombre de vote(s) : {{voteCount}}">
                         <div class="firstRow">
-                            <button *ngFor="let choix of choixDeReponses" class="mt-2 ml-5 mr-5"
+                            <button *ngFor="let choix of choixDeReponses2" class="mt-2 ml-5 mr-5"
                             mat-raised-button [color]="choix.color" (click)="faireUnChoix(choix.code)">
                                 {{choix.texte}}
                             </button>

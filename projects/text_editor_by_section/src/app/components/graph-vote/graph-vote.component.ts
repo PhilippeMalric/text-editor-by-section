@@ -13,6 +13,7 @@ export class GraphVoteComponent implements OnInit {
   
   wi= 0
   subscription1: any;
+  myScore: number;
 
 
   constructor(private upvoteService: UpvoteService, private gameService: GameService,private changeDetectorRef: ChangeDetectorRef) {
@@ -24,7 +25,7 @@ export class GraphVoteComponent implements OnInit {
 
     this.subscription1 = this.upvoteService.choixDeReponses.subscribe((items)=>{
 
-      this.choixDeReponses = items
+      this.choixDeReponses = items.choixDeReponses
       console.log("choixDeReponses inside stat")
   
       console.log(this.choixDeReponses)
@@ -50,6 +51,82 @@ export class GraphVoteComponent implements OnInit {
             item["h"] = isNaN(((item["vote"] / somme)*100))?0:((item["vote"] / somme)*100)
           })
       
+
+
+
+          let votesNumber:any[] = this.choixDeReponses.map((item)=>{
+
+            return item.vote
+
+          })
+
+          let max1 = Math.max(...votesNumber)
+          //console.log("max1")
+          //console.log(max1)
+
+          votesNumber = votesNumber.filter((item)=>{
+
+            return item != max1
+
+          })
+          //console.log("votesNumber")
+          //console.log(votesNumber)
+
+          let myScore = 0
+          this.choixDeReponses.map((item)=>{
+
+            if(item.code == items.myVote && item.vote == max1){
+              myScore = 3
+              console.log("myScore")
+              console.log(myScore)
+
+            }
+
+          })
+
+          let max2 = 0
+          let max3 = 0
+          
+
+
+          if(votesNumber.length > 0){
+            max2 = Math.max(...votesNumber)
+            //console.log("max2")
+            //console.log(max2)
+
+            this.choixDeReponses.filter((item)=>{
+
+              if(item.code == items.myVote && item.vote == max2){
+                myScore = 2
+                //console.log("myScore")
+                //console.log(myScore)
+              }
+  
+            })
+
+            votesNumber = votesNumber.filter((item)=>{
+
+              return item != max2
+  
+            })
+            //console.log("votesNumber")
+            //console.log(votesNumber)
+            if(votesNumber.length > 0){
+              max3 = Math.max(...votesNumber)
+              this.choixDeReponses.filter((item)=>{
+
+                if(item.code == items.myVote && item.vote == max3){
+                  myScore = 1
+                  console.log("myScore")
+                  console.log(myScore)
+                }
+    
+              })
+            }
+
+          }
+        this.myScore = myScore
+        this.upvoteService.updateUserVote3(items.itemId, items.userId, myScore);
         this.changeDetectorRef.markForCheck();
         }
       
