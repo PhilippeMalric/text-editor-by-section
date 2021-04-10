@@ -105,6 +105,7 @@ setCurrentItem(itemId){
   updateUserVote(itemId, userId, vote): void {
     // Creates or updates user's vote
     console.log('update');
+    console.log(userId);
     let data = {};
     data[userId] = vote;
 

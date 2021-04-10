@@ -17,14 +17,16 @@ export class SousSection {
   vote: String;
   premier: boolean;
   type:String;
+  typeQ:String;
   groupe: String;
 
-  constructor(id: String, texte: String, vote: String,premier:boolean,type:String,groupe:String) {
+  constructor(id: String, texte: String, vote: String,premier:boolean,type:String,groupe:String,typeQ:String) {
     this.id = id;
     this.premier = premier;
     this.texte = texte;
     this.vote = vote;
     this.type = type;
+    this.typeQ = typeQ;
     this.groupe = groupe;
   }
 }
@@ -94,7 +96,7 @@ export class GameService {
       });
 
     this.items = new BehaviorSubject<Item[]>([]);
-    this.user = new BehaviorSubject<string>('Mon_nom');
+    this.user = new BehaviorSubject<string>('');
     this.userEmail = new BehaviorSubject<string>('');
     this.started = new BehaviorSubject<boolean>(null);
     
@@ -192,7 +194,7 @@ export class GameService {
               premier = true
             }
 
-            let result = new SousSection(item.nomunique,item.texte,item.vote,premier,item.nomunique.charAt(0),item.groupe)
+            let result = new SousSection(item.nomunique,item.texte,item.vote,premier,item.nomunique.charAt(0),item.groupe,"")
 
             return result
 
@@ -278,9 +280,9 @@ export class GameService {
             return items[0].nomunique
           })
 
-          console.log("first_item_of_groupe")
+          //console.log("first_item_of_groupe")
 
-          console.log(first_item_of_groupe)
+          //console.log(first_item_of_groupe)
 
           let ss2 = sousSections.map((item,i)=>{
 
@@ -289,7 +291,7 @@ export class GameService {
               premier = true
             }
 
-            let result = new SousSection(item.nomunique,item.texte,item.vote,premier,item.nomunique.charAt(0),item.groupe)
+            let result = new SousSection(item.nomunique,item.texte,item.vote,premier,item.nomunique.charAt(0),item.groupe,item.type)
 
             return result
 
@@ -317,8 +319,8 @@ export class GameService {
 
           })
 
-          console.log("ss2")
-          console.log(ss2)
+          //console.log("ss2")
+          //console.log(ss2)
           let titre_desc = titre.texte;
           let id = titre.nomunique;
           let s = new Section(id, titre_desc, ss2);

@@ -151,9 +151,12 @@ export class AppComponent implements OnInit {
   
 
     this.gameService.user.next(this.displayName);
+
+    //{ ...nav, enabled: nav.link == 'mode_d_emploi' || user != '' };
+
     this.subscription1 = this.gameService.user.subscribe(user => {
       this.navigation = this.navigation.map(nav => {
-        return { ...nav, enabled: nav.link == 'mode_d_emploi' || user != '' };
+        return { ...nav, enabled: true };
       });
       this.navigationSideMenu = [
         ...this.navigation,

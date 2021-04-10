@@ -38,8 +38,16 @@
                         <div [class]="sousSection?.type">
                             {{sousSection.texte}}
                         </div>
+                        <br>
                         <div [ngClass]="{'rigth':!small,center:small}" *ngIf="sousSection?.vote  == 'oui'">
-                            <upvote-button [itemId]='sousSection?.id' [userId]='displayName'></upvote-button>
+                            <container-element [ngSwitch]="sousSection?.typeQ">
+                                
+                                <upvote-button *ngSwitchCase="'Question_Opinion'" [itemId]='sousSection?.id' [userId]='displayName'></upvote-button>
+                                <single-choice-button *ngSwitchCase="'Question_ChoixUnique'" [itemId]='sousSection?.id' [userId]='displayName'></single-choice-button>
+                                
+                                <p *ngSwitchDefault>test</p>
+                             </container-element>
+                            
                         </div>
                     </mat-card-content>
                 </mat-card>

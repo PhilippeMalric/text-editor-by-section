@@ -57,7 +57,7 @@ const routes: Routes = [
   {
     path: 'Quiz',
     component: QuizComponent,
-    canActivate: [NameGuardService]
+    //canActivate: [NameGuardService]
   },
   
   {

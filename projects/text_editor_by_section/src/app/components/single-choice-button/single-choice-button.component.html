@@ -1,0 +1,9 @@
+<div style="padding-left: 10px;">
+    
+      <button *ngFor="let choix of choixDeReponses" class="mt-2 ml-5 mr-5"
+              mat-raised-button [color]="choix.color" (click)="faireUnChoix(choix.code)">
+                  {{choix.texte}}
+      </button>
+ 
+   
+</div>
