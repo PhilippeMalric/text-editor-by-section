@@ -19,11 +19,12 @@ export class AdminComponent implements OnInit {
   dataSource_propositions:MatTableDataSource<String>;
   users: String[];
   displayedColumns: string[] = ['name1','txt1',"graph","plus1","egale1","moins1","button1"];
-  displayedColumns2: string[] = ['name2','txt2','delete2'];
+  displayedColumns2: string[] =  ['name1','txt1',"graph","plus1","egale1","moins1","button1"];;
   displayedColumns3: string[] = ['name3',"plus3","egale3","moins3","delete3"];
   sub1: Subscription;
   sub0: Subscription;
   subAllPrps: Subscription;
+  subAllPrps2: Subscription;
   props: unknown;
   mapNom_to_non_delete_prop: any;
   votes: any;
@@ -34,6 +35,7 @@ export class AdminComponent implements OnInit {
   subpropo: any;
   sub5: Subscription;
   dataP: any;
+  dataSource2: MatTableDataSource<String>;
   constructor( private googleSheetService : GoogleSheetService,private gameService:GameService,public dialog: MatDialog) {}
 
   
@@ -108,8 +110,62 @@ export class AdminComponent implements OnInit {
         this.dataSource = new MatTableDataSource<String>(items);
       })
   
+
+
     })
-   
+
+    
+
+
+    this.subAllPrps2 = this.gameService.get_upvote().subscribe((votes)=>{
+
+      this.mapNom_to_non_delete_prop = {}
+
+
+      console.log("votes")
+      console.log(votes)
+      this.votes = votes
+
+      this.minus = {}
+      this.egale = {}
+      this.plus = {}
+      for(let e of Object.keys(votes)){
+        this.minus[e] = Object.keys(votes[e]).filter((key)=>{
+          return votes[e][key] == -1
+        })
+        
+        //console.log(e)
+        //console.log(this.minus[e])
+
+        this.egale[e] = Object.keys(votes[e]).filter((key)=>{
+          return votes[e][key] == 0
+        })
+        this.plus[e] = Object.keys(votes[e]).filter((key)=>{
+          return votes[e][key] == 1
+        })
+      }
+
+      this.sub1 = this.googleSheetService.getLogos().subscribe((items:any[])=>{
+        console.log("items44")
+        console.log(items)
+        
+        for(let e of items){
+          e.props_non_delete = this.mapNom_to_non_delete_prop[e.id]
+          e.props_acc = 0
+          e.moins = this.minus[e.id]
+          e.egale = this.egale[e.id]
+          e.plus = this.plus[e.id]
+        }
+        
+        
+        
+
+        this.dataSource2 = new MatTableDataSource<String>(items);
+      })
+    })
+
+
+
 
     this.sub0 = this.gameService.user.subscribe((name)=>{
       this.name = name

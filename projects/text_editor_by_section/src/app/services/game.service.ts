@@ -132,6 +132,14 @@ export class GameService {
     return this.http.get('assets/projet_de_loi.json')
    }
    
+   get_logos = ()=>{
+
+
+    return this.googleSheetService.getLogos()
+
+   }
+
+
    get_projet_de_loi3 = () => {
     return this.googleSheetService.getCooker().pipe(
       map((item: any[]) => {

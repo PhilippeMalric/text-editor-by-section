@@ -38,7 +38,34 @@ export class GoogleSheetService {
                 })
               );
           }
-
+          public getLogos(): Observable<any> {
+                  const sheetno="oets9t2"
+                 const sheetid = "1bb_20eA0LrLyA9lsc_00acCykfYrCJWpZqeqXhlCRnc"
+                 const url = 
+            `https://spreadsheets.google.com/feeds/list/${sheetid}/${sheetno}/public/values?alt=json`;
+                
+                    return this.http.get(url)
+                      .pipe(
+                        map((res: any) => {
+                          const data = res.feed.entry;
+                          console.log("data")
+                          console.log(data)
+                          const returnArray: Array<any> = [];
+                          if (data && data.length > 0) {
+                            data.forEach(entry => {
+                              const obj = {};
+                              for (const x in entry) {
+                                if (x.includes('gsx$') && entry[x].$t) {
+                                  obj[x.split('$')[1]] = entry[x]['$t'];
+                                }
+                              }
+                              returnArray.push(obj);
+                            });
+                          }
+                          return returnArray;
+                        })
+                      );
+                  }
 
 }
 
@@ -47,4 +74,4 @@ export class GoogleSheetService {
 //o5ebpca
 
 //search :
-//link rel
+///private/full/

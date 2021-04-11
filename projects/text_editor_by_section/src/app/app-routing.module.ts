@@ -17,6 +17,7 @@ import { AuthentificationComponent } from './components/authentification/authent
 import { EnregistrementComponent } from './components/enregistrement/enregistrement.component';
 import { ResetMotDePasseComponent } from './components/reset-mot-de-passe/reset-mot-de-passe.component';
 import { GoogleSheetComponent } from './components/google-sheet/google-sheet.component';
+import { ProjetImageComponent } from './components/projet-image/projet-image.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
     path: 'Projet_de_loi',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
+  },
+  {
+    path: 'logos',
+    component: ProjetImageComponent
   },
   
   {
