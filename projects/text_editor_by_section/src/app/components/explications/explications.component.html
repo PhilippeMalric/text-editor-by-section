@@ -18,9 +18,10 @@
                     Toutes et tous êtes les bienvenus à cette étape qui ouvre la rédaction à la
                     participation de l’ensemble de la population du Québec.
                 </p>
+                <span *ngIf="!(isAuthenticated$ | async)" style="float: right;"><a href="https://youtu.be/BxsqbXgl5Hk" target="_blank" >Vidéo</a></span>
+                
                 <h2 *ngIf="!(isAuthenticated$ | async)">Authentification / Inscription</h2>
                 
-                <span *ngIf="!(isAuthenticated$ | async)" style="float: right;"><a href="https://youtu.be/BxsqbXgl5Hk" target="_blank" >Vidéo</a></span>
                 <div *ngIf="large && !(isAuthenticated$ | async)">
                     
                     
