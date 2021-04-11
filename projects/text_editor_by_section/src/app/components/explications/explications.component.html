@@ -20,9 +20,9 @@
                 </p>
                 <h2 *ngIf="!(isAuthenticated$ | async)">Authentification / Inscription</h2>
                 
-
+                <span *ngIf="!(isAuthenticated$ | async)" style="float: right;"><a href="https://youtu.be/BxsqbXgl5Hk" target="_blank" >Vidéo</a></span>
                 <div *ngIf="large && !(isAuthenticated$ | async)">
-                    <span style="float: right;"><a href="https://youtu.be/BxsqbXgl5Hk" target="_blank" >Vidéo</a></span>
+                    
                     
                     <p>
                         Veuillez d’abord créer un compte et l’initialiser en cliquant sur le lien envoyé par
