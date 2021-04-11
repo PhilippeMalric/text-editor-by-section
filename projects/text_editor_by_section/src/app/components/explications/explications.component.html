@@ -9,20 +9,21 @@
         </mat-card-title>
         <mat-card-content>
                 <span style="float: right;"><a href="https://youtu.be/BxsqbXgl5Hk" target="_blank" >Vidéo</a></span>
+                <p>
+                    Nous amorçons la Phase 3 de la rédaction collaborative du projet de loi de
+                    convocation initié par l’ACCQ.
+                </p>
+
+                <p>
+                    Toutes et tous êtes les bienvenus à cette étape qui ouvre la rédaction à la
+                    participation de l’ensemble de la population du Québec.
+                </p>
                 <h2 *ngIf="!(isAuthenticated$ | async)">Authentification / Inscription</h2>
                 
 
                 <div *ngIf="large && !(isAuthenticated$ | async)">
                     
-                    <p>
-                        Nous amorçons la Phase 3 de la rédaction collaborative du projet de loi de
-                        convocation initié par l’ACCQ.
-                    </p>
-
-                    <p>
-                        Toutes et tous êtes les bienvenus à cette étape qui ouvre la rédaction à la
-                        participation de l’ensemble de la population du Québec.
-                    </p>
+                    
                     <p>
                         Veuillez d’abord créer un compte et l’initialiser en cliquant sur le lien envoyé par
                         courriel. (<a href="#/enregistrement">Création d'un compte</a>)
@@ -50,15 +51,7 @@
                 </div>
                 <div *ngIf="!large && !(isAuthenticated$ | async)">
                     
-                    <p>
-                        Nous amorçons la Phase 3 de la rédaction collaborative du projet de loi de
-                        convocation initié par l’ACCQ.
-                    </p>
-
-                    <p>
-                        Toutes et tous êtes les bienvenus à cette étape qui ouvre la rédaction à la
-                        participation de l’ensemble de la population du Québec.
-                    </p>
+                    
                     
                     <p>
                         Veuillez d’abord créer un compte et l’initialiser en cliquant sur le lien envoyé par
