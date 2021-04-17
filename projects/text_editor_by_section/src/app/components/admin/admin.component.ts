@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
   dataSource:MatTableDataSource<String>;
   dataSource_propositions:MatTableDataSource<String>;
   users: String[];
-  displayedColumns: string[] = ['choose','name1','txt1',"graph","plus1","egale1","moins1","button1"];
+  displayedColumns: string[] = ['choose','txt1'];
   displayedColumns2: string[] = ['name2','txt2','delete2'];
   displayedColumns3: string[] = ['name3',"plus3","egale3","moins3","delete3"];
   sub1: Subscription;

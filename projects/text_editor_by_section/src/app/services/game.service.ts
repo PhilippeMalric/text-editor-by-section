@@ -9,6 +9,7 @@ import { Item } from '../components/table/table.component';
 import { take, tap, map, withLatestFrom } from 'rxjs/operators';
 import * as uuid from 'uuid';
 import { GoogleSheetService } from './google-sheet.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 export class SousSection {
   id: String;
@@ -69,6 +70,9 @@ export class GameService {
   userEmail: BehaviorSubject<string>;
   started: BehaviorSubject<boolean>;
   textName: BehaviorSubject<string>;
+  joueur: BehaviorSubject<any>;
+  dataSourceScore: BehaviorSubject<any>;
+  joueurCollection = {}
   
 
   constructor(
@@ -83,7 +87,8 @@ export class GameService {
     this.mot = 0;
     this.motAtrouver$ = new BehaviorSubject<String>('0');
     this.nom_du_joueur$ = new BehaviorSubject<String>('');
-
+    this.joueur= new BehaviorSubject<any>([]);
+    this.dataSourceScore= new BehaviorSubject<any>(new MatTableDataSource<any[]>([]));
     this.textName = new BehaviorSubject<string>('');
     this.db
       .object('/textName/')
@@ -113,6 +118,12 @@ export class GameService {
   get_score = ()=>{
 
     return this.db.object(`score/`).valueChanges()
+
+    
+  }
+  get_score2 = ()=>{
+
+    return this.googleSheetService.getCooker().pipe(withLatestFrom(this.get_score()))
 
     
   }

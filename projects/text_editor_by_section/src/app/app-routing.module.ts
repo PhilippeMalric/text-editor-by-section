@@ -56,9 +56,14 @@ const routes: Routes = [
   },
   
   {
-    path: 'Quiz',
+    path: 'sondage',
+    component: PropositionsComponent,
+    canActivate: [NameGuardService]
+  },
+  {
+    path: 'guerre_des_clans',
     component: QuizComponent,
-    //canActivate: [NameGuardService]
+    canActivate: [NameGuardService]
   },
   {
     path: 'score',

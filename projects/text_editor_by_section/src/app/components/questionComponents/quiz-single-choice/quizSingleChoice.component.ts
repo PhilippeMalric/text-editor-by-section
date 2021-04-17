@@ -106,7 +106,7 @@ export class SingleChoiceComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    //this.subscription.unsubscribe();
     this.subAllPrps.unsubscribe();
     this.subAllPrps2.unsubscribe();
     this.sub3.unsubscribe();
@@ -115,7 +115,7 @@ export class SingleChoiceComponent implements OnInit {
 
 ngAfterViewInit(){
 
- 
+ console.log("ngAfterViewInit - SingleChoiceComponent")
  
   this.subAllPrps2 = this.upvoteService.getItemVotes2(this.itemId).subscribe((vote)=>{
       console.log("itemId2-----")
@@ -192,12 +192,15 @@ ngAfterViewInit(){
           
             })
           }
+          console.log("---------------------choixDeReponses2")
+          console.log(this.choixDeReponses2)
+
           this.changeDetectorRef.markForCheck();
           if(this.itemId in vote2){
 
             //this.vote = vote[this.itemId]
       
-            if(this.vote && this.choixDeReponses){
+            if(this.vote && this.choixDeReponses2){
               /*
               this.choixDeReponses.map((item)=>{
                 let code = item["code"]
@@ -269,7 +272,7 @@ ngAfterViewInit(){
           compteur++
           c = (("x"+compteur) in this.item_from_sheet)?true:false;
         }
-        this.choixDeReponses = choixDeReponses
+        //this.choixDeReponses2 = choixDeReponses
         if(this.itemId in vote2 && this.userId in vote2[this.itemId]){
           let myVote = vote2[this.itemId][this.userId]
           console.log("myVote")
@@ -280,8 +283,8 @@ ngAfterViewInit(){
 
           this.vote = vote[this.itemId]
     
-          if(this.vote && this.choixDeReponses){
-            this.choixDeReponses.map((item)=>{
+          if(this.vote && this.choixDeReponses2){
+            this.choixDeReponses2.map((item)=>{
               let code = item["code"]
               item["stat"] = Object.keys(this.vote).filter((key2)=>{
                 return this.vote[key2] == code
@@ -290,11 +293,11 @@ ngAfterViewInit(){
             })
 
             console.log("choixDeReponses")
-            console.log(this.choixDeReponses)
+            console.log(this.choixDeReponses2)
 
             this.data = {
               myVote:myVote,
-              choixDeReponses:this.choixDeReponses,
+              choixDeReponses:this.choixDeReponses2,
               itemId : this.itemId,
               userId : this.userId
             
@@ -321,7 +324,8 @@ ngAfterViewInit(){
 }
 
 faireUnChoix = (code)=>{
-
+  console.log("userId")
+  console.log(this.userId)
   this.upvoteService.updateUserVote2(this.itemId, this.userId, code);
 
 }

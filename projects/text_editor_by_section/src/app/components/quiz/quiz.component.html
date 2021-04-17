@@ -1,38 +1,20 @@
-<mat-tab-group>
-    <mat-tab>
-        <ng-template mat-tab-label>
-          Quiz
-        </ng-template>
-        
-        <div class="container">
-            
-            <mat-card class="vertical-center">
-                <mat-card-title class="header" >
-                   
-                   Quiz de la famille Malric!
-            
-                </mat-card-title>
 
-                <mat-card-content>
-                    <div [ngClass]="{'rigth':!small,center:small}" *ngIf="vote  == 'oui'">
-                        <template #questionContainer>
-                        </template>
-                        
-                    </div>
-                </mat-card-content>
+<div class="container">
+    
+    <mat-card class="vertical-center">
+        <mat-card-title class="header" >
             
-            </mat-card>
-        </div>
+            Quiz de la famille Malric!
+    
+        </mat-card-title>
 
-
-      </mat-tab>
-    <mat-tab *ngIf="(recap|async) == 'true'">
-      <ng-template mat-tab-label>
-        Récapitulatif
-      </ng-template>
-      <div class="center">
-        <anms-propositions></anms-propositions>
-      </div>
-      
-    </mat-tab>
-</mat-tab-group>
+        <mat-card-content>
+            <div [ngClass]="{'rigth':!small,center1:small}" *ngIf="vote  == 'oui'">
+                <template #questionContainer>
+                </template>
+                
+            </div>
+        </mat-card-content>
+    
+    </mat-card>
+</div>

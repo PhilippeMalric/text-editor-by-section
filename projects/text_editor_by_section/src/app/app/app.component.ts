@@ -71,7 +71,11 @@ export class AppComponent implements OnInit {
   languages = ['fr'];
   navigation = [
     { link: 'mode_d_emploi', label: 'anms.menu.about' },
-    { link: 'Quiz', label: 'anms.menu.game' }
+    { link: 'sondage', label: 'anms.menu.sondage' },
+    { link: 'guerre_des_clans', label: 'anms.menu.guerre_des_clans' },
+    { link: 'score', label: 'anms.menu.score' }
+
+    
   ];
   navigationSideMenu = [
     ...this.navigation,
@@ -156,7 +160,7 @@ export class AppComponent implements OnInit {
 
     this.subscription1 = this.gameService.user.subscribe(user => {
       this.navigation = this.navigation.map(nav => {
-        return { ...nav, enabled: true };
+        return { ...nav, enabled: nav.link == 'mode_d_emploi' || nav.link == 'score' || user != '' };
       });
       this.navigationSideMenu = [
         ...this.navigation,

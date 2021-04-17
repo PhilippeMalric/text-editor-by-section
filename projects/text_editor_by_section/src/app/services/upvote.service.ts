@@ -10,6 +10,8 @@ export class UpvoteService {
 
 
   choixDeReponses: BehaviorSubject<any>;
+  choixDeReponses2: any;
+  myScore: number;
 
   
   constructor(
@@ -18,7 +20,105 @@ export class UpvoteService {
   ) {
 
     this.choixDeReponses = new BehaviorSubject<[]>([]);
+    this.choixDeReponses.subscribe((items)=>{
 
+      this.choixDeReponses2 = items.choixDeReponses
+      console.log("choixDeReponses inside stat upvote service")
+  
+      console.log(this.choixDeReponses2)
+
+      if(this.choixDeReponses2 && this.choixDeReponses2.length > 0){
+        let compte = this.choixDeReponses2.map((item)=>{
+          let number_of_vote = 0
+          if("stat" in item){
+            number_of_vote = item["stat"].length
+          }
+          item["vote"] = number_of_vote
+          return number_of_vote
+        })
+        let somme = compte.reduce((a, b) => a + b, 0)
+      
+      
+
+
+
+          let votesNumber:any[] = this.choixDeReponses2.map((item)=>{
+
+            return item.vote
+
+          })
+
+          let max1 = Math.max(...votesNumber)
+          //console.log("max1")
+          //console.log(max1)
+
+          votesNumber = votesNumber.filter((item)=>{
+
+            return item != max1
+
+          })
+          //console.log("votesNumber")
+          //console.log(votesNumber)
+
+          let myScore = 0
+          this.choixDeReponses2.map((item)=>{
+
+            if(item.code == items.myVote && item.vote == max1){
+              myScore = 3
+              console.log("myScore")
+              console.log(myScore)
+
+            }
+
+          })
+
+          let max2 = 0
+          let max3 = 0
+          
+
+
+          if(votesNumber.length > 0){
+            max2 = Math.max(...votesNumber)
+            //console.log("max2")
+            //console.log(max2)
+
+            this.choixDeReponses2.filter((item)=>{
+
+              if(item.code == items.myVote && item.vote == max2){
+                myScore = 2
+                //console.log("myScore")
+                //console.log(myScore)
+              }
+  
+            })
+
+            votesNumber = votesNumber.filter((item)=>{
+
+              return item != max2
+  
+            })
+            //console.log("votesNumber")
+            //console.log(votesNumber)
+            if(votesNumber.length > 0){
+              max3 = Math.max(...votesNumber)
+              this.choixDeReponses2.filter((item)=>{
+
+                if(item.code == items.myVote && item.vote == max3){
+                  myScore = 1
+                  console.log("myScore")
+                  console.log(myScore)
+                }
+    
+              })
+            }
+
+          }
+        this.myScore = myScore
+        this.updateUserVote3(items.itemId, items.userId, myScore);
+        
+        }
+      
+    })
   }
 
 
