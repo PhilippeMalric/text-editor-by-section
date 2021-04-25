@@ -113,7 +113,7 @@ export class PropositionNavComponent implements OnInit {
         let text = JSON.stringify(row[fieldName], replacer)
         //console.log(text)
         text = (text)?text:"-"
-          return text.toString().replace('"',"'").replace(';',",")
+          return text.toString().replace(/"/g,"'").replace(/;/g,",")
       }).join(';')}) ;
 
       csv.unshift(header.join(';'));
