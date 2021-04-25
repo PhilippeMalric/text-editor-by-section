@@ -53,6 +53,7 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { start } from 'repl';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { GoogleAuthService } from '../core/auth/google-auth.service';
+import { UpvoteService } from '../services/upvote.service';
 // declare google analytics
 declare const ga: any;
 
@@ -95,6 +96,7 @@ export class AppComponent implements OnInit {
   displayName: string = '';
   subscription1: Subscription;
   isAuthenticated2: any;
+  subscription2: Subscription;
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     public dialog: MatDialog,
@@ -108,6 +110,7 @@ export class AppComponent implements OnInit {
     public gameService: GameService,
     private notificationService: NotificationService,
     private googleAuthService:GoogleAuthService,
+    private upvoteService: UpvoteService,
     private dataService: DataService
   ) {
     console.log('App constructor!!');
@@ -125,10 +128,7 @@ export class AppComponent implements OnInit {
       })
     );
 
-    this.gameService.getObservable().subscribe(data => {
-      console.log('data');
-      console.log(data);
-    });
+  
   }
 
   private static isIEorEdgeOrSafari() {
@@ -152,7 +152,37 @@ export class AppComponent implements OnInit {
     },60000)
 
     */
-  
+    this.subscription2 = this.upvoteService.getRecap().subscribe((data)=>{
+
+      let gdc_activated = data == "true"
+      //console.log(this.router.url)
+      if(!gdc_activated && this.router.url != "/admin_"){
+        this.router.navigate(['mode_d_emploi']);
+      }
+
+      this.navigation = this.navigation.map(nav => {
+
+        let enable = false
+        if( nav.link == 'mode_d_emploi' || nav.link == 'score' ){
+          enable = true
+        }
+
+        if(this.isAuthenticated2 && nav.link == 'sondage'){
+          enable = true
+        }
+        if(this.isAuthenticated2 && nav.link == 'guerre_des_clans'  && gdc_activated){
+          enable = true
+        }
+
+        return { ...nav, enabled: enable  };
+      });
+      this.navigationSideMenu = [
+        ...this.navigation,
+        { link: 'settings', label: 'anms.menu.settings', enabled: true }
+      ];
+
+
+    })
 
     this.gameService.user.next(this.displayName);
 
@@ -190,6 +220,7 @@ export class AppComponent implements OnInit {
 
   ngOnDestroy = () => {
     this.subscription1.unsubscribe();
+    this.subscription2.unsubscribe();
   };
 
   logOut2 = () => {

@@ -67,6 +67,8 @@ export class SingleChoiceComponent implements OnInit {
     this.upvoteService.getSommaire().subscribe((item)=>{
       if(item == 'false'){
         this.tabIndex = 0
+      }else{
+        this.tabIndex = 1
       }
     })
 

@@ -1,5 +1,5 @@
 <mat-tab-group [(selectedIndex)]="tabIndex">
-    <mat-tab>
+    <mat-tab [disabled]="(sommaire|async) != 'false'">
         <ng-template mat-tab-label>
           Vote
         </ng-template>

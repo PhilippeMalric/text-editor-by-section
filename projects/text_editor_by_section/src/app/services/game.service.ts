@@ -61,9 +61,7 @@ export class GameService {
   index: number;
   motAtrouver$: BehaviorSubject<String>;
   mot: number;
-  cats = ['ring'];
-  cat = 'ring';
-  path = 'items/ring';
+  
   my_cat = '';
   items: BehaviorSubject<Item[]>;
   user: BehaviorSubject<string>;
@@ -90,15 +88,7 @@ export class GameService {
     this.joueur= new BehaviorSubject<any>([]);
     this.dataSourceScore= new BehaviorSubject<any>(new MatTableDataSource<any[]>([]));
     this.textName = new BehaviorSubject<string>('');
-    this.db
-      .object('/textName/')
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe((name: string) => {
-        console.log('DB');
-        console.log(name);
-        this.textName.next(name);
-      });
+   
 
     this.items = new BehaviorSubject<Item[]>([]);
     this.user = new BehaviorSubject<string>('');
@@ -439,20 +429,7 @@ export class GameService {
     return this.db.object('users').valueChanges();
   };
 
-  change_cat = path => {
-    this.path = path;
-  };
-
-  probe_db = () => {
-    this.db
-      .object(this.cat)
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe((items: any) => {
-        console.log('fromdb : ', items);
-        console.log(items.dict);
-      });
-  };
+  
 
   add_items_user = (items: Item[], uid) => {
     let path = 'users/' + uid;
@@ -464,9 +441,7 @@ export class GameService {
     this.db.object(path).set({ items: items });
   };
 
-  add_one_item_gen = (item: Item) => {
-    this.add_one_item(item, 'items/' + this.cat);
-  };
+ 
 
   add_one_item_user = (item: Item, uid) => {
     let path = 'users/' + uid + '/data';
@@ -503,32 +478,7 @@ export class GameService {
       });
   };
 
-  get_items = () => {
-    console.log('this.path');
-    console.log(this.path);
-    return this.db
-      .object(this.path)
-      .valueChanges()
-      .pipe(
-        map((itemsD: any) => {
-          console.log('DB');
-          console.log(itemsD);
 
-          if (itemsD && 'dict' in itemsD) {
-            let array = [];
-            if (itemsD != '') {
-              for (let i of Object.keys(itemsD.dict)) {
-                array.push(itemsD.dict[i]);
-              }
-            }
-            return array;
-          } else {
-            return [];
-          }
-        }),
-        tap(console.log)
-      );
-  };
 
   get_items_user = uid => {
     return this.db
@@ -552,22 +502,7 @@ export class GameService {
       );
   };
 
-  removeALL = () => {
-    console.log('remove_all');
-    this.db.object(this.path).set('');
-  };
-
-  remove = (item: Item) => {
-    //console.log(this.cat)
-    this.db
-      .object(this.path)
-      .valueChanges()
-      .pipe(take(1))
-      .subscribe((items: any) => {
-        items.dict['' + item.id] = null;
-        this.db.object(this.path).update(items);
-      });
-  };
+ 
 
   remove_by_user = (item: Item, uid) => {
     this.db
@@ -580,24 +515,13 @@ export class GameService {
       });
   };
 
-  init_db = () => {
-    let my_items = {};
-    my_items['dict'] = {};
-    this.db.object(this.path).set(my_items);
-  };
 
-  getObservable = () => {
-    return this.db.object(this.path).valueChanges();
-  };
 
   getObservable2 = (path) => {
     return this.db.object(path).valueChanges();
   };
 
-  startGame = () => {
-    console.log(this.path);
-    return this.http.get<any[]>('http://localhost:4000/api');
-  };
+ 
 
   getAddOneHour = () => {
     this.heureDispo = this.heureDispo + 1;
