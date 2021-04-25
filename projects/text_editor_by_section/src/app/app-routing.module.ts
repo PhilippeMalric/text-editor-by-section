@@ -43,9 +43,9 @@ const routes: Routes = [
   },
   {
     //canActivate: [AuthGuardService],
-    path: 'admin_',
+    path: 'admin_pl',
     component: AdminComponent,
-    
+    canActivate: [NameGuardService]
   },
   {
     //canActivate: [AuthGuardService],

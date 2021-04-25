@@ -67,6 +67,7 @@ export class GameService {
   userEmail: BehaviorSubject<string>;
   started: BehaviorSubject<boolean>;
   textName: BehaviorSubject<string>;
+  data2 = []
 
   constructor(
     private googleSheetService : GoogleSheetService,

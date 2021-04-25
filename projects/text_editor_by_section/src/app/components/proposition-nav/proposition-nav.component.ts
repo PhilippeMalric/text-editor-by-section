@@ -1,5 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewChild, Input } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ChangeDetectionStrategy, ViewChild, Input, ChangeDetectorRef } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { map, take, withLatestFrom } from 'rxjs/operators';
 import { GameService } from '../../services/game.service';
 import * as saveAs from 'file-saver';
@@ -26,21 +26,29 @@ export class PropositionNavComponent implements OnInit {
   egale: {};
   plus: {};
   sub1: any;
+  subscription1: Subscription;
   
 
-  constructor(private googleSheetService : GoogleSheetService,private gameService:GameService) {
+  constructor(
+    
+    private googleSheetService : GoogleSheetService,
+    private changeDetectorRef: ChangeDetectorRef,
+    public gameService:GameService
+    ) {
 
    
 
    }
 
   ngOnInit(): void {
+  }
+   ngAfterContentInit() {
     console.log("test1678-----------------------------------------------")
-    this.data2 =  this.data.pipe(withLatestFrom(this.gameService.get_projet_de_loi3()), map((item)=>{
+      this.subscription1 = this.gameService.get_projet_de_loi3().pipe(withLatestFrom(this.data), map((item)=>{
       console.log("Allo-----------------------------------------------")
       console.log(item)
-      let proposition = item[0]
-      let projet_de_loi = item[1]
+      let proposition = item[1]
+      let projet_de_loi = item[0]
 
 
       document["proposition"] = proposition
@@ -55,7 +63,10 @@ export class PropositionNavComponent implements OnInit {
       console.log("Allo2-----------------------------------------------")
       console.log(propArray)
       return propArray
-    }))
+    })).subscribe(data=>{
+      this.gameService.data2 = data
+      this.changeDetectorRef.markForCheck()
+    })
     
   }
 
@@ -74,7 +85,7 @@ export class PropositionNavComponent implements OnInit {
         }else{
           object1[key_compo]={}
           object1[key_compo]["nomItem"] = key_splitted[0]
-          object1[key_compo]["nomUser"] = key_splitted[1]
+          //object1[key_compo]["nomUser"] = key_splitted[1]
           object1[key_compo][key_splitted[2]] = flatP[k]
         }
       }
@@ -83,16 +94,20 @@ export class PropositionNavComponent implements OnInit {
       newArray.push(object1[k])
     }
 
-    this.myItem = newArray
-
     return newArray
   }
 
   downloadFile() {
-    let data = this.myItem
+    let data = this.gameService.data2
+      console.log("data123")
       console.log(data)
+      data = data.map((dataRow)=>{
+
+        return {nomItem:dataRow.nomItem,prop:dataRow.prop}
+
+      })
       const replacer = (key, value) => value === null ? '' : value; // specify how you want to handle null values here
-      const header = Object.keys(data[13]);
+      const header = Object.keys(data[1]);
       let csv = data.map(row => {return header.map(fieldName => {
 
         let text = JSON.stringify(row[fieldName], replacer)
@@ -105,7 +120,7 @@ export class PropositionNavComponent implements OnInit {
       let csvArray = csv.join('\r\n');
   
       var blob = new Blob([csvArray], {type: 'text/csv' })
-      saveAs.saveAs(blob, "myFile.csv");
+      saveAs.saveAs(blob, "proposition.csv");
    
   }
 
@@ -207,7 +222,7 @@ export class PropositionNavComponent implements OnInit {
   };
 
     ngOnDestroy(): void {
-
+      this.subscription1.unsubscribe()
     }
 
 }

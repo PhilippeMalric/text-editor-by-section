@@ -1,12 +1,16 @@
 <div class="container">
 
     <div class="center2" >
-        <button mat-raised-button color="warn" (click)="downloadFile()">Télécharger Propositions</button>
+        <button mat-raised-button color="primary" (click)="downloadFile()">Télécharger les propositions</button>
+    </div>
+
+    <div class="center2 mt-2" >
+        <button mat-raised-button color="accent" (click)="downloadPDL()">Télécharger le projet de loi avec les amendements et leurs votes</button>
     </div>
 
     <div class="center" >
 
-        <mat-card *ngFor="let e of data2|async" [ngClass]="{'margin-top-bottom':true,'approuve':e.approuve,'delete':e.delete}">
+        <mat-card *ngFor="let e of gameService.data2" [ngClass]="{'margin-top-bottom':true,'approuve':e.approuve,'delete':e.delete}">
             <mat-card-title>
                 {{e.nomItem}}
             </mat-card-title>
@@ -30,9 +34,7 @@
         </mat-card>
 
     </div>
-    <div class="center2 mt-2" >
-        <button mat-raised-button color="warn" (click)="downloadPDL()">Télécharger projet de loi</button>
-    </div>
+    
 </div>
 
 
