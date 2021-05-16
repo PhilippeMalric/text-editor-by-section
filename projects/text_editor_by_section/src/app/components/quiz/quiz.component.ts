@@ -124,6 +124,7 @@ export class QuizComponent implements OnInit {
           console.log("item")
           console.log(this.item_from_sheet_list_filtered)
           console.log(this.item)
+          
           this.createComponent()
         }else{
           this.item = "item_1_2"

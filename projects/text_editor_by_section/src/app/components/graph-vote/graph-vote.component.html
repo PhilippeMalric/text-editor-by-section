@@ -1,7 +1,7 @@
 <svg [attr.width]="wi" height="200">
     <rect *ngFor="let e of choixDeReponses;let i = index" [attr.x]="e.x" [attr.y]="e.y" width="60" [attr.height]="e.h" style="fill:rgb(0, 0, 0);stroke-width:1;stroke:rgb(0,0,0)" />
     <text *ngFor="let e of choixDeReponses;let i = index" [attr.x]="e.x_label" [attr.y]="118" font-family="Verdana"
-    font-size="15"  [attr.transform]="'translate(10,'+i*-12+') rotate(10)'">{{e.texte}}</text>
+    font-size="15"  [attr.transform]="'translate(10,'+i*-25+') rotate(15)'">{{e.texte}}</text>
 </svg>
 <div>
 

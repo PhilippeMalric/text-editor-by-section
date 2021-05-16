@@ -33,9 +33,10 @@
             
           
             <mat-card-content>
-                <mat-card  *ngFor="let sousSection of section.sousSections" [ngStyle]="{'margin-top':'5px','margin-bottom':'5px','background-color':sousSection?.color}">
+                <mat-card  *ngFor="let sousSection of section.sousSections" [ngClass]="{'smallCard':small}" 
+                [ngStyle]="{'margin-top':'5px','margin-bottom':'5px','background-color':sousSection?.color}">
                     <mat-card-content [ngClass]="{'sousSection':!small,amendement:sousSection?.premier}">
-                        <div [class]="sousSection?.type">
+                        <div [class]="sousSection?.type" [ngClass]="{smallSection:small}">
                             {{sousSection.texte}}
                         </div>
                         <br>

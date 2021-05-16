@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Inject, ChangeDetectorRef, Input, ViewContainerRef, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BehaviorSubject } from 'rxjs';
 import { take, withLatestFrom } from 'rxjs/operators';
@@ -50,6 +51,7 @@ export class SingleChoiceComponent implements OnInit {
   data:any
 
   constructor(
+    private observableMedia: MediaObserver,
     public dialog: MatDialog,
     private upvoteService: UpvoteService,
     private gameService: GameService,
@@ -114,6 +116,22 @@ export class SingleChoiceComponent implements OnInit {
     this.sub3.unsubscribe();
   }
 
+  ngAfterContentInit() {
+
+    
+    this.observableMedia.asObservable().subscribe((change: MediaChange[]) => {
+      
+      if(change[0].mqAlias == "sm" || change[0].mqAlias == "xs"){
+         this.small = true
+      }else{
+        this.small = false
+      }
+      console.log('cols');
+      //console.log(this.grid.cols)
+      //this.grid.rowHeight = this.gridByBreakpointH[change[0].mqAlias];
+      this.changeDetectorRef.markForCheck();
+    });
+  }
 
 ngAfterViewInit(){
 

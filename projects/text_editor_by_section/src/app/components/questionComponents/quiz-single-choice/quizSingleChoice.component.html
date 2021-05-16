@@ -4,18 +4,18 @@
           Vote
         </ng-template>
         <mat-card >
-            <mat-card-title class="header" >
+            <mat-card-subtitle class="header" >
                
                {{item_from_sheet?.texte}}
         
-            </mat-card-title>
+            </mat-card-subtitle>
 
             <mat-card-content>
                 <div style="padding-left: 10px;">
     
                     <div class="together" matTooltipPosition="above" matTooltip="Nombre de vote(s) : {{voteCount}}">
                         <div class="firstRow">
-                            <button *ngFor="let choix of choixDeReponses2" class="mt-2 ml-5 mr-5"
+                            <button *ngFor="let choix of choixDeReponses2" class="mt-2 mr-5 mybutton"
                             mat-raised-button [color]="choix.color" (click)="faireUnChoix(choix.code)">
                                 {{choix.texte}}
                             </button>
@@ -30,21 +30,24 @@
         <ng-template mat-tab-label>
           Sommaire
         </ng-template>
-        <mat-card >
-            <mat-card-title class="header" >
-               
-               Sommaire de la question {{itemId}}
+        <div class="scrollH">
+            <mat-card >
+                <mat-card-title class="header" >
+                   
+                   Sommaire de la question :
+            
+                </mat-card-title>
+    
+                <mat-card-subtitle>
+                    {{item_from_sheet?.texte}}
+                </mat-card-subtitle>
+                <mat-card-content>
+                    <template #graphVote>
+                    </template>
+            </mat-card-content>
+        </mat-card>
+        </div>
         
-            </mat-card-title>
-
-            <mat-card-subtitle>
-               
-            </mat-card-subtitle>
-            <mat-card-content>
-                <template #graphVote>
-                </template>
-        </mat-card-content>
-    </mat-card>
                
              
     </mat-tab>

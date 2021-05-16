@@ -41,11 +41,11 @@ export class GraphVoteComponent implements OnInit {
         })
         let somme = compte.reduce((a, b) => a + b, 0)
       
-        this.wi = (80*this.choixDeReponses.length)+10
+        this.wi = (100*this.choixDeReponses.length)+200
       
           this.choixDeReponses.map((item,i)=>{
-            item["x"] = 10 + i*70
-            item["x_label"] = 20 + i*70
+            item["x"] = 10 + i*100
+            item["x_label"] = 40 + i*100
       
             item["y"] = isNaN(100-((item["vote"] / somme)*100))?0:100-((item["vote"] / somme)*100)
             item["h"] = isNaN(((item["vote"] / somme)*100))?0:((item["vote"] / somme)*100)
