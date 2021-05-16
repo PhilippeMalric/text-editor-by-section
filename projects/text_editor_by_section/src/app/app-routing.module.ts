@@ -22,7 +22,7 @@ import { ProjetImageComponent } from './components/projet-image/projet-image.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'mode_d_emploi',
+    redirectTo: 'message',
     pathMatch: 'full'
   },
   {
@@ -50,12 +50,11 @@ const routes: Routes = [
   {
     //canActivate: [AuthGuardService],
     path: 'csv',
-    component: GoogleSheetComponent,
-    
+    component: GoogleSheetComponent
   },
-  
+
   {
-    path: 'Projet_de_loi',
+    path: 'Projet_de_loi_fin',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
   },
@@ -63,7 +62,7 @@ const routes: Routes = [
     path: 'logos',
     component: ProjetImageComponent
   },
-  
+
   {
     path: 'edit_text_by_section',
     component: Edit_text_by_sectionsComponent
@@ -80,15 +79,15 @@ const routes: Routes = [
     path: 'oublie_mot_de_passe',
     component: ResetMotDePasseComponent
   },
-  
+
   {
     path: '__',
     component: FromLinkComponent
   },
-  
+
   {
     path: '**',
-    redirectTo: 'mode_d_emploi'
+    redirectTo: 'message'
   }
 ];
 
