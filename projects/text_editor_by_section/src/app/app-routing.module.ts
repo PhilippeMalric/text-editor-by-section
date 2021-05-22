@@ -22,7 +22,7 @@ import { ProjetImageComponent } from './components/projet-image/projet-image.com
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'message',
+    redirectTo: 'mode_d_emploi',
     pathMatch: 'full'
   },
   {
@@ -54,7 +54,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'Projet_de_loi_fin',
+    path: 'Projet_de_loi',
     component: PropositionsComponent,
     canActivate: [NameGuardService]
   },
